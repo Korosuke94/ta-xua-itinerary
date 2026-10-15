@@ -363,8 +363,8 @@ var ROUTES = {
 // ================= MAP =================
 var map = L.map('map', {zoomControl: true, attributionControl: true});
 var baseLayers = {
-  'Bản đồ đường': L.tileLayer('https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
-    maxZoom: 18, attribution: '&copy; OpenStreetMap &copy; CARTO'
+  'Bản đồ đường': L.tileLayer('https://tile.openstreetmap.de/{z}/{x}/{y}.png', {
+    maxZoom: 18, attribution: '&copy; OpenStreetMap'
   }),
   'Vệ tinh': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
     maxZoom: 18, attribution: 'Esri, Maxar, Earthstar Geographics'
