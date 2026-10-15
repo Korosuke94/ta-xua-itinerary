@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tà Xùa 3N2Đ · 05–08.11.2026 · Omely Home</title>
+<style>
+:root{
+  --bg:#0b1322;
+  --bg2:#101b30;
+  --card:#141f33;
+  --card2:#182640;
+  --ink:#eaeff8;
+  --muted:#9db0c9;
+  --dawn:#ff9e64;
+  --dawn2:#ffc49b;
+  --teal:#74d6c8;
+  --cloudline:rgba(255,255,255,.09);
+  --glow:rgba(255,158,100,.35);
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#0b1322 0%,#0e1830 40%,#0b1322 100%);
+  color:var(--ink);
+  font-family:"Segoe UI",Tahoma,Arial,sans-serif;
+  line-height:1.65;
+}
+.progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,var(--dawn),var(--dawn2));
+  z-index:99;box-shadow:0 0 12px var(--glow);
+}
+.wrap{max-width:920px;margin:0 auto;padding:0 22px}
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 70% 108%,rgba(255,158,100,.28) 0%,rgba(255,158,100,0) 52%),
+    radial-gradient(90% 70% at 18% -12%,rgba(116,214,200,.14) 0%,rgba(116,214,200,0) 55%),
+    linear-gradient(180deg,#070d1a 0%,#101d3a 62%,#26324e 100%);
+  padding:74px 0 0;
+  text-align:center;
+}
+.stars{position:absolute;inset:0;pointer-events:none}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#dfe9ff;opacity:.7;animation:tw 3.4s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:.9;transform:scale(1.15)}}
+.cloudbank{position:absolute;left:0;right:0;pointer-events:none;opacity:.95}
+.cb1{bottom:118px;animation:drift 46s linear infinite}
+.cb2{bottom:86px;opacity:.55;animation:drift 70s linear infinite reverse}
+@keyframes drift{from{transform:translateX(-6%)}to{transform:translateX(6%)}}
+.ridge{position:relative;display:block;width:100%;height:auto;margin-top:-8px}
+.kicker{
+  letter-spacing:.34em;font-size:12px;color:var(--dawn2);
+  text-transform:uppercase;font-weight:600;
+}
+h1.masthead{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(58px,11vw,108px);
+  margin:8px 0 2px;line-height:1;letter-spacing:.06em;
+  color:#f6f9ff;
+  text-shadow:0 0 42px rgba(255,158,100,.4);
+}
+.tagline{color:var(--muted);font-size:17px;margin:0 0 26px;font-style:italic;font-family:Georgia,serif}
+.chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+.chip{
+  background:rgba(255,255,255,.06);border:1px solid var(--cloudline);
+  padding:7px 15px;border-radius:999px;font-size:13.5px;color:#dbe6f5;
+  backdrop-filter:blur(4px);
+}
+.chip b{color:var(--dawn2);font-weight:600}
+.countdown{
+  display:inline-flex;gap:14px;align-items:baseline;
+  background:rgba(10,16,30,.55);border:1px solid var(--cloudline);
+  border-radius:18px;padding:16px 26px;margin-bottom:34px;
+  box-shadow:0 18px 46px rgba(0,0,0,.45);
+}
+.cd-cell{min-width:64px}
+.cd-num{font-family:Georgia,serif;font-size:34px;color:var(--dawn2);line-height:1}
+.cd-lab{font-size:10.5px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
+.cd-cap{font-size:12px;color:var(--muted);max-width:150px;text-align:left}
+/* ---------- NAV ---------- */
+.daynav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(11,19,34,.86);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--cloudline);
+  display:flex;gap:4px;justify-content:center;flex-wrap:wrap;
+  padding:10px 8px;
+}
+.daynav a{
+  color:#c9d7ea;text-decoration:none;font-size:13px;font-weight:600;
+  padding:7px 14px;border-radius:999px;letter-spacing:.02em;
+  transition:background .25s,color .25s;
+}
+.daynav a:hover{background:rgba(255,158,100,.16);color:var(--dawn2)}
+/* ---------- DAY SECTIONS ---------- */
+main{padding:12px 0 30px}
+.day{padding:56px 0 8px}
+.day-label{
+  display:flex;align-items:center;gap:14px;margin-bottom:6px;
+}
+.day-label .n{
+  font-family:Georgia,serif;font-size:15px;color:#0b1322;font-weight:700;
+  background:var(--dawn);border-radius:12px;padding:4px 13px;letter-spacing:.06em;
+  box-shadow:0 6px 22px var(--glow);white-space:nowrap;
+}
+.day-label h2{
+  font-family:Georgia,serif;font-size:clamp(26px,5vw,40px);margin:0;
+  color:#f3f7ff;letter-spacing:.01em;
+}
+.day-sub{color:var(--muted);margin:2px 0 30px;font-size:14.5px}
+.day-sub b{color:var(--teal);font-weight:600}
+/* ---------- TIMELINE ---------- */
+.tl{position:relative;margin-left:6px;padding-left:34px}
+.tl:before{
+  content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;
+  background:linear-gradient(180deg,var(--dawn) 0%,rgba(255,158,100,.12) 100%);
+  border-radius:2px;
+}
+.ev{position:relative;margin-bottom:26px}
+.ev .dot{
+  position:absolute;left:-40px;top:7px;width:12px;height:12px;border-radius:50%;
+  background:var(--bg);border:3px solid var(--dawn);
+  box-shadow:0 0 0 5px rgba(255,158,100,.14);
+}
+.ev .t{
+  font-size:12.5px;font-weight:700;letter-spacing:.14em;color:var(--dawn2);
+  text-transform:uppercase;margin-bottom:4px;
+}
+.ev .body{
+  background:var(--card);border:1px solid var(--cloudline);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:0 10px 30px rgba(0,0,0,.28);
+  transition:transform .3s,border-color .3s;
+}
+.ev .body:hover{transform:translateY(-2px);border-color:rgba(255,158,100,.4)}
+.ev h4{margin:0 0 7px;font-size:17px;color:#f3f7ff}
+.ev p{margin:0 0 8px;color:#c8d4e6;font-size:14.5px}
+.ev p:last-child{margin-bottom:0}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tag{
+  font-size:12px;color:var(--teal);background:rgba(116,214,200,.1);
+  border:1px solid rgba(116,214,200,.25);padding:3px 11px;border-radius:999px;
+}
+.quote{
+  margin-top:10px;padding:10px 14px;border-left:3px solid var(--dawn);
+  background:rgba(255,158,100,.07);border-radius:0 12px 12px 0;
+  font-size:13.5px;color:#f0dcc9;font-style:italic;
+}
+.quote span{display:block;margin-top:3px;color:var(--muted);font-style:normal;font-size:12px}
+/* ---------- MEALS ---------- */
+.meal{margin:20px 0 34px;position:relative}
+.meal-head{
+  background:linear-gradient(90deg,rgba(255,158,100,.16),rgba(255,158,100,.03));
+  border:1px solid rgba(255,158,100,.3);border-radius:14px 14px 0 0;
+  padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.meal-head .mt{font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--dawn2);text-transform:uppercase}
+.meal-head h3{margin:2px 0 0;font-size:18px;color:#f6f0ff}
+.meal-head .hint{font-size:12px;color:var(--muted)}
+.options{display:grid;gap:12px;margin-top:12px}
+@media(min-width:760px){.options{grid-template-columns:repeat(3,1fr)}}
+.opt{
+  background:var(--card2);border:1px solid var(--cloudline);border-radius:14px;
+  padding:16px 16px 14px;display:flex;flex-direction:column;gap:8px;
+  transition:transform .28s,border-color .28s,box-shadow .28s;
+}
+.opt:hover{transform:translateY(-3px);border-color:rgba(116,214,200,.45);box-shadow:0 14px 34px rgba(0,0,0,.35)}
+.opt h4{margin:0;font-size:15.5px;color:#f3f7ff}
+.opt .sig{margin:0;font-size:13.5px;color:var(--dawn2)}
+.opt .note{margin:0;font-size:13px;color:#b9c6da}
+.opt .meta{margin:0;font-size:12.5px;color:var(--muted)}
+.pick{
+  margin-top:auto;align-self:flex-start;cursor:pointer;
+  background:transparent;border:1.5px solid var(--teal);color:var(--teal);
+  border-radius:999px;padding:6px 20px;font-size:13px;font-weight:600;
+  transition:all .25s;font-family:inherit;
+}
+.pick:hover{background:rgba(116,214,200,.12)}
+.pick.on{background:var(--teal);color:#0822222;color:#06201c;border-color:var(--teal);box-shadow:0 0 18px rgba(116,214,200,.4)}
+/* ---------- TIPS ---------- */
+.tips{display:grid;gap:14px}
+@media(min-width:760px){.tips{grid-template-columns:1fr 1fr}}
+.tip{
+  background:var(--card);border:1px solid var(--cloudline);border-radius:var(--radius);
+  padding:18px 20px;font-size:14.5px;color:#d5dfef;
+}
+.tip b{color:var(--dawn2)}
+.tip .who{display:block;margin-top:8px;font-size:12px;color:var(--muted)}
+/* ---------- CHECKLIST ---------- */
+.checkgrid{display:grid;gap:14px}
+@media(min-width:760px){.checkgrid{grid-template-columns:1fr 1fr}}
+.ckbox{background:var(--card);border:1px solid var(--cloudline);border-radius:var(--radius);padding:16px 18px}
+.ckbox h4{margin:0 0 10px;font-size:15px;color:var(--teal);letter-spacing:.04em}
+label.ck{
+  display:flex;gap:11px;align-items:flex-start;padding:6px 4px;cursor:pointer;
+  font-size:14px;color:#cfdbee;border-radius:8px;transition:background .2s;
+}
+label.ck:hover{background:rgba(255,255,255,.045)}
+label.ck input{margin-top:4px;accent-color:var(--dawn);width:16px;height:16px;cursor:pointer}
+label.ck input:checked + span{color:var(--muted);text-decoration:line-through}
+.ck-note{margin-top:14px;font-size:13px;color:var(--muted);text-align:center}
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--cloudline);margin-top:54px;padding:34px 0 60px;color:var(--muted);font-size:12.5px}
+footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 12px}
+.src{display:flex;flex-wrap:wrap;gap:8px}
+.src span{background:rgba(255,255,255,.05);border:1px solid var(--cloudline);padding:4px 12px;border-radius:999px;font-size:12px}
+/* ---------- REVEAL ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+/* ---------- PRINT ---------- */
+@media print{
+  body{background:#fff;color:#111}
+  .daynav,.pick,.progress,.stars,.cloudbank{display:none}
+  .hero{background:#fff;color:#111;padding-top:20px}
+  h1.masthead,.day-label h2,.ev h4,.opt h4,.meal-head h3{color:#111;text-shadow:none}
+  .ev .body,.opt,.ckbox,.tip{background:#fff;border-color:#ccc;box-shadow:none}
+  .cd-lab,.day-sub,.opt .note,.opt .meta,.tagline{color:#555}
+  .ev .t,.opt .sig,.tip b{color:#b45a1e}
+  .day-label .n{background:#b45a1e}
+  .meal-head{border-color:#b45a1e}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hero">
+  <div class="stars" id="stars"></div>
+  <svg class="cloudbank cb1" viewBox="0 0 1440 120" preserveAspectRatio="none" height="120" width="100%" aria-hidden="true">
+    <path d="M0 78 Q60 42 130 62 Q190 26 280 52 Q350 20 440 50 Q520 24 610 54 Q700 18 790 50 Q880 30 960 58 Q1050 20 1140 52 Q1230 28 1320 58 Q1390 40 1440 62 L1440 120 L0 120 Z" fill="rgba(226,236,252,.16)"/>
+    <path d="M0 95 Q90 66 180 84 Q280 52 380 80 Q480 56 580 84 Q690 52 790 82 Q900 60 1000 86 Q1110 56 1210 84 Q1330 66 1440 88 L1440 120 L0 120 Z" fill="rgba(226,236,252,.22)"/>
+  </svg>
+  <svg class="cloudbank cb2" viewBox="0 0 1440 100" preserveAspectRatio="none" height="100" width="100%" aria-hidden="true">
+    <path d="M0 62 Q110 30 220 54 Q330 22 440 50 Q560 26 680 54 Q800 24 920 52 Q1040 30 1160 58 Q1300 36 1440 60 L1440 100 L0 100 Z" fill="rgba(210,224,246,.12)"/>
+  </svg>
+  <div class="wrap">
+    <div class="kicker">Kế hoạch du lịch · 2 cặp đôi</div>
+    <h1 class="masthead">TÀ XÙA</h1>
+    <p class="tagline">Thiên đường săn mây Tây Bắc — mùa mây đẹp nhất năm</p>
+    <div class="chips">
+      <span class="chip">🗓 Khởi hành <b>tối Thứ 5 · 05.11</b> → về 08.11.2026</span>
+      <span class="chip">👥 <b>4 người</b> · 2 cặp đôi</span>
+      <span class="chip">🏠 Homestay: <b>Omely Home Tà Xùa</b> (đã đặt)</span>
+      <span class="chip">🌡 Ngày 10–15°C · Sáng sớm 5–8°C</span>
+    </div>
+    <div class="countdown" id="cd">
+      <div class="cd-cell"><div class="cd-num" id="cd-d">--</div><div class="cd-lab">ngày</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-h">--</div><div class="cd-lab">giờ</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-m">--</div><div class="cd-lab">phút</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-s">--</div><div class="cd-lab">giây</div></div>
+      <div class="cd-cap">còn lại trước giờ xuất phát 18:30 · 05.11.2026</div>
+    </div>
+  </div>
+  <svg class="ridge" viewBox="0 0 1440 190" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 190 L0 150 L130 92 L250 138 L360 70 L470 128 L600 58 L730 120 L850 82 L980 136 L1100 76 L1230 130 L1330 96 L1440 142 L1440 190 Z" fill="#0d1628"/>
+    <path d="M0 190 L0 168 L120 128 L260 158 L400 112 L540 152 L680 106 L820 156 L960 122 L1100 160 L1250 118 L1370 152 L1440 136 L1440 190 Z" fill="#0a111f"/>
+  </svg>
+</header>
+
+<nav class="daynav">
+  <a href="#d0">Đêm 5.11</a>
+  <a href="#d1">Ngày 1 · 6.11</a>
+  <a href="#d2">Ngày 2 · 7.11 ⭐</a>
+  <a href="#d3">Ngày 3 · 8.11</a>
+  <a href="#tips">Mẹo từ cộng đồng</a>
+  <a href="#checklist">Checklist</a>
+</nav>
+
+<main class="wrap">
+
+<!-- ================= ĐÊM 5.11 ================= -->
+<section class="day" id="d0">
+  <div class="day-label reveal"><span class="n">ĐÊM 0</span><h2>Thứ Năm · 05.11 — Khởi hành đêm</h2></div>
+  <p class="day-sub reveal">Hà Nội → Tà Xùa · <b>~240km, 5–6 tiếng</b> · cung QL32 → Phù Yên → Bắc Yên → DT112. Đi ban đêm vắng xe, sáng mai dậy tại Tà Xùa.</p>
+  <div class="tl">
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">17:00</div>
+      <div class="body">
+        <h4>🍚 Ăn tối sớm tại nhà / Hà Nội</h4>
+        <p>Ăn no trước cung đường dài — dọc đường ban đêm ít quán mở. Kiểm tra xăng đầy, săm lốp, tải sẵn playlist.</p>
+        <div class="tags"><span class="tag">QL32 → Trung Hà → Thanh Sơn → Thu Cúc → Phù Yên</span></div>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">18:30</div>
+      <div class="body">
+        <h4>🚗 Xuất phát Hà Nội → Tà Xùa</h4>
+        <p>Đi đêm, vắng xe. Nghỉ giải lao 15 phút tại Phú Yên hoặc Bắc Yên. Từ Bắc Yên rẽ vào DT112 leo đèo khoảng 13km là vào đến xã.</p>
+        <div class="tags"><span class="tag">Đèo DT112 dốc + cua gắt — lái chậm</span><span class="tag">Cần tài xế quen đường núi</span></div>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">23:30 – 00:00</div>
+      <div class="body">
+        <h4>🛏 Check-in Omely Home — ngủ sớm</h4>
+        <p>Đến nơi nửa đêm, nhận phòng và ngủ liền. Mai dậy tự nhiên, không cần báo thức sớm.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="meal reveal" data-meal="n5-khuya">
+    <div class="meal-head">
+      <div><div class="mt">23:30 · Đêm muộn</div><h3>🌙 Bữa ăn khuya (nếu đói) — chọn 1</h3></div>
+      <span class="hint">nhấn "Chọn" để giữ lựa chọn</span>
+    </div>
+    <div class="options">
+      <article class="opt">
+        <h4>Nhờ Omely Home chuẩn bị sẵn</h4>
+        <p class="sig">Mì nóng / xôi / trà gừng</p>
+        <p class="note">Nhắn chủ house trước chiều 5/11 — đến nơi có đồ nóng ngay, không phải đi tìm đồ ăn nửa đêm.</p>
+        <p class="meta">📞 Nhắn homestay trước · ƯU TIỆN NHẤT</p>
+        <button class="pick" data-id="n5-khuya-omely">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Đồ ăn nhẹ mang theo từ HN</h4>
+        <p class="sig">Mì gói · bánh mì · chocolate · trà gừng bình nóng</p>
+        <p class="note">Nửa đêm trời 8–10°C — bowl mì nóng trên hiên house là tuyệt phẩm. Mua sẵn ở HN cho chắc.</p>
+        <p class="meta">🎒 Mua trước tối 05.11</p>
+        <button class="pick" data-id="n5-khuya-mangtheo">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Ghé quán đêm ở Bắc Yên</h4>
+        <p class="sig">Phở / bún / cháo nóng thị trấn</p>
+        <p class="note">Trước khi leo đèo DT112 còn ~13km. Quán đêm thưa — chỉ tính phương án dự phòng nếu đói giữa đường.</p>
+        <p class="meta">📍 Thị trấn Bắc Yên · Khan hiếm sau 22:00</p>
+        <button class="pick" data-id="n5-khuya-bacyen">Chọn</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NGÀY 1 ================= -->
+<section class="day" id="d1">
+  <div class="day-label reveal"><span class="n">NGÀY 1</span><h2>Thứ Sáu · 06.11 — Chiều hoàng hôn</h2></div>
+  <p class="day-sub reveal">Bù ngủ sáng, chiều ra <b>Thảo nguyên + Mỏm Cá Heo</b> đón hoàng hôn ~17:20. Nhịp nhẹ, đúng lời khuyên nhóm review: <b>"ngày đầu loanh quanh, đừng dồn di chuyển xa"</b>.</p>
+  <div class="tl">
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">08:00</div>
+      <div class="body">
+        <h4>☕ Dậy tự nhiên — trôi theo mây tại Omely</h4>
+        <p>Bù giấc sau chuyến đêm. Trời se 10–13°C, ngồi hiên nhà uống cà phê nhìn mây trôi qua thung lũng — chưa cần đi đâu cả.</p>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">10:00</div>
+      <div class="body">
+        <h4>🛵 Thuê xe máy / lien hệ xe ôm bản địa</h4>
+        <p>Omely hỗ trợ giới thiệu xe. Xe máy là "chân" chính trong 2 ngày — sống lưng khủng long, cá heo, đỉnh gió đều cần xe. Ai không tự tin đèo thì nhờ xe ôm người Mông (nhóm review khuyên dùng, giá thương lượng trước).</p>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">14:30 – 16:30</div>
+      <div class="body">
+        <h4>🌿 Thảo nguyên Tà Xùa — chụp ảnh chiều nắng xiên</h4>
+        <p>Đồng cỏ rộng, nắng chiều vàng — khung cảnh cặp đôi "ngồi trên mây". Tháng 11 cỏ mơ vàng lần cuối trước khi sang đông.</p>
+        <div class="quote">Ngày đầu chiều đi thảo nguyên luôn, hợp lý vì gần và nhẹ. <span>— kinh nghiệm Hà Linh, group Review Tà Xùa trên Facebook</span></div>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">16:45 – 17:45</div>
+      <div class="body">
+        <h4>🐋 Mỏm Cá Heo + Cây cô đơn — hoàng hôn ~17:20</h4>
+        <p>Cá Heo cách trung tâm ~7km, tảng đá nhô hình đầu cá heo lơ lửng trên mây. Từ Cá Heo đi thêm ~1km là Cây cô đơn — cùng tuyến, đường dễ. Hoàng hôn tháng 11 xuống sớm (~17:20), canh giờ quay lại kịp bữa tối.</p>
+        <div class="tags"><span class="tag">Miễn phí — chỉ tốn phí gửi xe 5–20k</span><span class="tag">Giày êm, gió lạnh</span></div>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">20:00</div>
+      <div class="body">
+        <h4>🔥 Trà nóng / lửa trại tại Omely — ngủ sớm 21:30</h4>
+        <p>Ngày mai là ngày quan trọng nhất: 4:30 sáng phải dậy săn mây. Không nhậu khuya nhé!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="meal reveal" data-meal="d1-sang">
+    <div class="meal-head">
+      <div><div class="mt">08:30 · Sáng</div><h3>🍜 Bữa sáng 6.11 — chọn 1</h3></div>
+    </div>
+    <div class="options">
+      <article class="opt">
+        <h4>Ăn sáng tại Omely Home</h4>
+        <p class="sig">Phở / bún / xôi nóng do chủ house nấu</p>
+        <p class="note">Báo chủ nhà từ tối 5/11 — dậy là có ăn, ấm và tiện nhất sau chuyến đêm.</p>
+        <p class="meta">📍 Tại homestay · 📞 đặt tối trước</p>
+        <button class="pick" data-id="d1-sang-omely">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>A Phủ Restaurant</h4>
+        <p class="sig">Nhà hàng #1 Tà Xùa · món Tây Bắc đầy đủ</p>
+        <p class="note">Top 1 trong Top 5 nhà hàng Tà Xùa (taxua.vn): gà đen, gà bản, xôi, cơm lam. Mở cả ngày, không gian rộng, view biển mây từ bàn ăn.</p>
+        <p class="meta">📍 Trung tâm xã · 💰 ~150–250k/người · ☎ 0978 426 813</p>
+        <button class="pick" data-id="d1-sang-aphu">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Quán phở / bún local trung tâm</h4>
+        <p class="sig">Bát phở gà bản nóng hổi</p>
+        <p class="note">Vài quán nhỏ quanh trung tâm xã, giá rẻ, gà bản thật — hỏi chủ Omely chỉ quán nào đông dân địa phương hôm đó.</p>
+        <p class="meta">📍 Gần cổng chào · 💰 ~30–50k/tô</p>
+        <button class="pick" data-id="d1-sang-pho">Chọn</button>
+      </article>
+    </div>
+  </div>
+
+  <div class="meal reveal" data-meal="d1-trua">
+    <div class="meal-head">
+      <div><div class="mt">11:30 · Trưa</div><h3>🍲 Bữa trưa 6.11 — chọn 1</h3></div>
+    </div>
+    <div class="options">
+      <article class="opt">
+        <h4>Mayhome Restaurant</h4>
+        <p class="sig">Lẩu gà đen · cá Pa Pỉnh Rộp · cá lăng hấp</p>
+        <p class="note">Top 2 taxua.vn — nhà hàng kết hợp homestay.view săn mây tại bàn. Lẩu gà đen ấm bụng giữa ngày 12°C.</p>
+        <p class="meta">📍 Trung tâm xã · quán + homestay</p>
+        <button class="pick" data-id="d1-trua-mayhome">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Cơm nhà Namiya — Đỉnh Gió</h4>
+        <p class="sig">Cơm nhà mộc mạc, món đậm đà bản sắc</p>
+        <p class="note">Không gian ấm cúng kiểu "chữa lành". Ghé ăn luôn tiện rẽ ngắm Đỉnh Gió trước giờ chiều.</p>
+        <p class="meta">📍 Khu Đỉnh Gió · review từ homestaytaxua.com</p>
+        <button class="pick" data-id="d1-trua-namiya">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Đồi Mây Tà Xùa</h4>
+        <p class="sig">Cơm món hàng ngày + cà phê</p>
+        <p class="note">Tổ hợp lẩu–nướng–cơm–cafe cách cổng chào ~50m, khuôn viên rộng, view cao. Trưa thường ngày ăn cơm món là hợp lý nhất.</p>
+        <p class="meta">📍 Cách cổng chào 50m · lẩu + nướng + cafe</p>
+        <button class="pick" data-id="d1-trua-doimay">Chọn</button>
+      </article>
+    </div>
+  </div>
+
+  <div class="meal reveal" data-meal="d1-toi">
+    <div class="meal-head">
+      <div><div class="mt">18:30 · Tối</div><h3>🍢 Bữa tối 6.11 — chọn 1</h3></div>
+    </div>
+    <div class="options">
+      <article class="opt">
+        <h4>Đồi Mây — Mẹt nướng Tây Bắc</h4>
+        <p class="sig">Mẹt nướng best-seller: gà nướng · cơm lam · cá nướng · xôi · rau</p>
+        <p class="note">Món bán chạy nhất quán theo review luhanhvietnam. Cả mẹt bày giữa bàn, 4 người gắp tưng tưng rất vui.</p>
+        <p class="meta">📍 Cách cổng chào ~50m · 💰 gọi theo mẹt</p>
+        <button class="pick" data-id="d1-toi-doimay">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Tiệm nướng Cánh Cam</h4>
+        <p class="sig">Nướng ngoài trời — không gian lãng mạn</p>
+        <p class="note">Đối diện trường mầm non xã, đi lên 200m. Bàn ghế gỗ mộc, tọa độ cao ngắm hoàng hôn + đêm mây — đúng vibe 2 cặp đôi.</p>
+        <p class="meta">📍 Gần trung tâm · review luhanhvietnam</p>
+        <button class="pick" data-id="d1-toi-canhcam">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Nhà hàng A Phủ</h4>
+        <p class="sig">Vịt quay Tây Bắc · gà nướng mắc khén · lẩu</p>
+        <p class="note">Nếu sáng 6/11 chưa ăn A Phủ thì tối vào đây — view 300 chỗ, món chế biến kỳ công, ăn tối ấm cúng.</p>
+        <p class="meta">📍 Trung tâm xã · 💰 150–250k/người</p>
+        <button class="pick" data-id="d1-toi-aphu">Chọn</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NGÀY 2 ================= -->
+<section class="day" id="d2">
+  <div class="day-label reveal"><span class="n">NGÀY 2</span><h2>Thứ Bảy · 07.11 — Săn mây ⭐</h2></div>
+  <p class="day-sub reveal">Ngày vàng của chuyến đi: <b>bình minh trên Sống lưng Khủng Long</b> — có mặt từ 5:00 (lời khuyên được nhắc nhiều nhất từ group Facebook), sáng cafe trên mây, chiều rừng rêu + Đầu Rùa, đêm BBQ.</p>
+  <div class="tl">
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">04:30</div>
+      <div class="body">
+        <h4>⏰ Dậy — áo ấm + găng tay + mũ len + đèn pin</h4>
+        <p>4–7°C sáng sớm. 04:45 xe máy/xe ôm sẵn cổng Omely. Bình minh ~06:10.</p>
+        <div class="quote">Ngày thứ 2 đi sống lưng ngắm bình minh thì 5h sáng phải có mặt ở đó rồi. <span>— Hà Linh, group Review Tà Xùa tất tần tật (Facebook)</span></div>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">05:00 – 07:30</div>
+      <div class="body">
+        <h4>🌅 Sống lưng Khủng Long — biển mây + bình minh</h4>
+        <p>Sống núi 1.5–2km như lưng khủng long, hai bên vách sâu 200–300m. Mây dày đặc từ đêm đến giữa trưa mùa này. Chụp tới khi tay tê cứng mới về. Cuối tuần đông — tranh thủ vị trí đẹp sớm.</p>
+        <div class="quote">Rét mới dễ gặp mây bạn ơi :)) <span>— chủ page Sống lưng khủng long Tà Xùa, trả lời comment trên Facebook</span></div>
+        <div class="tags"><span class="tag">Đường đất đá — giày chống trơn</span><span class="tag">Miễn phí vé</span><span class="tag">Cách trung tâm 5–12km đèo</span></div>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">08:00</div>
+      <div class="body">
+        <h4>☁️ Cafe sáng trên mây — Đỉnh Gió</h4>
+        <p>Trên đường về ghé quán cafe vùng Đỉnh Gió (Mị Ơi mở từ 5:30). Bát mì + ly cafe nóng nhìn thung lũng — bữa sáng đắt giá nhất chuyến đi.</p>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">09:00 – 11:00</div>
+      <div class="body">
+        <h4>😴 Về Omely — nghỉ bù, tắm nước nóng</h4>
+        <p>Dậy 4:30 rất đáng tiền nhưng rất mệt — ngủ lại 1–2 tiếng trước bữa trưa.</p>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">15:30 – 17:00</div>
+      <div class="body">
+        <h4>🌲 Rừng rêu nguyên sinh + Mỏm đá Đầu Rùa</h4>
+        <p>Rừng rêu cổ tích gần sống lưng — rêu xanh mướt phủ thân cây, sáng muộn ánh nắng xuyên tán lá. Đầu Rùa: tảng đá hình đầu rùa 2.000m — điểm chụp full mọi góc. Cả hai cùng tuyến với sống lưng.</p>
+        <div class="tags"><span class="tag">Dạo nhẹ nhàng, không tốn sức</span><span class="tag">Đi ban ngày, tránh sương mù dày</span></div>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">17:00 – 18:00</div>
+      <div class="body">
+        <h4>🌇 Hoàng hôn Đỉnh Gió — tọa độ cafe triệu đô</h4>
+        <p>Khu vực Đỉnh Gió tập trung các quán cafe view đẹp nhất Tà Xùa. Ngắm mặt trời lặn sau dãy núi, mây đổi màu hồng cam.</p>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">20:30</div>
+      <div class="body">
+        <h4>🔥 Lửa trại + rượu táo mèo — ngủ 22:00</h4>
+        <p>Bữa tối BBQ no nê, quây lửa trại hát hò. Ngày mai là ngày về — ai còn sức thì 5:30 dậy săn mây lần cuối, ai mệt thì ngủ bù thoải mái.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="meal reveal" data-meal="d2-sang">
+    <div class="meal-head">
+      <div><div class="mt">08:00 · Sáng</div><h3>☕ Bữa sáng 7.11 (sau săn mây) — chọn 1</h3></div>
+    </div>
+    <div class="options">
+      <article class="opt">
+        <h4>Tiệm cafe Mị Ơi (Đỉnh Gió)</h4>
+        <p class="sig">Mì nóng + cafe view "triệu đô"</p>
+        <p class="note">Quan cafe hot nhất Tà Xùa, mở từ 5:30 — dân săn mây ghé sau buổi bình minh. Gỗ tre nứa mộc mạc, 30–100k/ly.</p>
+        <p class="meta">📍 Trên Đỉnh Gió · 🕠 05:30–23:00</p>
+        <button class="pick" data-id="d2-sang-mioi">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Về Omely Home ăn sáng</h4>
+        <p class="sig">Phở/bún nóng tại homestay</p>
+        <p class="note">Báo chủ nhà tối 6/11 — ăn được ngay khi về tới, cởi áo ấm nằm dài luôn là hợp lý.</p>
+        <p class="meta">📍 Tại homestay</p>
+        <button class="pick" data-id="d2-sang-omely">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Ăn nhẹ tại chỗ + cafe ngonaya</h4>
+        <p class="sig">Bánh mì/chocolate từ HN + ly cafe nóng</p>
+        <p class="note">Cực đoan một chút: ăn nhẹ trên sống lưng ngay khi mây chưa tan — mỗi miếng kèm view 2.000m. Rẻ nhất, đáng nhớ nhất.</p>
+        <p class="meta">🎒 Đồ mang theo + cafe 30–50k</p>
+        <button class="pick" data-id="d2-sang-nhe">Chọn</button>
+      </article>
+    </div>
+  </div>
+
+  <div class="meal reveal" data-meal="d2-trua">
+    <div class="meal-head">
+      <div><div class="mt">11:30 · Trưa</div><h3>🍲 Bữa trưa 7.11 — chọn 1</h3></div>
+    </div>
+    <div class="options">
+      <article class="opt">
+        <h4>Nhà hàng A Phủ — view mây</h4>
+        <p class="sig">Thịt trâu gác bếp · lợn đen xôi · rau rừng</p>
+        <p class="note">Ăn trưa thịnh soạn sau buổi sáng dậy sớm — tầm nhìn mây từ bàn ăn, phục vụ chăm review tốt.</p>
+        <p class="meta">📍 Trung tâm xã · 💰 150–250k/người</p>
+        <button class="pick" data-id="d2-trua-aphu">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Vua Lẩu — Nướng</h4>
+        <p class="sig">Lẩu nóng giữa 12°C</p>
+        <p class="note">Quan lẩu nướng tại trung tâm — dành cho nhóm muốn nồi lẩu sôi sùng sục sau 3 tiếng trên núi.</p>
+        <p class="meta">📍 Trung tâm xã</p>
+        <button class="pick" data-id="d2-trua-vualau">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Mayhome Restaurant</h4>
+        <p class="sig">Cá Pa Pỉnh Rộp (nếu 6/11 chưa ăn)</p>
+        <p class="note">Cá hấp/ghép nướng kiểu Thái đặc trưng Tây Bắc — món review khen nhiều nhất menu Mayhome.</p>
+        <p class="meta">📍 Trung tâm xã</p>
+        <button class="pick" data-id="d2-trua-mayhome">Chọn</button>
+      </article>
+    </div>
+  </div>
+
+  <div class="meal reveal" data-meal="d2-toi">
+    <div class="meal-head">
+      <div><div class="mt">19:00 · Tối</div><h3>🍖 Bữa tối BBQ 7.11 — chọn 1</h3></div>
+    </div>
+    <div class="options">
+      <article class="opt">
+        <h4>Trạm Mây Tà Xùa</h4>
+        <p class="sig">BBQ camping ngoài trời bên than hồng</p>
+        <p class="note">Set nướng bò · lợn bản · gà đồi tẩm mắc khén hạt dổi, không gian quây quần kiểu dã ngoại giữa mây ngàn — bữa tối "đắt nhất difficoltà" cảm xúc.</p>
+        <p class="meta">📍 Tà Xùa · review homestaytaxua.com</p>
+        <button class="pick" data-id="d2-toi-trammay">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Tiệm nướng Cánh Cam</h4>
+        <p class="sig">Nướng đêm lãng mạn</p>
+        <p class="note">Nếu tối 6/11 chưa chọn Cánh Cam thì đêm 7/11 là lúc — trời vắng, sao nhiều, bếp than hồng.</p>
+        <p class="meta">📍 Gần trung tâm</p>
+        <button class="pick" data-id="d2-toi-canhcam">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Set BBQ tại Omely Home + lửa trại</h4>
+        <p class="sig">Nướng tại homestay — khỏi di chuyển</p>
+        <p class="note">Nhờ chủ house đặt set nướng, ăn ngay tại sân nhà rồi kéo dài lửa trại tới 22:00. Tiện nhất sau 1 ngày dậy 4:30.</p>
+        <p class="meta">📞 Đặt trước trưa 7/11</p>
+        <button class="pick" data-id="d2-toi-omely">Chọn</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NGÀY 3 ================= -->
+<section class="day" id="d3">
+  <div class="day-label reveal"><span class="n">NGÀY 3</span><h2>Chủ Nhật · 08.11 — Văn hoá + về nhà</h2></div>
+  <p class="day-sub reveal">Theo đúng lời khuyên group review: <b>"ngày 3 chơi quanh làng văn hoá, đỉnh gió, khèn coffee rồi ăn trưa luôn — không vội vàng"</b>. Trả phòng 12:00, về HN ~19:30.</p>
+  <div class="tl">
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">05:30 – 07:00 (tuỳ chọn)</div>
+      <div class="body">
+        <h4>☁️ Săn mây lần cuối — hoặc ngủ bù</h4>
+        <p>Option A: dậy 5:30 ra <b>Đèo Gió</b> (gần Omely) hoặc <b>Sống lưng Múi Sáng</b> — review đánh giá "đẹp hơn cả sống lưng khủng long, ít người, hoang sơ". Option B: ngủ tới 7:00, xả hơi. Cả hai đều đúng.</p>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">09:00 – 10:30</div>
+      <div class="body">
+        <h4>🏔 Làng văn hoá H'Mông + rừng chè Shan Tuyết</h4>
+        <p>Tản bộ giữa chè cổ thụ hàng trăm năm, tìm hiểu hái chè thủ công, một ly trà nóng giữa núi rừng. Văn hoá Mông mộc mạc hiếu khách — chậm rãi đúng kiểu ngày cuối.</p>
+        <div class="tags"><span class="tag">Chè cổ thụ Shan Tuyết → mua về</span><span class="tag">Hướng dẫn bản địa ~100–150k/nhóm</span></div>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">11:00</div>
+      <div class="body">
+        <h4>🛍 Khèn Coffee — mua đặc sản về làm quà</h4>
+        <p>Mắc khén · hạt dổi · mật ong · táo mèo · trà Shan Tuyết — bộ quà Tây Bắc chuẩn vị. Cafe cuối chuyến, view lần cuối.</p>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">12:00</div>
+      <div class="body">
+        <h4>🧳 Trả phòng Omely Home</h4>
+        <p>Check-out trưa. Xếp đồ lên xe, ăn trưa rồi xuống núi.</p>
+      </div>
+    </div>
+    <div class="ev reveal"><div class="dot"></div>
+      <div class="t">14:00 – 19:30</div>
+      <div class="body">
+        <h4>🚗 Tà Xùa → Hà Nội</h4>
+        <p>Về bằng cung QL32 cũ, dừng nghỉ Bắc Yên → Phù Yên. Về đến HN ~19:30–20:00 — kết thúc 3N2Đ với đầy ống kính ảnh mây.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="meal reveal" data-meal="d3-sang">
+    <div class="meal-head">
+      <div><div class="mt">08:00 · Sáng</div><h3>🍜 Bữa sáng 8.11 — chọn 1</h3></div>
+    </div>
+    <div class="options">
+      <article class="opt">
+        <h4>Cơm nhà Namiya — Đỉnh Gió</h4>
+        <p class="sig">Bữa cơm nhà cuối trước khi về</p>
+        <p class="note">Ăn sáng ấm cúng kiểu nhà — hợp tâm trạng ngày cuối. Kết hợp tiện ngắm Đỉnh Gió lần nữa.</p>
+        <p class="meta">📍 Khu Đỉnh Gió</p>
+        <button class="pick" data-id="d3-sang-namiya">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>A Phủ Restaurant</h4>
+        <p class="sig">Bữa sáng thịnh soạn</p>
+        <p class="note">Món Tây Bắc đủ vị — phù hợp nếu nhóm thích ăn chắc trước chặng 240km về HN.</p>
+        <p class="meta">📍 Trung tâm xã · ☎ 0978 426 813</p>
+        <button class="pick" data-id="d3-sang-aphu">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Ăn nhanh tại Omely Home</h4>
+        <p class="sig">Xôi/bánh + trà nóng, trả phòng gọn</p>
+        <p class="note">Ưu tiên nhóm muốn xuất phát sớm về HN tránh kẹt xe cuối tuần Chủ nhật.</p>
+        <p class="meta">📍 Tại homestay</p>
+        <button class="pick" data-id="d3-sang-omely">Chọn</button>
+      </article>
+    </div>
+  </div>
+
+  <div class="meal reveal" data-meal="d3-trua">
+    <div class="meal-head">
+      <div><div class="mt">12:30 · Trưa</div><h3>🍗 Bữa trưa 8.11 (bữa cuối) — chọn 1</h3></div>
+    </div>
+    <div class="options">
+      <article class="opt">
+        <h4>Ăn tại Bắc Yên trước khi xuống đèo</h4>
+        <p class="sig">Gà nướng · cơm lam thị trấn</p>
+        <p class="note">Nạp năng lượng trước 5–6 tiếng ô tô. Thị trấn nhỏ, quán gà nướng + cơm lam vỉa hè đông vui giờ trưa Chủ nhật.</p>
+        <p class="meta">📍 Thị trấn Bắc Yên · rẻ, nhanh</p>
+        <button class="pick" data-id="d3-trua-bacyen">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Nhà hàng Phố Núi</h4>
+        <p class="sig">Lẩu nướng cuối chuyến</p>
+        <p class="note">Nhà hàng nằm tại Tà Xùa — ăn xong mới về. ☎ 0933 669 881, zalo 0898 563 115 (the homestaytaxua.com).</p>
+        <p class="meta">📍 Tà Xùa · đặt trước khi qua</p>
+        <button class="pick" data-id="d3-trua-phonui">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Đồi Mây — mẹt nướng trưa</h4>
+        <p class="sig">Mẹt nướng gần cổng chào (nếu chưa ăn)</p>
+        <p class="note">Cách cổng chào 50m, tiện ra về — món best-seller cho bữa cuối vẫn ngon như buổi đầu.</p>
+        <p class="meta">📍 Cách cổng chào ~50m</p>
+        <button class="pick" data-id="d3-trua-doimay">Chọn</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TIPS ================= -->
+<section class="day" id="tips">
+  <div class="day-label reveal"><span class="n">MẸO</span><h2>Lời khuyên từ cộng đồng</h2></div>
+  <p class="day-sub reveal">Tổng hợp từ comment group Facebook <b>"Review Tà Xùa tất tần tật"</b> + comment trên các fanpage homestay Tà Xùa + bài review du lịch cuối 2026.</p>
+  <div class="tips">
+    <div class="tip reveal"><b>"5h sáng phải có mặt ở sống lưng để ngắm bình minh."</b> Không phải 5h mới dậy — cuối tuần đông người, vị trí đẹp có người từ 4:30. <span class="who">— Hà Linh · group Review Tà Xùa (Facebook)</span></div>
+    <div class="tip reveal"><b>"Ngày 3 chơi quanh làng văn hoá, đỉnh gió, khèn coffee rồi ăn trưa luôn, sẽ không vội vàng."</b> Và: đường trung tâm đi Xím Vàng xa — 7h đi, 10h về là bị vội, nên lịch 3N2Đ không ghé Xím Vàng. <span class="who">— Hà Linh · group Review Tà Xùa (Facebook)</span></div>
+    <div class="tip reveal"><b>"Nguyên ngày đầu loanh quanh khu trung tâm, ngày sau mới di chuyển xa"</b> — chính là khung lịch trình này: ngày 1 nhẹ, ngày 2 săn mây, ngày 3 văn hoá. <span class="who">— Lừ Bun · group Review Tà Xùa (Facebook)</span></div>
+    <div class="tip reveal"><b>"Rét mới dễ gặp mây bạn ơi :))"</b> và <b>"mấy hôm Hà Nội mưa thì Tà Xùa vẫn có mây"</b> — trời càng lạnh, mây càng dày. Tháng 11 là đỉnh mùa mây, kiểm tra dự báo mây đêm trước bằng app Windy/Meteoblue. <span class="who">— chủ page Sống lưng khủng long Tà Xùa + Tà Xùa Ecolodge (comment Facebook)</span></div>
+    <div class="tip reveal"><b>Tháng 11 = 10–15°C ngày, 5–8°C sáng sớm</b> — mùa cao điểm cuối tuần, đặt trước Omely là chuẩn rồi. Mang đủ áo ấm, găng tay, mũ len nếu không muốn run cầm cập giữa bình minh. <span class="who">— pystravel.vn "Tà Xùa tháng 11: mùa săn mây đẹp nhất năm"</span></div>
+    <div class="tip reveal"><b>Cafe 5:30 giờ mở cửa dành cho dân săn mây</b> — Mị Ơi (Đỉnh Gió) mở sớm nhất, ăn mì nóng + cafe ngay sau buổi bình minh. Quan cafe trong combo voucher của Nhà Mer: Nhà của An, Mị Ơi, Nhà H'Mông, ngaynaodo. <span class="who">— mia.vn review + greensm.com list homestay/cafe</span></div>
+  </div>
+</section>
+
+<!-- ================= CHECKLIST ================= -->
+<section class="day" id="checklist">
+  <div class="day-label reveal"><span class="n">🎒</span><h2>Checklist mang theo</h2></div>
+  <p class="day-sub reveal">Tick vào ô — lựa chọn của bạn được lưu lại khi mở lại file.</p>
+  <div class="checkgrid">
+    <div class="ckbox reveal">
+      <h4>🧥 Giữ ấm (quan trọng nhất)</h4>
+      <label class="ck"><input type="checkbox" data-cid="c1"><span>Áo khoác chống gió (2 lớp nếu được)</span></label>
+      <label class="ck"><input type="checkbox" data-cid="c2"><span>Áo len / áo giữ nhiệt</span></label>
+      <label class="ck"><input type="checkbox" data-cid="c3"><span>Găng tay + mũ len + khăn</span></label>
+      <label class="ck"><input type="checkbox" data-cid="c4"><span>Giày trekking chống trơn</span></label>
+      <label class="ck"><input type="checkbox" data-cid="c5"><span>Tất giữ ấm (2 đôi/người)</span></label>
+    </div>
+    <div class="ckbox reveal">
+      <h4>🔋 Thiết bị</h4>
+      <label class="ck"><input type="checkbox" data-cid="c6"><span>Đèn pin nhỏ (dậy 4:30 trời đen)</span></label>
+      <label class="ck"><input type="checkbox" data-cid="c7"><span>Sạc dự phòng x2 + cáp</span></label>
+      <label class="ck"><input type="checkbox" data-cid="c8"><span>Camera / điện thoại + thẻ nhớ trống</span></label>
+      <label class="ck"><input type="checkbox" data-cid="c9"><span>Túi chống nước / nilon bọc đồ</span></label>
+    </div>
+    <div class="ckbox reveal">
+      <h4>💊 Sức khoẻ</h4>
+      <label class="ck"><input type="checkbox" data-cid="c10"><span>Thuốc say xe (cung đèo DT112 nhiều cua)</span></label>
+      <label class="ck"><input type="checkbox" data-cid="c11"><span>Thuốc cảm / giảm đau / dầu gió</span></label>
+      <label class="ck"><input type="checkbox" data-cid="c12"><span>Kem chống nắng (nắng ở cao độ vẫn gắt)</span></label>
+    </div>
+    <div class="ckbox reveal">
+      <h4>🍞 Đồ ăn nhẹ + giấy tờ</h4>
+      <label class="ck"><input type="checkbox" data-cid="c13"><span>Bánh mì / chocolate / mì gói (bữa khuya + sáng trên núi)</span></label>
+      <label class="ck"><input type="checkbox" data-cid="c14"><span>Bình giữ nhiệt + trà gừng</span></label>
+      <label class="ck"><input type="checkbox" data-cid="c15"><span>CCCD / bằng lái (thuê xe máy)</span></label>
+      <label class="ck"><input type="checkbox" data-cid="c16"><span>Tiền mặt dự phòng ~2–3tr/nhóm (chỗ nhỏ khó quét QR)</span></label>
+    </div>
+  </div>
+  <p class="ck-note">💡 Mẹo in: bấm Ctrl+P — bản in tự chuyển nền trắng, gọn gàng để mang theo giấy.</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h4>Nguồn tham khảo</h4>
+    <div class="src">
+      <span>Group Facebook "Review Tà Xùa tất tần tật" (comment Hà Linh, Lừ Bun...) </span>
+      <span>Comment fanpage Tà Xùa Ecolodge + Sống lưng khủng long Tà Xùa</span>
+      <span>taxua.vn — Top 5 nhà hàng Tà Xùa</span>
+      <span>luhanhvietnam.com.vn — Quán ăn ngon view xịn</span>
+      <span>homestaytaxua.com — Nhà hàng + cafe Tà Xùa</span>
+      <span>mia.vn — Review cafe Mị Ơi + Pơ Mu Homestay</span>
+      <span>pystravel.vn — Tà Xùa tháng 11 + Top 7 điểm check-in</span>
+      <span>taxigo.vn — Lịch trình 3N2Đ + di chuyển</span>
+      <span>greensm.com — List homestay view mây</span>
+    </div>
+    <p style="margin-top:18px">Lịch trình cho 2 cặp đôi · 05–08.11.2026 · Homestay Omely Home Tà Xùa (đã đặt). Giá món ăn + thông tin quán tham khảo mùa 2026 — gọi xác nhận trước khi đến. Chúc 4 bạn săn mây thành công 100%! 🌤</p>
+  </div>
+</footer>
+
+<script>
+// ---------- Stars in hero ----------
+(function(){
+  var box = document.getElementById('stars');
+  var i = 0;
+  while (i !== 34) {
+    var s = document.createElement('span');
+    s.className = 'star';
+    s.style.left = (Math.random() * 96) + '%';
+    s.style.top = (Math.random() * 55) + '%';
+    s.style.animationDelay = (Math.random() * 4) + 's';
+    s.style.transform = 'scale(' + (0.6 + Math.random() * 0.9) + ')';
+    box.appendChild(s);
+    i = i + 1;
+  }
+})();
+
+// ---------- Scroll progress ----------
+window.addEventListener('scroll', function(){
+  var h = document.documentElement;
+  var max = h.scrollHeight - h.clientHeight;
+  var p = 0;
+  if (max !== 0) { p = (h.scrollTop / max) * 100; }
+  document.getElementById('progress').style.width = p + '%';
+}, {passive:true});
+
+// ---------- Countdown to 18:30 05.11.2026 ----------
+(function(){
+  var target = new Date('2026-11-05T18:30:00+07:00').getTime();
+  var elD = document.getElementById('cd-d');
+  var elH = document.getElementById('cd-h');
+  var elM = document.getElementById('cd-m');
+  var elS = document.getElementById('cd-s');
+  function pad(n){ if (n < 10) { return '0' + n; } return '' + n; }
+  function tick(){
+    var d = target - Date.now();
+    if (0 >= d) {
+      elD.textContent = '🎁'; elH.textContent = ''; elM.textContent = ''; elS.textContent = '';
+      return;
+    }
+    elD.textContent = Math.floor(d / 86400000);
+    elH.textContent = pad(Math.floor((d % 86400000) / 3600000));
+    elM.textContent = pad(Math.floor((d % 3600000) / 60000));
+    elS.textContent = pad(Math.floor((d % 60000) / 1000));
+    window.setTimeout(tick, 1000);
+  }
+  tick();
+})();
+
+// ---------- Reveal on scroll ----------
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold: 0.1});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+
+// ---------- Meal picks (localStorage) ----------
+(function(){
+  function load(k){
+    try { return JSON.parse(localStorage.getItem(k)) || {}; }
+    catch(err) { return {}; }
+  }
+  function save(k, o){
+    try { localStorage.setItem(k, JSON.stringify(o)); }
+    catch(err) {}
+  }
+  var votes = load('taxua-votes');
+  document.querySelectorAll('.pick').forEach(function(btn){
+    var id = btn.getAttribute('data-id');
+    function paint(){
+      if (votes[id]) {
+        btn.classList.add('on');
+        btn.textContent = '✓ Đã chọn';
+      } else {
+        btn.classList.remove('on');
+        btn.textContent = 'Chọn';
+      }
+    }
+    paint();
+    btn.addEventListener('click', function(){
+      if (votes[id]) { delete votes[id]; } else { votes[id] = 1; }
+      save('taxua-votes', votes);
+      paint();
+    });
+  });
+})();
+
+// ---------- Checklist (localStorage) ----------
+(function(){
+  function load(k){
+    try { return JSON.parse(localStorage.getItem(k)) || {}; }
+    catch(err) { return {}; }
+  }
+  function save(k, o){
+    try { localStorage.setItem(k, JSON.stringify(o)); }
+    catch(err) {}
+  }
+  var state = load('taxua-checklist');
+  document.querySelectorAll('input[data-cid]').forEach(function(cb){
+    var id = cb.getAttribute('data-cid');
+    cb.checked = state[id] === 1;
+    cb.addEventListener('change', function(){
+      if (cb.checked) { state[id] = 1; } else { delete state[id]; }
+      save('taxua-checklist', state);
+    });
+  });
+})();
+</script>
+</body>
+</html>
