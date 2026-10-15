@@ -240,6 +240,40 @@ footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:upper
   .meal-head{border-color:#b45a1e}
   .reveal{opacity:1;transform:none}
 }
+
+/* ---------- VOTE TOOLS ---------- */
+.tools{margin:22px 0 6px;background:var(--card);border:1px solid var(--cloudline);border-radius:var(--radius);padding:18px 20px}
+.tools-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.tn{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.tn input{background:rgba(255,255,255,.06);border:1px solid var(--cloudline);border-radius:10px;
+  padding:8px 12px;color:var(--ink);font-family:inherit;font-size:14px;width:150px}
+.tn input:focus{outline:none;border-color:var(--teal)}
+.tbtn{background:rgba(116,214,200,.12);border:1.5px solid var(--teal);color:var(--teal);
+  border-radius:999px;padding:8px 20px;font-size:13.5px;font-weight:600;cursor:pointer;
+  font-family:inherit;transition:all .25s}
+.tbtn:hover{background:rgba(116,214,200,.22)}
+.tbtn.small{padding:6px 16px;font-size:12.5px}
+#viewBanner{margin-top:14px;background:rgba(255,158,100,.12);border:1px solid rgba(255,158,100,.35);
+  border-radius:12px;padding:11px 16px;font-size:14px;color:#f0dcc9}
+#viewBanner a{color:var(--dawn2)}
+#sharePanel,#aggPanel{margin-top:16px;border-top:1px dashed var(--cloudline);padding-top:16px}
+#sharePanel h4,#aggPanel h4{margin:0 0 8px;font-size:16px;color:#f3f7ff}
+.hint2{margin:0 0 12px;font-size:13px;color:var(--muted)}
+#shareLink,#aggInput,#shareText{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--cloudline);
+  border-radius:12px;padding:11px 14px;color:#dbe6f5;font-family:inherit;font-size:13px;line-height:1.5}
+#shareText,#aggInput{resize:vertical}
+#shareLink:focus,#aggInput:focus,#shareText:focus{outline:none;border-color:var(--teal)}
+.tools .row{margin:10px 0}
+.agg-sum{font-size:14px;color:var(--muted);margin:14px 0 10px}
+.agg-meal{background:rgba(255,255,255,.04);border:1px solid var(--cloudline);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.agg-meal h5{margin:0 0 10px;font-size:14.5px;color:#f3f7ff}
+.agg-meal h5 span{color:var(--muted);font-weight:400;font-size:13px}
+.agg-row{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;
+  padding:7px 10px;border-radius:9px;font-size:13.5px;color:#c8d4e6}
+.agg-row.lead{background:rgba(116,214,200,.12);color:#eafaf7;font-weight:600}
+.agg-row .ct{color:var(--teal);white-space:nowrap}
+.agg-row .wh{color:var(--muted);font-size:12.5px;text-align:right}
+.agg-empty{font-size:13.5px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -286,6 +320,30 @@ footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:upper
   <a href="#tips">Mẹo từ cộng đồng</a>
   <a href="#checklist">Checklist</a>
 </nav>
+
+<section class="wrap tools" id="tools">
+  <div class="tools-row">
+    <label class="tn">👤 Tên bạn: <input id="myName" type="text" placeholder="VD: Việt" maxlength="20"></label>
+    <button class="tbtn" id="btnExport">📤 Xuất phiếu của tôi</button>
+    <button class="tbtn" id="btnAgg">🧮 Tổng hợp phiếu nhóm</button>
+  </div>
+  <div id="viewBanner" hidden>👀 Bạn đang xem phiếu của <b class="vb-name"></b> — <a href="?">quay lại phiếu của mình</a></div>
+  <div id="sharePanel" hidden>
+    <h4>📤 Phiếu của bạn — gửi vào group chat</h4>
+    <p class="hint2">Copy link dưới đây rồi gửi vào nhóm (mỗi người gửi 1 link). Ai mở link cũng thấy bạn chọn quán nào.</p>
+    <div class="row"><input id="shareLink" readonly></div>
+    <div class="row"><button class="tbtn small" id="btnCopyLink">Copy link</button></div>
+    <textarea id="shareText" readonly rows="6"></textarea>
+    <div class="row"><button class="tbtn small" id="btnCopyText">Copy phiếu dạng text</button></div>
+  </div>
+  <div id="aggPanel" hidden>
+    <h4>🧮 Tổng hợp phiếu của nhóm</h4>
+    <p class="hint2">Dán link phiếu của các thành viên vào ô dưới — mỗi dòng 1 link — rồi bấm Tính tổng. Quán nhiều phiếu nhất mỗi bữa sẽ được tô sáng.</p>
+    <textarea id="aggInput" rows="5" placeholder="Dán link phiếu vào đây (mỗi dòng 1 link)"></textarea>
+    <div class="row"><button class="tbtn" id="btnAggGo">Tính tổng</button></div>
+    <div id="aggResult"></div>
+  </div>
+</section>
 
 <main class="wrap">
 
@@ -869,33 +927,196 @@ window.addEventListener('scroll', function(){
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 })();
 
-// ---------- Meal picks (localStorage) ----------
+// ---------- Meal picks + phieu + tong hop ----------
 (function(){
-  function load(k){
-    try { return JSON.parse(localStorage.getItem(k)) || {}; }
-    catch(err) { return {}; }
+  function load(k){ try { return JSON.parse(localStorage.getItem(k)) || {}; } catch(err){ return {}; } }
+  function save(k, o){ try { localStorage.setItem(k, JSON.stringify(o)); } catch(err){} }
+  function b64e(s){ return btoa(unescape(encodeURIComponent(s))); }
+  function b64d(s){ return decodeURIComponent(escape(atob(s))); }
+  function clean(s){ return String(s).replace(/[^\p{L}\p{N} \-_.]/gu, '').slice(0, 20); }
+
+  var picks = load('taxua-picks');
+  var nameInput = document.getElementById('myName');
+  var panel = document.getElementById('sharePanel');
+  var aggPanel = document.getElementById('aggPanel');
+  var linkBox = document.getElementById('shareLink');
+  var textBox = document.getElementById('shareText');
+  var base = location.origin + location.pathname;
+
+  var saved = localStorage.getItem('taxua-me');
+  if (saved) { nameInput.value = saved; }
+  nameInput.addEventListener('input', function(){ localStorage.setItem('taxua-me', clean(nameInput.value)); });
+
+  function mealOf(btn){
+    var m = btn.closest('.meal');
+    if (m) { return m.getAttribute('data-meal'); }
+    return '';
   }
-  function save(k, o){
-    try { localStorage.setItem(k, JSON.stringify(o)); }
-    catch(err) {}
+  function mealTitle(mk){
+    var el = document.querySelector('.meal[data-meal="' + mk + '"] .meal-head h3');
+    if (el) { return el.textContent.trim(); }
+    return mk;
   }
-  var votes = load('taxua-votes');
-  document.querySelectorAll('.pick').forEach(function(btn){
-    var id = btn.getAttribute('data-id');
-    function paint(){
-      if (votes[id]) {
+  function optTitle(mk, id){
+    var el = document.querySelector('.meal[data-meal="' + mk + '"] .pick[data-id="' + id + '"]');
+    if (el) {
+      var a = el.closest('.opt');
+      if (a) {
+        var h = a.querySelector('h4');
+        if (h) { return h.textContent.trim(); }
+      }
+    }
+    return id;
+  }
+  function paintAll(){
+    document.querySelectorAll('.pick').forEach(function(btn){
+      var id = btn.getAttribute('data-id');
+      var mk = mealOf(btn);
+      if (picks[mk] === id) {
         btn.classList.add('on');
         btn.textContent = '✓ Đã chọn';
       } else {
         btn.classList.remove('on');
         btn.textContent = 'Chọn';
       }
-    }
-    paint();
+    });
+  }
+  document.querySelectorAll('.pick').forEach(function(btn){
     btn.addEventListener('click', function(){
-      if (votes[id]) { delete votes[id]; } else { votes[id] = 1; }
-      save('taxua-votes', votes);
-      paint();
+      var id = btn.getAttribute('data-id');
+      var mk = mealOf(btn);
+      if (picks[mk] === id) { delete picks[mk]; } else { picks[mk] = id; }
+      save('taxua-picks', picks);
+      paintAll();
+    });
+  });
+
+  // Che do xem phieu nguoi khac qua ?p=
+  var params = new URLSearchParams(location.search);
+  var encoded = params.get('p');
+  if (encoded) {
+    var t0 = null;
+    try { t0 = JSON.parse(b64d(encoded)); } catch(err){ t0 = null; }
+    if (t0) {
+      var banner = document.getElementById('viewBanner');
+      banner.hidden = false;
+      banner.querySelector('.vb-name').textContent = t0.n || 'Ẩn danh';
+      picks = {};
+      Object.keys(t0.p || {}).forEach(function(k){ picks[k] = t0.p[k]; });
+    }
+  }
+  paintAll();
+
+  function myName(){ var v = clean(nameInput.value.trim()); return v || 'Ẩn danh'; }
+  function makeTicket(){
+    var t = { n: myName(), p: {} };
+    Object.keys(picks).forEach(function(k){ t.p[k] = picks[k]; });
+    return t;
+  }
+  function ticketText(t){
+    var lines = ['📋 Phiếu chọn quán — ' + t.n];
+    Object.keys(t.p).forEach(function(mk){ lines.push('• ' + mealTitle(mk) + ' → ' + optTitle(mk, t.p[mk])); });
+    return lines.join('\n');
+  }
+  function flash(btn, msg){
+    var old = btn.textContent;
+    btn.textContent = msg;
+    window.setTimeout(function(){ btn.textContent = old; }, 1600);
+  }
+
+  document.getElementById('btnExport').addEventListener('click', function(){
+    var t = makeTicket();
+    var url = base + '?p=' + encodeURIComponent(b64e(JSON.stringify(t)));
+    linkBox.value = url;
+    textBox.value = ticketText(t) + '\n' + url;
+    panel.hidden = false;
+    panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+  document.getElementById('btnCopyLink').addEventListener('click', function(){
+    linkBox.select();
+    document.execCommand('copy');
+    flash(this, '✓ Đã copy link');
+  });
+  document.getElementById('btnCopyText').addEventListener('click', function(){
+    textBox.select();
+    document.execCommand('copy');
+    flash(this, '✓ Đã copy phiếu');
+  });
+  document.getElementById('btnAgg').addEventListener('click', function(){
+    aggPanel.hidden = false;
+    aggPanel.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+  document.getElementById('btnAggGo').addEventListener('click', function(){
+    var raw = document.getElementById('aggInput').value;
+    var lines = raw.split('\n');
+    var votes = {};
+    var nTickets = 0;
+    lines.forEach(function(line){
+      var s = line.trim();
+      if (!s) { return; }
+      var m = s.match(/[?&]p=([^&\s]+)/);
+      if (!m) { return; }
+      var t = null;
+      try { t = JSON.parse(b64d(decodeURIComponent(m[1]))); } catch(err){ t = null; }
+      if (!t) { return; }
+      nTickets = nTickets + 1;
+      var pobj = t.p || {};
+      Object.keys(pobj).forEach(function(mk){
+        if (!votes[mk]) { votes[mk] = {}; }
+        var id = pobj[mk];
+        if (!votes[mk][id]) { votes[mk][id] = []; }
+        votes[mk][id].push(clean(t.n) || 'Ẩn danh');
+      });
+    });
+    var box = document.getElementById('aggResult');
+    if (0 === nTickets) {
+      box.innerHTML = '';
+      var p0 = document.createElement('p');
+      p0.className = 'agg-empty';
+      p0.textContent = 'Chưa đọc được phiếu nào — dán link phiếu (mỗi dòng 1 link) rồi bấm Tính tổng nha.';
+      box.appendChild(p0);
+      return;
+    }
+    box.innerHTML = '';
+    var ps = document.createElement('p');
+    ps.className = 'agg-sum';
+    ps.textContent = '📊 Đã đọc ' + nTickets + ' phiếu:';
+    box.appendChild(ps);
+    Object.keys(votes).forEach(function(mk){
+      var counts = [];
+      Object.keys(votes[mk]).forEach(function(id){
+        counts.push({ id: id, n: votes[mk][id].length, who: votes[mk][id] });
+      });
+      counts.sort(function(a, b){ return b.n - a.n; });
+      var total = 0;
+      counts.forEach(function(c){ total = total + c.n; });
+      var wrap = document.createElement('div');
+      wrap.className = 'agg-meal';
+      var h5 = document.createElement('h5');
+      h5.textContent = mealTitle(mk) + ' ';
+      var sp = document.createElement('span');
+      sp.textContent = '(' + total + ' phiếu)';
+      h5.appendChild(sp);
+      wrap.appendChild(h5);
+      counts.forEach(function(c, i){
+        var row = document.createElement('div');
+        row.className = 'agg-row';
+        if (0 === i) { row.className = 'agg-row lead'; }
+        var nm = document.createElement('span');
+        nm.className = 'nm';
+        nm.textContent = optTitle(mk, c.id);
+        var ct = document.createElement('span');
+        ct.className = 'ct';
+        ct.textContent = c.n + ' phiếu';
+        var wh = document.createElement('span');
+        wh.className = 'wh';
+        wh.textContent = c.who.join(', ');
+        row.appendChild(nm);
+        row.appendChild(ct);
+        row.appendChild(wh);
+        wrap.appendChild(row);
+      });
+      box.appendChild(wrap);
     });
   });
 })();
