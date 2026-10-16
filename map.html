@@ -253,6 +253,26 @@ var SPOTS = [
     lat:21.5562756, lng:104.3951975, time:'~2,5 giờ', photos:['photos/tt-2.jpg','photos/tt-1.jpg','photos/tt-3.jpg'], photoNote:'Ảnh khu vực Trạm Tấu (Nguồn: mia.vn)',
     best:'Cung trekking 2–3 ngày từ Yên Bái',
     notes:['Cung trekking kinh điển: Trạm Tấu → Bản Công → lán nghỉ 2.400m → đỉnh 2.850m','Tổng ~24 km leo núi, cần porter + xin phép chính quyền xã — không phải chuyến "nằm ngủ trên xe"','Để dành cho chuyến trekking thực thụ sau này'],
+    quote:null },
+  { id:'lan-co-don', name:'Lán Cô Đơn', emoji:'⛺', cat:'checkin', catLabel:'Check-in', day:'d1', dayLabel:'Ngày 1 · 06.11',
+    lat:21.2638784, lng:104.5370201, doy:65, time:'~35 phút', photos:['photos/lan-co-don-1.jpg','photos/lan-co-don-2.jpg'], photoNote:'Ảnh: TikTok @dulich.shinetravel',
+    best:'Chiều 6.11 — ghé cùng tuyến Cây cô đơn',
+    notes:['Nằm ngay trên con đường xuống Cây cô đơn — ghé luôn cùng tuyến, không mất thêm thời gian','Điểm check-in miễn phí mới nổi trên TikTok Tà Xùa (top 4 địa điểm check-in free)','Chụp nhanh 10–15 phút; đường đất đoạn cuối — chạy chậm'],
+    quote:null },
+  { id:'mom-lac-da', name:'Mỏm Lạc Đà', emoji:'🐪', cat:'checkin', catLabel:'Check-in', day:'d1', dayLabel:'Ngày 1 · 06.11',
+    lat:21.2575847, lng:104.4799944, time:'~25 phút', photos:['photos/mom-lac-da-1.jpg','photos/mom-lac-da-2.jpg'], photoNote:'Ảnh: TikTok @dulich.shinetravel',
+    best:'Chiều 6.11 — trên cung đường Cây cô đơn / Thảo nguyên',
+    notes:['Trên cung đường đi Cây cô đơn — Thảo nguyên; view mây hùng vĩ như sống lưng khủng long (tips TikTok)','Ghé trong chuyến chiều ngày 1 khi đã có xe máy','Đường đất đá — tránh ghé lúc mưa'],
+    quote:null },
+  { id:'bep-cui', name:'Bếp Củi (cơm nhà 70k)', emoji:'🍚', cat:'anuong', catLabel:'Ăn uống', day:'d2', dayLabel:'Ngày 2 · 07.11',
+    lat:21.2796322, lng:104.4320664, dox:52, doy:28, time:'~5 phút', photos:['photos/bep-cui-1.jpg','photos/bep-cui-2.jpg'], photoNote:'Ảnh: TikTok @dulich.shinetravel',
+    best:'Bữa trưa/bữa tối 7.11 — cơm nhà 70k',
+    notes:['Nhà hàng trung tâm — cơm nhà 70k/người, nướng khoảng 200k/người (tips TikTok)','Không gian rộng rãi, sạch sẽ, chủ thân thiện','Có trong options bữa trưa 7.11 của lịch trình web'],
+    quote:null },
+  { id:'tram-may', name:'Trạm Mây (Khe Cải)', emoji:'🔥', cat:'anuong', catLabel:'Ăn uống', day:'d2', dayLabel:'Ngày 2 · 07.11',
+    lat:21.2734075, lng:104.4283305, dox:-25, doy:60, time:'~5 phút', photos:['photos/tram-may-1.jpg','photos/tram-may-2.jpg'], photoNote:'Ảnh: TikTok @dulich.shinetravel',
+    best:'BBQ tối 7.11 — view biển mây + hoàng hôn',
+    notes:['Tiệm lẩu nướng trong khuôn viên cafe Trạm Mây, bản Khe Cải — cách trung tâm ~2km','Set nướng bò · lợn bản · gà đồi tẩm mắc khén, hạt dổi — ngắm trọn thung lũng mây + hoàng hôn','Có trong options bữa tối 7.11 của lịch trình web'],
     quote:null }
 ];
 
@@ -263,7 +283,7 @@ var ROUTES = {
     path:['omely','song-lung','dinh-gio'] }
 };
 
-var CAT_COLOR = { sanmay:'#e07b39', checkin:'#2e9e8f', luutru:'#8a7fb4', diadiem:'#8a968f' };
+var CAT_COLOR = { sanmay:'#e07b39', checkin:'#2e9e8f', luutru:'#8a7fb4', diadiem:'#8a968f', anuong:'#d4574e' };
 
 // ================= PROJECT + RENDER =================
 var SVG_NS = 'http://www.w3.org/2000/svg';
