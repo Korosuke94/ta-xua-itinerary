@@ -190,7 +190,7 @@ aside{
     <div class="legend">
       <span><i style="background:#2e9e8f"></i>Ngày 1 · 6.11</span>
       <span><i style="background:#e07b39"></i>Ngày 2 · 7.11</span>
-      <span class="lg-note">km = đường chim bay, ước tính</span>
+      <span class="lg-note">km theo Google Maps · đường vẽ theo cung đường thực tế</span>
     </div>
     <div class="maphelp">Kéo để di chuyển · lăn chuột để thu phóng · click điểm để xem chi tiết</div>
   </div>
@@ -213,37 +213,37 @@ var HOME = {lat: 21.2782308, lng: 104.4249948};
 
 var SPOTS = [
   { id:'thao-nguyen', name:'Thảo nguyên Tà Xùa', emoji:'🌾', cat:'checkin', catLabel:'Check-in', day:'d1', dayLabel:'Ngày 1 · 06.11',
-    lat:21.2645162, lng:104.5231778, dox:-18, doy:-14, time:'~25 phút', photos:['photos/thao-nguyen.jpg','photos/tn-2.jpg','photos/tn-3.jpg','photos/tn-4.jpg'], photoNote:'Ảnh: pystravel.vn & mia.vn',
+    lat:21.2645162, lng:104.5231778, dox:-18, doy:-14, time:'~25 phút', photos:['photos/thao-nguyen.jpg','photos/tn-2.jpg','photos/tn-3.jpg','photos/tn-4.jpg','photos/thao-nguyen-gm-1.jpg','photos/thao-nguyen-gm-2.jpg'], photoNote:'Ảnh: pystravel.vn & mia.vn & Google Maps',
     best:'14:30 – 16:30 chiều (nắng chiều vàng)',
-    notes:['Đồng cỏ rộng, cỏ mơ vàng cuối mùa trước khi sang đông','Nhẹ nhàng, gần trung tâm — hợp mở màn buổi chiều ngày đầu','Cách Omely ~10 km đường chim bay, đường bằng phẳng hơn các điểm săn mây'],
+    notes:['Đồng cỏ rộng, cỏ mơ vàng cuối mùa trước khi sang đông','Nhẹ nhàng, gần trung tâm — hợp mở màn buổi chiều ngày đầu','Cách Omely ~10 km đường chim bay, đường bằng phẳng hơn các điểm săn mây','⭐ Google Maps: 4,6★ (651 đánh giá)'],
     quote:'Ngày đầu chiều đi thảo nguyên luôn, hợp lý vì gần và nhẹ. — Hà Linh, group Review Tà Xùa (Facebook)' },
   { id:'mom-ca-heo', name:'Mỏm Cá Heo', emoji:'🐋', cat:'checkin', catLabel:'Check-in', day:'d1', dayLabel:'Ngày 1 · 06.11',
-    lat:21.2623818, lng:104.5303513, dox:14, doy:16, time:'~30 phút', photos:['photos/mom-ca-heo.jpg','photos/mch-2.jpg','photos/mch-3.jpg','photos/mch-5.jpg'], photoNote:'Ảnh: pystravel.vn',
+    lat:21.2623818, lng:104.5303513, dox:14, doy:16, time:'~30 phút', photos:['photos/mom-ca-heo.jpg','photos/mch-2.jpg','photos/mch-3.jpg','photos/mch-5.jpg','photos/mom-ca-heo-gm-1.jpg','photos/mom-ca-heo-gm-2.jpg'], photoNote:'Ảnh: pystravel.vn & Google Maps',
     best:'Rạng sáng đến ~8:00 hoặc 16:45 – 17:45 chiều (hoàng hôn ~17:20)',
-    notes:['Cách Omely ~12 km đường chim bay — review Vietnam Airlines ghi ~15 km, ~30 phút xe máy','Miễn phí vé, chỉ tốn phí gửi xe 5–20k','Đoạn cuối dốc, đường đất — chạy chậm, đỗ xe xa mỏm đá','Cùng tuyến với Cây cô đơn (thêm ~1 km) — đi luôn một mạch'],
+    notes:['Cách Omely ~12 km đường chim bay — review Vietnam Airlines ghi ~15 km, ~30 phút xe máy','Miễn phí vé, chỉ tốn phí gửi xe 5–20k','Đoạn cuối dốc, đường đất — chạy chậm, đỗ xe xa mỏm đá','Cùng tuyến với Cây cô đơn (thêm ~1 km) — đi luôn một mạch','⭐ Google Maps: 4,5★ (833 đánh giá)'],
     quote:null },
   { id:'cay-co-don', name:'Cây táo mèo cô đơn', emoji:'🌳', cat:'checkin', catLabel:'Check-in', day:'d1', dayLabel:'Ngày 1 · 06.11',
-    lat:21.2652813, lng:104.5386605, dox:34, doy:-10, time:'~35 phút', photos:['photos/ccd-d.jpg','photos/cay-co-don-2.jpg','photos/ccd-c.jpg'], photoNote:'Ảnh: greensm.com',
+    lat:21.2652813, lng:104.5386605, dox:34, doy:-10, time:'~35 phút', photos:['photos/ccd-d.jpg','photos/cay-co-don-2.jpg','photos/ccd-c.jpg','photos/cay-co-don-gm-1.jpg','photos/cay-co-don-gm-2.jpg'], photoNote:'Ảnh: greensm.com & Google Maps',
     best:'Sáng sớm hoặc chiều muộn — nắng xiên qua mây',
-    notes:['Cách Mỏm Cá Heo ~1 km, cùng tuyến — ghé ngay sau Cá Heo','Cây đứng trơ trọi giữa đồi trống trên Đỉnh Gió — lên ảnh rất nghệ','Đường khá dễ đi, không quá dốc — hợp cả nhóm','Đã có trên Google Maps nên dễ tìm'],
+    notes:['Cách Mỏm Cá Heo ~1 km, cùng tuyến — ghé ngay sau Cá Heo','Cây đứng trơ trọi giữa đồi trống trên Đỉnh Gió — lên ảnh rất nghệ','Đường khá dễ đi, không quá dốc — hợp cả nhóm','Đã có trên Google Maps nên dễ tìm','⭐ Google Maps: 4,5★ (728 đánh giá)'],
     quote:null },
   { id:'song-lung', name:'Sống lưng Khủng Long', emoji:'🦕', cat:'sanmay', catLabel:'Săn mây ⭐', day:'d2', dayLabel:'Ngày 2 · 07.11',
-    lat:21.3047543, lng:104.4643364, time:'~15 phút', photos:['photos/sl-4.jpg','photos/song-lung.jpg','photos/sl-2.jpg','photos/sl-3.jpg'], photoNote:'Ảnh: pystravel.vn',
+    lat:21.3047543, lng:104.4643364, time:'~15 phút', photos:['photos/sl-4.jpg','photos/song-lung.jpg','photos/sl-2.jpg','photos/sl-3.jpg','photos/song-lung-gm-1.jpg','photos/song-lung-gm-2.jpg'], photoNote:'Ảnh: pystravel.vn & Google Maps',
     best:'05:00 – 07:30 sáng (bình minh ~06:10)',
-    notes:['Phải có mặt từ 5:00 sáng — cuối tuần đông, có người ra từ 4:30 giành vị trí','Đường đèo đất đá dốc: giày chống trơn, đèn pin, áo ấm + găng tay + mũ len','Sát đó có Mỏm Đầu Rùa và Rừng rêu nguyên sinh — có thể ghé sau khi chụp xong','Mây đặc nhất từ đêm đến giữa trưa mùa này — cứ ở lại chụp tới khi tay tê mới về'],
+    notes:['Phải có mặt từ 5:00 sáng — cuối tuần đông, có người ra từ 4:30 giành vị trí','Đường đèo đất đá dốc: giày chống trơn, đèn pin, áo ấm + găng tay + mũ len','Sát đó có Mỏm Đầu Rùa và Rừng rêu nguyên sinh — có thể ghé sau khi chụp xong','Mây đặc nhất từ đêm đến giữa trưa mùa này — cứ ở lại chụp tới khi tay tê mới về','⭐ Google Maps: 4,6★ (2.324 đánh giá)'],
     quote:'Ngày thứ 2 đi sống lưng ngắm bình minh thì 5h sáng phải có mặt ở đó rồi. — Hà Linh, group Review Tà Xùa (Facebook)' },
   { id:'dinh-gio', name:'Đỉnh Gió', emoji:'🌬', cat:'sanmay', catLabel:'Săn mây + Cafe', day:'d2', dayLabel:'Ngày 2 · 07.11',
-    lat:21.2874916, lng:104.4163849, dox:-16, doy:-22, time:'~8 phút', photos:['photos/dg-3.jpg','photos/dg-4.jpg','photos/dg-2.jpg','photos/dg-5.jpg'], photoNote:'Ảnh: pystravel.vn',
+    lat:21.2874916, lng:104.4163849, dox:-16, doy:-22, time:'~8 phút', photos:['photos/dg-3.jpg','photos/dg-4.jpg','photos/dg-2.jpg','photos/dg-5.jpg','photos/dinh-gio-gm-1.jpg','photos/dinh-gio-gm-2.jpg'], photoNote:'Ảnh: pystravel.vn & Google Maps',
     best:'05:30 – 08:00 sáng hoặc 16:00 – 18:00 chiều',
-    notes:['Điểm gần Omely nhất (~1,3 km đường chim bay, ~8 phút xe máy) — khu tập trung quán cafe','Tiệm cafe Mị Ơi mở từ 5:30 — dân săn mây ghé ăn mì nóng + cafe sau bình minh','Ngắm bình minh, hoàng hôn và săn mây đều được — tầm nhìn bao trọn núi rừng','Ghé luôn cả ngày 1 (chiều) hoặc ngày 2 (chiều) đều hợp'],
+    notes:['Điểm gần Omely nhất (~1,3 km đường chim bay, ~8 phút xe máy) — khu tập trung quán cafe','Tiệm cafe Mị Ơi mở từ 5:30 — dân săn mây ghé ăn mì nóng + cafe sau bình minh','Ngắm bình minh, hoàng hôn và săn mây đều được — tầm nhìn bao trọn núi rừng','Ghé luôn cả ngày 1 (chiều) hoặc ngày 2 (chiều) đều hợp','⭐ Google Maps: 4,7★ (405 đánh giá)'],
     quote:null },
   { id:'omely', name:'Omely Home Tà Xùa', emoji:'🏠', cat:'luutru', catLabel:'Lưu trú', day:'all', dayLabel:'Điểm xuất phát mọi ngày',
-    lat:21.2782308, lng:104.4249948, time:'—', photos:['photos/nha-mer.jpg','photos/noi-ay-homestay.jpg'], photoNote:'Ảnh homestay khu vực (Nguồn: greensm.com & homestaytaxua.com)',
+    lat:21.2782308, lng:104.4249948, time:'—', photos:['photos/nha-mer.jpg','photos/noi-ay-homestay.jpg','photos/omely-gm-1.jpg','photos/omely-gm-2.jpg'], photoNote:'Ảnh homestay khu vực (Nguồn: greensm.com & homestaytaxua.com) & Google Maps',
     best:'Check-in rạng sáng 6.11 · trả phòng 12:00 ngày 8.11',
-    notes:['Là "tổng hành dinh" 3N2Đ — mọi cung đường đều xuất phát từ đây','Nhờ chủ nhà giới thiệu thuê xe máy hoặc đặt xe ôm bản địa cho cả 2 ngày (không có xe riêng vì đi xe khách)','Có thể nhờ chủ nhà đặt set BBQ tối 7.11 — ăn tại sân nhà, khỏi di chuyển','Đặt đồ ăn nhẹ sẵn cho bữa sáng trên núi ngày 7.11'],
+    notes:['Là "tổng hành dinh" 3N2Đ — mọi cung đường đều xuất phát từ đây','Nhờ chủ nhà giới thiệu thuê xe máy hoặc đặt xe ôm bản địa cho cả 2 ngày (không có xe riêng vì đi xe khách)','Có thể nhờ chủ nhà đặt set BBQ tối 7.11 — ăn tại sân nhà, khỏi di chuyển','Đặt đồ ăn nhẹ sẵn cho bữa sáng trên núi ngày 7.11','⭐ Google Maps: 4,9★ (19 đánh giá)'],
     quote:null },
   { id:'xim-vang', name:'Xím Vàng (ruộng bậc thang)', emoji:'🏞', cat:'diadiem', catLabel:'Ruộng bậc thang', day:'khac', dayLabel:'Không nên đi 3N2Đ',
-    lat:21.3565554, lng:104.3093759, time:'~1,5 giờ', photos:['photos/xv-1.jpg','photos/xv-3.jpg','photos/xv-4.jpg','photos/xv-2.jpg'], photoNote:'Ảnh: mia.vn',
+    lat:21.3565554, lng:104.3093759, time:'~1,5 giờ', photos:['photos/xv-1.jpg','photos/xv-3.jpg','photos/xv-4.jpg','photos/xv-2.jpg','photos/xim-vang-gm-1.jpg','photos/xim-vang-gm-2.jpg'], photoNote:'Ảnh: mia.vn & Google Maps',
     best:'Chỉ nên đi nếu có 4N3Đ',
     notes:['Cách Omely ~15 km đường chim bay nhưng đường đèo xa, quanh co','Ruộng bậc thang vàng rất đẹp tháng 10–11 nhưng đi mất gần cả ngày','Lịch 3N2Đ đã kín — để dành cho chuyến sau'],
     quote:'Đường từ trung tâm đi Xím Vàng cũng xa mà 7h đi, 10h về thì sẽ bị vội. — Hà Linh, group Review Tà Xùa (Facebook)' },
@@ -258,47 +258,49 @@ var SPOTS = [
     notes:['Cung trekking kinh điển: Trạm Tấu → Bản Công → lán nghỉ 2.400m → đỉnh 2.850m','Tổng ~24 km leo núi, cần porter + xin phép chính quyền xã — không phải chuyến "nằm ngủ trên xe"','Để dành cho chuyến trekking thực thụ sau này'],
     quote:null },
   { id:'lan-co-don', name:'Lán Cô Đơn', emoji:'⛺', cat:'checkin', catLabel:'Check-in', day:'d1', dayLabel:'Ngày 1 · 06.11',
-    lat:21.2638784, lng:104.5370201, doy:65, time:'~35 phút', photos:['photos/lan-co-don-1.jpg','photos/lan-co-don-2.jpg'], photoNote:'Ảnh: TikTok @dulich.shinetravel',
+    lat:21.2638784, lng:104.5370201, doy:65, time:'~35 phút', photos:['photos/lan-co-don-1.jpg','photos/lan-co-don-2.jpg','photos/lan-co-don-gm-1.jpg','photos/lan-co-don-gm-2.jpg'], photoNote:'Ảnh: TikTok @dulich.shinetravel & Google Maps',
     best:'Chiều 6.11 — ghé cùng tuyến Cây cô đơn',
-    notes:['Nằm ngay trên con đường xuống Cây cô đơn — ghé luôn cùng tuyến, không mất thêm thời gian','Điểm check-in miễn phí mới nổi trên TikTok Tà Xùa (top 4 địa điểm check-in free)','Chụp nhanh 10–15 phút; đường đất đoạn cuối — chạy chậm'],
+    notes:['Nằm ngay trên con đường xuống Cây cô đơn — ghé luôn cùng tuyến, không mất thêm thời gian','Điểm check-in miễn phí mới nổi trên TikTok Tà Xùa (top 4 địa điểm check-in free)','Chụp nhanh 10–15 phút; đường đất đoạn cuối — chạy chậm','⭐ Google Maps: 4,5★ (8 đánh giá)'],
     quote:null },
   { id:'mom-lac-da', name:'Mỏm Lạc Đà', emoji:'🐪', cat:'checkin', catLabel:'Check-in', day:'d1', dayLabel:'Ngày 1 · 06.11',
-    lat:21.2575847, lng:104.4799944, time:'~25 phút', photos:['photos/mom-lac-da-1.jpg','photos/mom-lac-da-2.jpg'], photoNote:'Ảnh: TikTok @dulich.shinetravel',
+    lat:21.2575847, lng:104.4799944, time:'~25 phút', photos:['photos/mom-lac-da-1.jpg','photos/mom-lac-da-2.jpg','photos/mom-lac-da-gm-1.jpg','photos/mom-lac-da-gm-2.jpg'], photoNote:'Ảnh: TikTok @dulich.shinetravel & Google Maps',
     best:'Chiều 6.11 — trên cung đường Cây cô đơn / Thảo nguyên',
-    notes:['Trên cung đường đi Cây cô đơn — Thảo nguyên; view mây hùng vĩ như sống lưng khủng long (tips TikTok)','Ghé trong chuyến chiều ngày 1 khi đã có xe máy','Đường đất đá — tránh ghé lúc mưa'],
+    notes:['Trên cung đường đi Cây cô đơn — Thảo nguyên; view mây hùng vĩ như sống lưng khủng long (tips TikTok)','Ghé trong chuyến chiều ngày 1 khi đã có xe máy','Đường đất đá — tránh ghé lúc mưa','⭐ Google Maps: 4,5★ (62 đánh giá)','⭐ Google Maps: 4,5★ (62 đánh giá) — tên trên Maps là "Sống Lạc Đà Tà Xùa"'],
     quote:null },
   { id:'bep-cui', name:'Bếp Củi (cơm nhà 70k)', mapName:'Bếp Củi', emoji:'🍚', cat:'anuong', catLabel:'Ăn uống', day:'d2', dayLabel:'Ngày 2 · 07.11',
-    lat:21.2796322, lng:104.4320664, dox:72, doy:28, time:'~5 phút', photos:['photos/bep-cui-1.jpg','photos/bep-cui-2.jpg'], photoNote:'Ảnh: TikTok @dulich.shinetravel',
+    lat:21.2796322, lng:104.4320664, dox:72, doy:28, time:'~5 phút', photos:['photos/bep-cui-1.jpg','photos/bep-cui-2.jpg','photos/bep-cui-gm-1.jpg','photos/bep-cui-gm-2.jpg'], photoNote:'Ảnh: TikTok @dulich.shinetravel & Google Maps',
     best:'Bữa trưa/bữa tối 7.11 — cơm nhà 70k',
-    notes:['Nhà hàng trung tâm — cơm nhà 70k/người, nướng khoảng 200k/người (tips TikTok)','Không gian rộng rãi, sạch sẽ, chủ thân thiện','Có trong options bữa trưa 7.11 của lịch trình web'],
+    notes:['Nhà hàng trung tâm — cơm nhà 70k/người, nướng khoảng 200k/người (tips TikTok)','Không gian rộng rãi, sạch sẽ, chủ thân thiện','Có trong options bữa trưa 7.11 của lịch trình web','⭐ Google Maps: 3,6★ (76 đánh giá)'],
     quote:null },
   { id:'tram-may', name:'Trạm Mây (Khe Cải)', emoji:'🔥', cat:'anuong', catLabel:'Ăn uống', day:'d2', dayLabel:'Ngày 2 · 07.11',
-    lat:21.2734075, lng:104.4283305, dox:-25, doy:60, time:'~5 phút', photos:['photos/tram-may-1.jpg','photos/tram-may-2.jpg'], photoNote:'Ảnh: TikTok @dulich.shinetravel',
+    lat:21.2753316, lng:104.4203825, dox:-3, doy:64, time:'~5 phút', photos:['photos/tram-may-1.jpg','photos/tram-may-2.jpg','photos/tram-may-gm-1.jpg','photos/tram-may-gm-2.jpg'], photoNote:'Ảnh: TikTok @dulich.shinetravel & Google Maps',
     best:'BBQ tối 7.11 — view biển mây + hoàng hôn',
-    notes:['Tiệm lẩu nướng trong khuôn viên cafe Trạm Mây, bản Khe Cải — cách trung tâm ~2km','Set nướng bò · lợn bản · gà đồi tẩm mắc khén, hạt dổi — ngắm trọn thung lũng mây + hoàng hôn','Có trong options bữa tối 7.11 của lịch trình web'],
+    notes:['Tiệm lẩu nướng trong khuôn viên cafe Trạm Mây, bản Khe Cải — cách trung tâm ~2km','Set nướng bò · lợn bản · gà đồi tẩm mắc khén, hạt dổi — ngắm trọn thung lũng mây + hoàng hôn','Có trong options bữa tối 7.11 của lịch trình web','⭐ Google Maps: 4,6★ (174 đánh giá)'],
     quote:null },
   { id:'hoang-hon', name:'Tiệm Cà Phê Hoàng Hôn', mapName:'Hoàng Hôn Coffee', emoji:'🌅', cat:'anuong', catLabel:'Cà phê — ăn uống', day:'d2', dayLabel:'Ngày 2 · 07.11',
-    lat:21.2722147, lng:104.4238127, dox:-68, doy:28, time:'~5 phút', photos:['photos/hoang-hon-1.jpg','photos/hoang-hon-2.jpg'], photoNote:'Ảnh: homestaytaxua.com & luhanhvietnam.com.vn',
+    lat:21.2722147, lng:104.4238127, dox:-68, doy:28, time:'~5 phút', photos:['photos/hoang-hon-1.jpg','photos/hoang-hon-2.jpg','photos/hoang-hon-gm-1.jpg','photos/hoang-hon-gm-2.jpg'], photoNote:'Ảnh: homestaytaxua.com & luhanhvietnam.com.vn & Google Maps',
     best:'Chiều tối 7.11 — hoàng hôn 16–18h, kề BBQ Trạm Mây',
-    notes:['View "tỉ đô" hướng thẳng mặt trời lặn — giờ vàng 16–18h, nằm trong khu Khe Cải','Mở 6:00–19:00, phí ~30k/người; đông nhất lúc bình minh và hoàng hôn','Ghé cùng mũi: Ameii Hill ngay cạnh → vào bữa nướng Trạm Mây (cùng bản, vài trăm mét)'],
+    notes:['View "tỉ đô" hướng thẳng mặt trời lặn — giờ vàng 16–18h, nằm trong khu Khe Cải','Mở 6:00–19:00, phí ~30k/người; đông nhất lúc bình minh và hoàng hôn','Ghé cùng mũi: Ameii Hill ngay cạnh → vào bữa nướng Trạm Mây (cùng bản, vài trăm mét)','⭐ Google Maps: 4,6★ (56 đánh giá)'],
     quote:null },
   { id:'ameii-hill', name:'Ameii Hill', emoji:'⛰', cat:'checkin', catLabel:'Check-in', day:'d2', dayLabel:'Ngày 2 · 07.11',
-    lat:21.2711785, lng:104.4230839, dox:-23, doy:107, time:'~6 phút', photos:['photos/ameii-hill-1.jpg','photos/ameii-hill-2.jpg'], photoNote:'Ảnh: homestaytaxua.com',
+    lat:21.2711785, lng:104.4230839, dox:-23, doy:107, time:'~6 phút', photos:['photos/ameii-hill-1.jpg','photos/ameii-hill-2.jpg','photos/ameii-hill-gm-1.jpg','photos/ameii-hill-gm-2.jpg'], photoNote:'Ảnh: homestaytaxua.com & Google Maps',
     best:'Chiều tối 7.11 — check-in ngay cạnh Hoàng Hôn Coffee',
-    notes:['Nhà gỗ trên đồi cỏ giữa Khe Cải — điểm check-in miễn phí, view biển mây','Nằm ngay cạnh Hoàng Hôn Coffee, đối diện Home Đom Đóm','Ghé 15–20 phút trong mũi chiều tối: Hoàng Hôn Coffee → Ameii Hill → BBQ Trạm Mây'],
+    notes:['Nhà gỗ trên đồi cỏ giữa Khe Cải — điểm check-in miễn phí, view biển mây','Nằm ngay cạnh Hoàng Hôn Coffee, đối diện Home Đom Đóm','Ghé 15–20 phút trong mũi chiều tối: Hoàng Hôn Coffee → Ameii Hill → BBQ Trạm Mây','⭐ Google Maps: 4,1★ (80 đánh giá)'],
     quote:null },
   { id:'thao-coffee', name:'Thào Coffee', emoji:'☕', cat:'anuong', catLabel:'Cà phê — ăn uống', day:'all', dayLabel:'Trung tâm — mọi ngày',
-    lat:21.2779215, lng:104.4331759, dox:30, doy:-42, time:'~5 phút', photos:['photos/thao-coffee-1.jpg','photos/thao-coffee-2.jpg'], photoNote:'Ảnh: luhanhvietnam.com.vn',
+    lat:21.2779215, lng:104.4331759, dox:30, doy:-42, time:'~5 phút', photos:['photos/thao-coffee-1.jpg','photos/thao-coffee-2.jpg','photos/thao-coffee-gm-1.jpg','photos/thao-coffee-gm-2.jpg'], photoNote:'Ảnh: luhanhvietnam.com.vn & Google Maps',
     best:'Mọi ngày — phương án B sáng sớm ở trung tâm',
-    notes:['Quán cà phê lâu đời bậc nhất Tà Xùa — sân gỗ nhìn thẳng thung lũng mây','Mở 5:30–23:00, giá 20–55k; signature trà sơn tra (táo mèo) mật ong','Phương án B sáng 7.11 nếu khu Đỉnh Gió quá đông — cách Omely ~0,9km'],
+    notes:['Quán cà phê lâu đời bậc nhất Tà Xùa — sân gỗ nhìn thẳng thung lũng mây','Mở 5:30–23:00, giá 20–55k; signature trà sơn tra (táo mèo) mật ong','Phương án B sáng 7.11 nếu khu Đỉnh Gió quá đông — cách Omely ~0,9km','⭐ Google Maps: 4,5★ (579 đánh giá)'],
     quote:null }
 ];
 
 var ROUTES = {
-  d1: { color:'#2e9e8f', name:'Ngày 1 · 6.11', legs:['~10 km','~1,5 km','~1 km'],
-    path:['omely','thao-nguyen','mom-ca-heo','cay-co-don'] },
-  d2: { color:'#e07b39', name:'Ngày 2 · 7.11', legs:['~5 km','~4 km'],
-    path:['omely','song-lung','dinh-gio'] }
+  d1: { color:'#2e9e8f', name:'Ngày 1 · 6.11', legs:['14,7 km','1,5 km','1,4 km'],
+    path:['omely','thao-nguyen','mom-ca-heo','cay-co-don'],
+    geo:[[[21.278286,104.425007],[21.278109,104.425744],[21.278243,104.426422],[21.277986,104.427128],[21.277727,104.42782],[21.277948,104.428128],[21.278331,104.427818],[21.278473,104.42731],[21.278818,104.426953],[21.279319,104.426501],[21.27991,104.426322],[21.280021,104.426506],[21.279937,104.427101],[21.279667,104.427845],[21.279446,104.428522],[21.279112,104.429151],[21.278878,104.429672],[21.278632,104.430266],[21.279047,104.430771],[21.279334,104.431383],[21.279672,104.431965],[21.279502,104.432631],[21.278916,104.432652],[21.278276,104.432804],[21.277635,104.433098],[21.27697,104.432991],[21.276319,104.433103],[21.275808,104.433534],[21.275125,104.433367],[21.274659,104.433761],[21.274308,104.434265],[21.273593,104.434575],[21.273058,104.434897],[21.272399,104.435194],[21.271977,104.435748],[21.271458,104.436188],[21.270843,104.436489],[21.270596,104.437044],[21.270739,104.437748],[21.270421,104.438299],[21.270166,104.43894],[21.26964,104.439389],[21.269418,104.439928],[21.269917,104.440311],[21.269715,104.440988],[21.269588,104.441739],[21.268759,104.441763],[21.268311,104.442203],[21.268313,104.442772],[21.267871,104.443247],[21.267365,104.443659],[21.266757,104.443978],[21.266146,104.44442],[21.265929,104.445112],[21.266339,104.445661],[21.266382,104.446429],[21.266538,104.447053],[21.265646,104.447183],[21.265512,104.447771],[21.264894,104.447827],[21.264693,104.449094],[21.264121,104.449806],[21.263458,104.449865],[21.263007,104.450244],[21.263062,104.450743],[21.262706,104.451677],[21.262435,104.452301],[21.262131,104.453007],[21.262344,104.45364],[21.26235,104.454512],[21.262191,104.455145],[21.261893,104.455743],[21.261646,104.456382],[21.261195,104.456869],[21.260704,104.457396],[21.260098,104.457335],[21.259591,104.457616],[21.259796,104.458222],[21.259365,104.458704],[21.258759,104.458896],[21.258199,104.459682],[21.258804,104.46002],[21.259589,104.459979],[21.260294,104.460089],[21.260521,104.460733],[21.260631,104.461484],[21.260479,104.462192],[21.259901,104.462522],[21.259486,104.463016],[21.259601,104.463981],[21.259551,104.464637],[21.259904,104.465322],[21.260082,104.466709],[21.260306,104.46802],[21.259211,104.469072],[21.25935,104.470018],[21.259105,104.471361],[21.258487,104.472627],[21.257926,104.473856],[21.257142,104.474026],[21.257281,104.475042],[21.256934,104.475994],[21.256476,104.476951],[21.256892,104.47805],[21.257313,104.479066],[21.257662,104.479685],[21.257692,104.481311],[21.257989,104.481955],[21.257824,104.48299],[21.257784,104.483669],[21.258531,104.484111],[21.259009,104.484562],[21.259404,104.485157],[21.259916,104.485728],[21.260396,104.486348],[21.259976,104.487094],[21.259876,104.487759],[21.260306,104.488349],[21.260211,104.489068],[21.260736,104.489492],[21.260746,104.490151],[21.261186,104.490811],[21.261841,104.490747],[21.262216,104.491289],[21.261801,104.49197],[21.261151,104.492185],[21.260766,104.492764],[21.260376,104.493257],[21.260116,104.494121],[21.260201,104.495258],[21.260311,104.495966],[21.259786,104.496562],[21.259726,104.497721],[21.260061,104.498456],[21.260746,104.498954],[21.261401,104.499137],[21.261561,104.499705],[21.260966,104.500011],[21.260421,104.500113],[21.259946,104.501154],[21.259396,104.501706],[21.259809,104.502007],[21.260534,104.502876],[21.260504,104.503576],[21.260046,104.504322],[21.260091,104.505056],[21.260196,104.505856],[21.260634,104.50687],[21.261034,104.507468],[21.261681,104.507983],[21.261507,104.509195],[21.261507,104.509991],[21.26078,104.51168],[21.260502,104.512368],[21.26167,104.511853],[21.262207,104.512454],[21.262455,104.513068],[21.263058,104.513488],[21.263451,104.514138],[21.264052,104.513797],[21.26341,104.514642],[21.264301,104.515869],[21.264719,104.516935],[21.263969,104.517261],[21.264982,104.520988],[21.263934,104.522788]],[[21.263934,104.522788],[21.263436,104.523643],[21.263033,104.52484],[21.263084,104.525695],[21.263728,104.526791],[21.263098,104.526512],[21.262564,104.525657],[21.261659,104.525291],[21.261462,104.525617],[21.262473,104.526804],[21.262919,104.527715],[21.262827,104.529667],[21.262947,104.530207]],[[21.262947,104.530207],[21.263104,104.530917],[21.262649,104.531625],[21.261618,104.535172],[21.262186,104.536071],[21.263103,104.536385],[21.263978,104.536992],[21.264525,104.537485],[21.265335,104.537565],[21.26595,104.53778],[21.266469,104.538247],[21.266095,104.539181],[21.265647,104.539183]]] },
+  d2: { color:'#e07b39', name:'Ngày 2 · 7.11', legs:['12,0 km','13,2 km'],
+    path:['omely','song-lung','dinh-gio'],
+    geo:[[[21.278286,104.425007],[21.278109,104.425744],[21.278243,104.426422],[21.277986,104.427128],[21.277727,104.42782],[21.277948,104.428128],[21.278331,104.427818],[21.278473,104.42731],[21.278818,104.426953],[21.279319,104.426501],[21.27991,104.426322],[21.28012,104.425695],[21.280718,104.425242],[21.281291,104.424979],[21.282072,104.424695],[21.282537,104.424221],[21.283182,104.424298],[21.283771,104.424604],[21.284341,104.424455],[21.284898,104.424239],[21.284776,104.423316],[21.285324,104.423507],[21.285606,104.423069],[21.28611,104.422739],[21.28656,104.422285],[21.287083,104.421958],[21.286888,104.42131],[21.28748,104.420505],[21.287921,104.420733],[21.28842,104.421004],[21.288365,104.420055],[21.288891,104.419785],[21.289394,104.419996],[21.289802,104.419469],[21.290245,104.418984],[21.290835,104.418688],[21.291046,104.418008],[21.291539,104.417549],[21.292131,104.417635],[21.292673,104.41745],[21.293233,104.417442],[21.293509,104.418168],[21.294033,104.418475],[21.294478,104.418917],[21.29496,104.419271],[21.29471,104.419878],[21.294783,104.420484],[21.29514,104.421616],[21.295185,104.422294],[21.295367,104.422914],[21.295452,104.423651],[21.29505,104.42407],[21.294795,104.424732],[21.295062,104.425516],[21.295658,104.42587],[21.296204,104.426106],[21.296304,104.426784],[21.296663,104.427876],[21.297225,104.428496],[21.297604,104.429086],[21.298511,104.428919],[21.298998,104.428141],[21.298823,104.427495],[21.299081,104.426897],[21.299453,104.426374],[21.299521,104.42562],[21.299828,104.424829],[21.299798,104.424094],[21.299928,104.423405],[21.300413,104.422302],[21.300883,104.422431],[21.30139,104.423026],[21.301957,104.42268],[21.302512,104.423029],[21.302792,104.423727],[21.303245,104.424208],[21.303786,104.423708],[21.304051,104.423053],[21.304644,104.423338],[21.305333,104.423748],[21.305296,104.424534],[21.305056,104.425214],[21.305046,104.425982],[21.305453,104.426583],[21.305033,104.426959],[21.304741,104.427774],[21.305033,104.428332],[21.305746,104.428614],[21.30626,104.429161],[21.306848,104.429426],[21.307537,104.429373],[21.308152,104.429764],[21.3088,104.430141],[21.309359,104.429684],[21.310067,104.429434],[21.310412,104.430028],[21.311108,104.430513],[21.311043,104.43121],[21.312083,104.431323],[21.313307,104.431449],[21.31311,104.432079],[21.312485,104.432201],[21.311893,104.432707],[21.311402,104.43316],[21.311234,104.433798],[21.311818,104.434798],[21.312241,104.435499],[21.312356,104.436223],[21.31274,104.437047],[21.313262,104.437408],[21.312712,104.43791],[21.311968,104.438489],[21.311635,104.438894],[21.312064,104.43938],[21.31209,104.440372],[21.312425,104.441038],[21.311772,104.441309],[21.311657,104.442017],[21.311649,104.442626],[21.311476,104.443417],[21.311923,104.443905],[21.311688,104.444496],[21.311561,104.44518],[21.311786,104.445955],[21.311986,104.446989],[21.312472,104.447446],[21.311999,104.448018],[21.31159,104.448974],[21.311059,104.449328],[21.310773,104.450608],[21.310893,104.451491],[21.310662,104.452177],[21.310162,104.452771],[21.309933,104.453526],[21.308901,104.454009],[21.308343,104.454468],[21.309072,104.455007],[21.30922,104.455923],[21.309574,104.45676],[21.309763,104.457494],[21.308742,104.458095],[21.308511,104.459896],[21.307895,104.460071],[21.307444,104.460566],[21.306845,104.460987],[21.306181,104.461353],[21.30605,104.462586],[21.305444,104.463182],[21.304931,104.4636],[21.304516,104.463981]],[[21.304516,104.463981],[21.305444,104.463182],[21.30605,104.462586],[21.306093,104.461795],[21.306533,104.461252],[21.307155,104.460658],[21.307895,104.460071],[21.308511,104.459896],[21.308678,104.458643],[21.309407,104.457525],[21.309949,104.456986],[21.309501,104.456523],[21.309126,104.455547],[21.308487,104.454664],[21.308901,104.454009],[21.30955,104.453751],[21.310162,104.452771],[21.310662,104.452177],[21.310893,104.451491],[21.310987,104.450822],[21.310727,104.44963],[21.311281,104.449099],[21.311785,104.448068],[21.31241,104.447655],[21.312004,104.447184],[21.311786,104.445955],[21.31156,104.445318],[21.311688,104.444496],[21.311923,104.443905],[21.311476,104.443417],[21.311649,104.442626],[21.311657,104.442017],[21.311772,104.441309],[21.312425,104.441038],[21.31209,104.440372],[21.312064,104.43938],[21.311635,104.438894],[21.311968,104.438489],[21.312712,104.43791],[21.313262,104.437408],[21.31274,104.437047],[21.312356,104.436223],[21.312241,104.435499],[21.311818,104.434798],[21.311325,104.434286],[21.31143,104.43337],[21.311833,104.432758],[21.312485,104.432201],[21.31311,104.432079],[21.313379,104.431513],[21.312482,104.431269],[21.311348,104.431642],[21.311116,104.430738],[21.310681,104.430192],[21.310353,104.429716],[21.309716,104.429808],[21.309004,104.430146],[21.308482,104.429807],[21.307672,104.429399],[21.306848,104.429426],[21.30626,104.429161],[21.305851,104.428659],[21.305033,104.428332],[21.304741,104.427774],[21.304983,104.427039],[21.305453,104.426583],[21.305046,104.425982],[21.305056,104.425214],[21.305296,104.424534],[21.305416,104.423858],[21.304833,104.423579],[21.304331,104.423083],[21.303786,104.423708],[21.303245,104.424208],[21.302792,104.423727],[21.302512,104.423029],[21.301957,104.42268],[21.30139,104.423026],[21.300953,104.422455],[21.300413,104.422302],[21.300268,104.423002],[21.299983,104.423649],[21.299883,104.424322],[21.299531,104.425111],[21.299573,104.425827],[21.299201,104.42647],[21.298826,104.427264],[21.299018,104.428018],[21.298646,104.428801],[21.297959,104.429145],[21.297307,104.42864],[21.296803,104.4281],[21.296596,104.427282],[21.296294,104.426304],[21.29574,104.425922],[21.29511,104.42562],[21.294842,104.424883],[21.29505,104.42407],[21.295452,104.423651],[21.295367,104.422914],[21.295185,104.422294],[21.29514,104.421616],[21.29485,104.421009],[21.2947,104.420371],[21.294834,104.419718],[21.294837,104.419263],[21.294395,104.418826],[21.29387,104.418491],[21.293311,104.417898],[21.293088,104.417292],[21.292456,104.417383],[21.291914,104.417544],[21.291396,104.417753],[21.291104,104.418233],[21.290743,104.418766],[21.290143,104.419031],[21.289744,104.41967],[21.289148,104.419753],[21.288465,104.419878],[21.288548,104.420633],[21.288226,104.421048],[21.287861,104.420516],[21.287051,104.420865],[21.287055,104.421803],[21.28656,104.422285],[21.28611,104.422739],[21.285639,104.423018],[21.285399,104.42356],[21.284871,104.423197],[21.284877,104.424132],[21.284437,104.424409],[21.283852,104.424656],[21.28334,104.424282],[21.282606,104.424217],[21.282163,104.424692],[21.281491,104.424731],[21.280988,104.425147],[21.280187,104.425555],[21.280213,104.424922],[21.280496,104.424287],[21.281083,104.423646],[21.281215,104.422842],[21.281865,104.422861],[21.282328,104.422177],[21.282688,104.421426],[21.282691,104.420799],[21.282991,104.420174],[21.283631,104.420177],[21.284337,104.419899],[21.284044,104.419306],[21.284573,104.419062],[21.285198,104.419208],[21.285454,104.418465],[21.285804,104.417883],[21.286574,104.417337],[21.286945,104.416698],[21.287724,104.416177],[21.28827,104.415712],[21.288472,104.415561]]] }
 };
 
 var CAT_COLOR = { sanmay:'#e07b39', checkin:'#2e9e8f', luutru:'#8a7fb4', diadiem:'#8a968f', anuong:'#d4574e' };
@@ -461,15 +463,26 @@ function drawScene(){
 
   Object.keys(ROUTES).forEach(function(key){
     var r = ROUTES[key];
-    var pts = r.path.map(function(id){
+    var ns = r.path.map(function(id){
       var s = null;
       SPOTS.forEach(function(x){ if (x.id === id) { s = x; } });
-      return project(s.lat, s.lng, s.dox, s.doy);
+      return s;
     });
+    var pts = ns.map(function(s){ return project(s.lat, s.lng, s.dox, s.doy); });
     for (var i = 0; i + 1 < pts.length; i++) {
+      var dstr = '';
+      var geo = (r.geo && r.geo[i]) || [];
+      var A = ns[i], B = ns[i + 1];
+      var adx = A.dox || 0, ady = A.doy || 0, bdx = B.dox || 0, bdy = B.doy || 0;
+      for (var j = 0; j < geo.length; j++) {
+        var t = (geo.length > 1) ? j / (geo.length - 1) : 0;
+        var q = project(geo[j][0], geo[j][1], adx + (bdx - adx) * t, ady + (bdy - ady) * t);
+        dstr += (j === 0 ? 'M ' : 'L ') + (Math.round(q.x * 10) / 10) + ' ' + (Math.round(q.y * 10) / 10) + ' ';
+      }
+      if (!dstr) { dstr = bezier(pts[i], pts[i + 1]); }
       var p = el('path', {
-        d: bezier(pts[i], pts[i+1]),
-        class:'road', stroke:r.color, 'stroke-width':3.5, opacity:.85
+        d: dstr,
+        class:'road', stroke:r.color, 'stroke-width':3.5, opacity:.85, fill:'none'
       }, gRoot);
       p.setAttribute('data-route', key);
       var a = pts[i], b = pts[i+1];
