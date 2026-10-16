@@ -173,7 +173,7 @@ main{padding:12px 0 30px}
 .meal-head h3{margin:2px 0 0;font-size:18px;color:#f6f0ff}
 .meal-head .hint{font-size:12px;color:var(--muted)}
 .options{display:grid;gap:12px;margin-top:12px}
-@media(min-width:760px){.options{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}.options:has(>article:nth-child(4))>article:nth-child(4){grid-column:2}}
+@media(min-width:760px){.options{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}.options:has(>article:nth-child(4)):not(:has(>article:nth-child(5)))>article:nth-child(4){grid-column:2}}
 .opt{
   background:var(--card2);border:1px solid var(--cloudline);border-radius:14px;
   padding:16px 16px 14px;display:flex;flex-direction:column;gap:8px;
@@ -606,10 +606,12 @@ footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:upper
       </div>
     </div>
     <div class="ev reveal"><div class="dot"></div>
-      <div class="t">17:00 – 18:00</div>
+      <div class="t">17:00 – 18:45</div>
       <div class="body">
-        <h4>🌇 Hoàng hôn Đỉnh Gió — tọa độ cafe triệu đô</h4>
-        <p>Khu vực Đỉnh Gió tập trung các quán cafe view đẹp nhất Tà Xùa. Ngắm mặt trời lặn sau dãy núi, mây đổi màu hồng cam.</p>
+        <h4>🌇 Hoàng hôn 7.11 — chọn 1 trong 2 kịch bản</h4>
+        <p><b>Cụm Khe Cải</b> (chọn nếu tối ăn Trạm Mây — khuyên dùng): Hoàng Hôn Coffee ngay giờ vàng hoàng hôn (~30k/người) → Ameii Hill kế bên (đồi cỏ + nhà gỗ, check-in miễn phí) → vào thẳng bàn nướng Trạm Mây. Cả 3 điểm cùng bản Khe Cải, cách nhau vài trăm mét, không chạy thêm km nào — muốn đi kịch bản này thì rút ngắn rừng rêu, rời đi từ ~16:15.</p>
+        <p><b>Hoặc Đỉnh Gió:</b> khu cafe view đẹp nhất Tà Xùa (Mị Ơi, Khên, Pandorama) — hợp nếu tối chọn Cánh Cam/Omely, đi liền sau rừng rêu.</p>
+        <div class="tags"><span class="tag">Mũi Khe Cải: 3 điểm liền kề</span><span class="tag">Quán mở 6:00–19:00</span></div>
       </div>
     </div>
     <div class="ev reveal"><div class="dot"></div>
@@ -653,6 +655,13 @@ footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:upper
         <p class="note">Gương mặt mới nổi trong list TikTok Tà Xùa: quán nhỏ ngay khu Đỉnh Gió, cạnh cột mốc check-in — thêm một góc "triệu đô" nữa.</p>
         <p class="meta">📍 Khu Đỉnh Gió · 💰 40–60k/ly</p>
         <button class="pick" data-id="d2-sang-khen">Chọn</button>
+      </article>
+      <article class="opt">
+        <h4>Thào Coffee — phương án B (trung tâm)</h4>
+        <p class="sig">Sân gỗ nhìn thẳng thung lũng mây · 20–55k</p>
+        <p class="note">Quán cà phê lâu đời bậc nhất Tà Xùa, mở từ 5:30 — phương án B nếu khu Đỉnh Gió quá đông hoặc mây tan sớm. Ngay trung tâm xã, cách Omely ~0,9km; signature trà sơn tra (táo mèo) mật ong.</p>
+        <p class="meta">📍 Trung tâm xã · 🕠 05:30–23:00 · 💰 20–55k</p>
+        <button class="pick" data-id="d2-sang-thao">Chọn</button>
       </article>
     </div>
   </div>
@@ -701,7 +710,7 @@ footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:upper
       <article class="opt">
         <h4>Trạm Mây Tà Xùa</h4>
         <p class="sig">BBQ camping ngoài trời bên than hồng</p>
-        <p class="note">Set nướng bò · lợn bản · gà đồi tẩm mắc khén hạt dổi, không gian quây quần kiểu dã ngoại giữa mây ngàn — bữa tối "đắt giá nhất về" cảm xúc.</p>
+        <p class="note">Set nướng bò · lợn bản · gà đồi tẩm mắc khén hạt dổi, không gian quây quần kiểu dã ngoại giữa mây ngàn — bữa tối "đắt giá nhất về" cảm xúc. Ghép mũi hoàng hôn: ghé Hoàng Hôn Coffee + Ameii Hill ngay cạnh trước khi vào bàn (cùng bản Khe Cải).</p>
         <p class="meta">📍 Khu Khe Cải — ngắm trọn thung lũng mây + hoàng hôn · TikTok + homestaytaxua.com</p>
         <button class="pick" data-id="d2-toi-trammay">Chọn</button>
       </article>
