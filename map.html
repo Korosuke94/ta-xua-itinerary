@@ -417,7 +417,7 @@ function drawScene(){
     fill:'none', stroke:'#d5cbb0', 'stroke-width':1.5, opacity:.8
   }, gRoot);
 
-  var hn = el('g', { transform:'translate(730, 1075)' }, gRoot);
+  var hn = el('g', { transform:'translate(730, 1055)' }, gRoot);
   el('path', { d:'M 0 0 L 0 -30 M -7 -23 L 0 -30 L 7 -23', stroke:'#8a968f', 'stroke-width':2, fill:'none', 'stroke-linecap':'round' }, hn);
   el('text', { x:0, y:-34, 'text-anchor':'middle', 'font-size':11, fill:'#8a968f', 'font-weight':600 }, hn).textContent = 'Hà Nội';
 
@@ -464,7 +464,7 @@ function drawScene(){
     g.addEventListener('click', function(ev){ ev.stopPropagation(); selectSpot(s.id, true); });
   });
 
-  var sc = el('g', { transform:'translate(150, 1120)' }, gRoot);
+  var sc = el('g', { transform:'translate(660, 1120)' }, gRoot);
   el('line', { x1:0, y1:0, x2:100, y2:0, stroke:'#8a968f', 'stroke-width':2.5 }, sc);
   el('line', { x1:0, y1:-5, x2:0, y2:5, stroke:'#8a968f', 'stroke-width':2.5 }, sc);
   el('line', { x1:100, y1:-5, x2:100, y2:5, stroke:'#8a968f', 'stroke-width':2.5 }, sc);
