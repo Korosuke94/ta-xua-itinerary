@@ -104,6 +104,9 @@ aside{
 .d-chip.time{background:#f1efe8;color:var(--ink2);border:1px solid var(--line)}
 .d-title{font-family:"Playfair Display",serif;font-size:23px;color:#2c3a33;margin:8px 0 3px}
 .d-sub{font-size:12.5px;color:var(--muted);margin-bottom:12px}
+.d-gmaps{display:flex;align-items:center;justify-content:center;gap:7px;margin:2px 0 14px;padding:11px 14px;border-radius:12px;background:#e3f2f0;border:1px solid #b8dcd6;color:#1f7a6e;font-weight:700;font-size:13.5px;text-decoration:none;transition:background .18s, transform .18s;cursor:pointer}
+.d-gmaps:hover{background:#d3eae6;transform:translateY(-1px)}
+.d-gmaps .gmaps-arr{font-size:11px;opacity:.75}
 .d-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .d-stat{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:11px 13px}
 .d-stat .v{font-family:"Playfair Display",serif;font-size:19px;color:var(--sun)}
@@ -697,8 +700,15 @@ function selectSpot(id, switchTab){
   detailBody.appendChild(h);
 
   var sub = el2('div', 'd-sub');
-  sub.textContent = 'Vị trí: ' + s.lat.toFixed(4) + ', ' + s.lng.toFixed(4) + ' (Google Maps)';
+  sub.textContent = 'Vị trí: ' + s.lat.toFixed(4) + ', ' + s.lng.toFixed(4);
   detailBody.appendChild(sub);
+
+  var gmap = el2('a', 'd-gmaps');
+  gmap.href = 'https://www.google.com/maps/search/?api=1&query=' + s.lat + ',' + s.lng;
+  gmap.target = '_blank';
+  gmap.rel = 'noopener';
+  gmap.innerHTML = '📍 Mở trên Google Maps <span class="gmaps-arr">↗</span>';
+  detailBody.appendChild(gmap);
 
   var stats = el2('div', 'd-stats');
   var st1 = el2('div', 'd-stat');
