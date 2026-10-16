@@ -264,7 +264,7 @@ var SPOTS = [
     best:'Chiều 6.11 — trên cung đường Cây cô đơn / Thảo nguyên',
     notes:['Trên cung đường đi Cây cô đơn — Thảo nguyên; view mây hùng vĩ như sống lưng khủng long (tips TikTok)','Ghé trong chuyến chiều ngày 1 khi đã có xe máy','Đường đất đá — tránh ghé lúc mưa'],
     quote:null },
-  { id:'bep-cui', name:'Bếp Củi (cơm nhà 70k)', emoji:'🍚', cat:'anuong', catLabel:'Ăn uống', day:'d2', dayLabel:'Ngày 2 · 07.11',
+  { id:'bep-cui', name:'Bếp Củi (cơm nhà 70k)', mapName:'Bếp Củi', emoji:'🍚', cat:'anuong', catLabel:'Ăn uống', day:'d2', dayLabel:'Ngày 2 · 07.11',
     lat:21.2796322, lng:104.4320664, dox:72, doy:28, time:'~5 phút', photos:['photos/bep-cui-1.jpg','photos/bep-cui-2.jpg'], photoNote:'Ảnh: TikTok @dulich.shinetravel',
     best:'Bữa trưa/bữa tối 7.11 — cơm nhà 70k',
     notes:['Nhà hàng trung tâm — cơm nhà 70k/người, nướng khoảng 200k/người (tips TikTok)','Không gian rộng rãi, sạch sẽ, chủ thân thiện','Có trong options bữa trưa 7.11 của lịch trình web'],
@@ -334,7 +334,7 @@ function boxFree(b, ownId){
   return true;
 }
 function placeLabel(s, p){
-  var w = s.name.length * 6.0;
+  var w = (s.mapName || s.name).length * 6.0;
   var cands = [
     { x:0, y:-24, a:'middle' },
     { x:0, y:34, a:'middle' },
@@ -480,7 +480,7 @@ function drawScene(){
     var emo = el('text', { x:0, y:4.5, 'text-anchor':'middle', 'font-size':12.5 }, g);
     emo.textContent = s.emoji;
     var label = el('text', { x:lc.x, y:lc.y, 'text-anchor':lc.a, 'font-size':11.5, 'font-weight':600, fill:'#2c3a33', 'paint-order':'stroke', stroke:'#f2eddf', 'stroke-width':3 }, g);
-    label.textContent = s.name;
+    label.textContent = s.mapName || s.name;
     g.addEventListener('click', function(ev){ ev.stopPropagation(); selectSpot(s.id, true); });
   });
 
