@@ -261,7 +261,48 @@ footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:upper
 .wta b{color:#ffd9a0}
 .wta a{color:#7be0d2;font-weight:600;text-decoration:none;border-bottom:1px dotted #7be0d2}
 .wta-sub{margin-top:5px;font-size:12.5px;color:rgba(234,242,255,.72)}
+
+/* Gallery ảnh món ăn + phong cảnh quán (4-5 ảnh/địa điểm) */
+.opt-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
+.opt-gallery img{width:100%;height:92px;object-fit:cover;border-radius:9px;background:rgba(255,255,255,.05);transition:transform .28s ease}
+.opt-gallery img:first-child{grid-column:span 4;height:190px;border-radius:12px 12px 9px 9px}
+.opt-gallery img:hover{transform:scale(1.02)}
+@media(max-width:640px){.opt-gallery{grid-template-columns:repeat(2,1fr)}.opt-gallery img:first-child{grid-column:span 2;height:150px}}
+
+
+/* ===== Lightbox phóng to ảnh địa điểm ===== */
+article.opt{cursor:pointer}
+.opt-gallery img,.opt-img{cursor:zoom-in}
+#lbx{position:fixed;inset:0;z-index:99999;display:none;background:rgba(6,10,18,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:34px 18px}
+#lbx.on{display:flex}
+#lbx .lbx-stage{position:relative;width:min(1120px,96vw);display:flex;flex-direction:column;gap:10px;margin:0 auto}
+#lbx .lbx-main{width:100%;max-height:74vh;object-fit:contain;border-radius:16px;background:#0a1018;box-shadow:0 24px 80px rgba(0,0,0,.6)}
+#lbx .lbx-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#e6eefb;font-weight:600;font-size:15px;line-height:1.35;padding:0 4px}
+#lbx .lbx-count{font-variant-numeric:tabular-nums;opacity:.75;font-weight:500;white-space:nowrap}
+#lbx .lbx-nav{position:absolute;top:calc(37vh - 26px);width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(12,20,32,.72);color:#fff;font-size:26px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:background .2s,transform .2s}
+#lbx .lbx-nav:hover{background:rgba(125,211,252,.28);transform:scale(1.06)}
+#lbx .lbx-prev{left:-10px}#lbx .lbx-next{right:-10px}
+#lbx .lbx-close{position:absolute;top:-44px;right:0;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(12,20,32,.72);color:#fff;font-size:18px;cursor:pointer}
+#lbx .lbx-thumbs{display:flex;gap:8px;overflow-x:auto;justify-content:center;padding:2px 0 6px}
+#lbx .lbx-thumbs img{width:84px;height:58px;object-fit:cover;border-radius:9px;opacity:.5;cursor:pointer;border:2px solid transparent;flex:0 0 auto;transition:opacity .2s,border-color .2s}
+#lbx .lbx-thumbs img.act{opacity:1;border-color:#7dd3fc}
+@media(max-width:640px){
+  #lbx{padding:16px 10px}
+  #lbx .lbx-main{max-height:62vh}
+  #lbx .lbx-nav{width:42px;height:42px;top:calc(31vh - 21px)}
+  #lbx .lbx-prev{left:2px}#lbx .lbx-next{right:2px}
+  #lbx .lbx-thumbs img{width:64px;height:46px}
+}
+
 </style>
+/* ---------- MEAL IMAGES ---------- */
+.opt-img{
+  width:100%;height:170px;object-fit:cover;border-radius:12px 12px 0 0;
+  border-bottom:1px solid var(--cloudline);display:block;margin-bottom:10px;
+  background:rgba(255,255,255,.04);transition:transform .28s;
+}
+.opt:hover .opt-img{transform:scale(1.03)}
+
 </head>
 <body>
 <div class="progress" id="progress"></div>
@@ -356,19 +397,40 @@ footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:upper
       </div>
       <div class="options">
         <article class="opt">
-          <h4>Nhờ Omely Home chuẩn bị sẵn</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S6uiM6JCGAdA4TdRoYlYQ5Hp_ejYRzvmCx7L5_3Kd7e6hOhRAsOm17QizxnFpWfNpFBoRuV7DteYIieXmZyT3wV7B5rbU71bo11n2UsocLwVWOozRuX6Oa54cANjGq6Lov4ChhzmqAO-BL=w1200-h900-k-no" alt="Phong cảnh sân khuôn viên Omely Home Tà Xùa với bàn ghế và núi xa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SGMbe2pB9FfIsG4sX6OLZFtcE5_-OhcKzuIIkuZ2alxmCIRLeiILTfvap_XLZcLcdVCxixb9WlStSw9xS3k62n0EBQz36ilOEVCgOmI5Y6gg2iswYnwXJn-qrkKpbmDHJAZBhMeaJgp88=w1200-h900-k-no" alt="Phòng tắm bình tắm hoa hồng cùng view núi Tà Xùa tại Omely Home" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QWkVGNpLP6hO8rodK9H_X0kqFpvdrM4sGE3QnmmqoaTpSQUcj6LCHzdZ3nREmbFP0noe_VzHXfJOFZxdZ9rzhHOS8dPyZXmTwUObljffBVAgi5-gGmSCLwHFzXUp4patr11A7YzFLHwLkZ=w1200-h900-k-no" alt="Phòng ngủ trông điểm nghỉ Omely Home" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SNUPrXmLeMxlkpMPYCFjlAKF_MUUjuP2R-_e38TB5KWEhMfA82KV3nTPVpb3QWZ9qquGVHIKjpdAF4J2G4IgLawqKu4UeEsZqPkrfWRUvPsXCSqitujEftIlypPsmnk0xBdLw34oA80isP=w1200-h900-k-no" alt="Phòng máy đơn giản tại Omely Home Tà Xùa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RjBWPzYqe2BVF7gNB9uj9xNSaGxnb8vbu1DdkO3qn7Z0DgSxV0vQQHtjlnMQSd0xgvtcKmOrNZ_jgj41ivAfChkh0lfRsT5jDyxTankHRi65fF6WG8yXz8C0GUbvkXLTTQuWplWY4Zaw0=w1200-h900-k-no" alt="Phong cảnh khuôn viên homestay Omely Home" loading="lazy">
+</div>
+<h4>Nhờ Omely Home chuẩn bị sẵn</h4>
           <p class="sig">Mì nóng / xôi / trà gừng</p>
           <p class="note">Nhắn chủ house trước chiều 5/11 — đến nơi có đồ nóng ngay, không phải đi tìm đồ ăn nửa đêm.</p>
           <p class="meta">📞 Nhắn homestay trước · ƯU TIỆN NHẤT</p>
         </article>
         <article class="opt">
-          <h4>Đồ ăn nhẹ mang theo từ HN</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Rx9YZMe8EZgGg93NwxGnpbG3otXvbQRJ-I4WgBurhE3IZJn63INfVwzfkLQwTJ3xlqrZj7QSA-tr-aiAdhdkYBIEXpC13uhXgaOqJX96tSiIdd7gsXUq5cwAoBDrp4E8Sppxdd=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 1" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9THRsJY4DlWPwnKopkbNBAgtWWilCMb_OfT3gEiZaIW87ErDMv5GL6egoI7jgVKHNe0nf7IFh49b3-OnE_JEAkwZTNMaSj6RqXcm4AKXFXTkMTsS_HGRfCa4VuwMpglGNP21600=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 2" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Q7PvIJiG5uO1BesX50zKgujxD61u4EHA214NQU6OPWemZEj02tdrBdqXR9-3nxmNGnyARkIRTLUhZntYZrDsgML6FedfsPvGMBOhujvF5_2sGYQ_101HC5FuNA0tuMvIhjXmd0Dh4rGW0F=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 3" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TRNi4YuG-PdiFxTPwGip-HivZ8VHPDdoqp6tMG5SlxemJOWkS2QpqEtqhjdJFvulvnfDJw8lP4D3FlVLmhWlY5VcEtpHgt4CHFUGoe97YIWhr6US0DEVhojUN4J_PwBExsQpR10w=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 4" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TCY8nOOEmGHVpxQLQNW2EGK2MHZa0ZP75ZrQBNbSVdbqVwx48ucRSWXgJuCIt1edNwLG4kCELw-0fGho8nY1JBsW1on9XSe3YlirSjbekdXFuWsADjIUSU-X1NXTTcnVR7oqg=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 5" loading="lazy">
+</div>
+<h4>Đồ ăn nhẹ mang theo từ HN</h4>
           <p class="sig">Mì gói · bánh mì · chocolate · trà gừng bình nóng</p>
           <p class="note">Nửa đêm trời 8–10°C — bowl mì nóng trên hiên house là tuyệt phẩm. Mua sẵn ở HN cho chắc.</p>
           <p class="meta">🎒 Mua trước tối 05.11</p>
         </article>
         <article class="opt">
-          <h4>Mua đồ ăn sẵn ở điểm hẹn</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Rx9YZMe8EZgGg93NwxGnpbG3otXvbQRJ-I4WgBurhE3IZJn63INfVwzfkLQwTJ3xlqrZj7QSA-tr-aiAdhdkYBIEXpC13uhXgaOqJX96tSiIdd7gsXUq5cwAoBDrp4E8Sppxdd=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 1" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9THRsJY4DlWPwnKopkbNBAgtWWilCMb_OfT3gEiZaIW87ErDMv5GL6egoI7jgVKHNe0nf7IFh49b3-OnE_JEAkwZTNMaSj6RqXcm4AKXFXTkMTsS_HGRfCa4VuwMpglGNP21600=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 2" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Q7PvIJiG5uO1BesX50zKgujxD61u4EHA214NQU6OPWemZEj02tdrBdqXR9-3nxmNGnyARkIRTLUhZntYZrDsgML6FedfsPvGMBOhujvF5_2sGYQ_101HC5FuNA0tuMvIhjXmd0Dh4rGW0F=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 3" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TRNi4YuG-PdiFxTPwGip-HivZ8VHPDdoqp6tMG5SlxemJOWkS2QpqEtqhjdJFvulvnfDJw8lP4D3FlVLmhWlY5VcEtpHgt4CHFUGoe97YIWhr6US0DEVhojUN4J_PwBExsQpR10w=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 4" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TCY8nOOEmGHVpxQLQNW2EGK2MHZa0ZP75ZrQBNbSVdbqVwx48ucRSWXgJuCIt1edNwLG4kCELw-0fGho8nY1JBsW1on9XSe3YlirSjbekdXFuWsADjIUSU-X1NXTTcnVR7oqg=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 5" loading="lazy">
+</div>
+<h4>Mua đồ ăn sẵn ở điểm hẹn</h4>
           <p class="sig">Bánh mì · sữa · nước ấm mang lên xe</p>
           <p class="note">Khu vực điểm hẹn/bến xe thường có hàng mở muộn — mua sẵn bữa nhẹ trước khi lên xe nằm ngủ.</p>
           <p class="meta">🏪 Trước giờ lên xe · ở Hà Nội</p>
@@ -404,19 +466,40 @@ footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:upper
       </div>
       <div class="options">
         <article class="opt">
-          <h4>Ăn sáng tại Omely Home</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S6uiM6JCGAdA4TdRoYlYQ5Hp_ejYRzvmCx7L5_3Kd7e6hOhRAsOm17QizxnFpWfNpFBoRuV7DteYIieXmZyT3wV7B5rbU71bo11n2UsocLwVWOozRuX6Oa54cANjGq6Lov4ChhzmqAO-BL=w1200-h900-k-no" alt="Phong cảnh sân khuôn viên Omely Home Tà Xùa với bàn ghế và núi xa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SGMbe2pB9FfIsG4sX6OLZFtcE5_-OhcKzuIIkuZ2alxmCIRLeiILTfvap_XLZcLcdVCxixb9WlStSw9xS3k62n0EBQz36ilOEVCgOmI5Y6gg2iswYnwXJn-qrkKpbmDHJAZBhMeaJgp88=w1200-h900-k-no" alt="Phòng tắm bình tắm hoa hồng cùng view núi Tà Xùa tại Omely Home" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QWkVGNpLP6hO8rodK9H_X0kqFpvdrM4sGE3QnmmqoaTpSQUcj6LCHzdZ3nREmbFP0noe_VzHXfJOFZxdZ9rzhHOS8dPyZXmTwUObljffBVAgi5-gGmSCLwHFzXUp4patr11A7YzFLHwLkZ=w1200-h900-k-no" alt="Phòng ngủ trông điểm nghỉ Omely Home" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SNUPrXmLeMxlkpMPYCFjlAKF_MUUjuP2R-_e38TB5KWEhMfA82KV3nTPVpb3QWZ9qquGVHIKjpdAF4J2G4IgLawqKu4UeEsZqPkrfWRUvPsXCSqitujEftIlypPsmnk0xBdLw34oA80isP=w1200-h900-k-no" alt="Phòng máy đơn giản tại Omely Home Tà Xùa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RjBWPzYqe2BVF7gNB9uj9xNSaGxnb8vbu1DdkO3qn7Z0DgSxV0vQQHtjlnMQSd0xgvtcKmOrNZ_jgj41ivAfChkh0lfRsT5jDyxTankHRi65fF6WG8yXz8C0GUbvkXLTTQuWplWY4Zaw0=w1200-h900-k-no" alt="Phong cảnh khuôn viên homestay Omely Home" loading="lazy">
+</div>
+<h4>Ăn sáng tại Omely Home</h4>
           <p class="sig">Phở / bún / xôi nóng do chủ house nấu</p>
           <p class="note">Báo chủ nhà từ tối 5/11 — dậy là có ăn, ấm và tiện nhất sau chuyến đêm.</p>
           <p class="meta">📍 Tại homestay · 📞 đặt tối trước</p>
         </article>
         <article class="opt">
-          <h4>A Phủ Restaurant</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RNM0nr89DfTjLHBjGw4Heq1-fpDpL9XLlxR4rlFMpCod-k7DFRuHnks5cdTIm6oM0krqdPmT5RjPxiDu278uguiuLFdDDeg-2jYgx9g-TFMSTcy65bjbu5S-WzCBSS64H53krWhzwTEk_H=w1200-h900-k-no" alt="Cổng nhà hàng A Phủ - Tà Xùa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R6CYPLGsd_8geZCxoouEYnCylz1Lqt5z8z3yvQjuBz88LtXqDAtI4oZuCLeOg2YDyNKgI4Oty38qJsnhIZDgj9zVOh6Qad21NoSKQ6RTJTPFczgJdI2dPfYYWaQD84n9Bm8wqroypZgHe8=w1200-h900-k-no" alt="Bữa ăn Tây Bắc tại A Phủ" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R6mgxxwNHBxv2tsol6RunI8nV0x6dK2MmCFmcYiMpCpnh0gl-8YMUWCyH89rXJOl_VQYXSWYFykFrz4BmayKg_8VmBj9wK172IfKUQlIrHXoq0cZGVLbI5IH7dnp_fOwnVgMPs2Q=w1200-h900-k-no" alt="View núi và biển mây từ A Phủ" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QOAjp2Yv1zplKgqzCR31AFLdKw1jSvNDJ8AvZi3JW9ECC23DyduhSx1h8dcD_qyW-ktdGU3JXF4GJXrFNiUCSELXo_rAaeAfHPK8W56YYa147rSWr8EQUCcOvMnDtESOmoxU815rn6kaLn=w1200-h900-k-no" alt="Vịt quay A Phủ" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TuW4POdQrdl-HRPVcIuHFWQCKj6nPDaDDKSdajpLP0DZMLiJicZRwLVYwO-yrgs93C9uJ6cl0b-wfcgzLZU6K8Gaa-BAVZX2DIBJjRlvjGLAqIW8r9Bf97gd3BUA48LEedOWqiYruKd6VR=w1200-h900-k-no" alt="Lẩu tại A Phủ" loading="lazy">
+</div>
+<h4>A Phủ Restaurant</h4>
           <p class="sig">Nhà hàng #1 Tà Xùa · món Tây Bắc đầy đủ</p>
           <p class="note">Top 1 trong Top 5 nhà hàng Tà Xùa (taxua.vn): gà đen, gà bản, xôi, cơm lam. Mở cả ngày, không gian rộng, view biển mây từ bàn ăn.</p>
           <p class="meta">📍 Trung tâm xã · 💰 ~150–250k/người · ☎ 0978 426 813</p>
         </article>
         <article class="opt">
-          <h4>Quán phở / bún local trung tâm</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Rx9YZMe8EZgGg93NwxGnpbG3otXvbQRJ-I4WgBurhE3IZJn63INfVwzfkLQwTJ3xlqrZj7QSA-tr-aiAdhdkYBIEXpC13uhXgaOqJX96tSiIdd7gsXUq5cwAoBDrp4E8Sppxdd=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 1" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9THRsJY4DlWPwnKopkbNBAgtWWilCMb_OfT3gEiZaIW87ErDMv5GL6egoI7jgVKHNe0nf7IFh49b3-OnE_JEAkwZTNMaSj6RqXcm4AKXFXTkMTsS_HGRfCa4VuwMpglGNP21600=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 2" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Q7PvIJiG5uO1BesX50zKgujxD61u4EHA214NQU6OPWemZEj02tdrBdqXR9-3nxmNGnyARkIRTLUhZntYZrDsgML6FedfsPvGMBOhujvF5_2sGYQ_101HC5FuNA0tuMvIhjXmd0Dh4rGW0F=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 3" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TRNi4YuG-PdiFxTPwGip-HivZ8VHPDdoqp6tMG5SlxemJOWkS2QpqEtqhjdJFvulvnfDJw8lP4D3FlVLmhWlY5VcEtpHgt4CHFUGoe97YIWhr6US0DEVhojUN4J_PwBExsQpR10w=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 4" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TCY8nOOEmGHVpxQLQNW2EGK2MHZa0ZP75ZrQBNbSVdbqVwx48ucRSWXgJuCIt1edNwLG4kCELw-0fGho8nY1JBsW1on9XSe3YlirSjbekdXFuWsADjIUSU-X1NXTTcnVR7oqg=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 5" loading="lazy">
+</div>
+<h4>Quán phở / bún local trung tâm</h4>
           <p class="sig">Bát phở gà bản nóng hổi</p>
           <p class="note">Vài quán nhỏ quanh trung tâm xã, giá rẻ, gà bản thật — hỏi chủ Omely chỉ quán nào đông dân địa phương hôm đó.</p>
           <p class="meta">📍 Gần cổng chào · 💰 ~30–50k/tô</p>
@@ -437,19 +520,40 @@ footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:upper
       </div>
       <div class="options">
         <article class="opt">
-          <h4>Mayhome Restaurant</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QobnoGUeSV_rAJYiMLLdSk3kFugbuOWgVIYGeTqJsa9W6AoLzwJIDh_u1CrHuG_YrqbeppGHfbAPUJ14oBP0s0P3sQzrKet1pL1lhxaASD0-iRbJdN23Igeog9et4eI5U97amHcQ=w1200-h900-k-no" alt="Mayhome Tà Xùa - ảnh 1" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SxYxxpJ8TQroeWE7IMKgp3tziNvVJtz3mz2bsRgcyKUJLnO0Ajr1U_0urbg_zJ2EdHTfd3eql2_075k04Po17fdjkHupgMkybJvBCcexwyNHvz25dkMsXC7satWsWjJ3D9jPVC0IVvC9wk=w1200-h900-k-no" alt="Mayhome Tà Xùa - ảnh 2" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QzDwEffhrey9y0wUnSZvLy4yYscKobS7t_9jaHeDDLqwufe23xqcgrqmOAC19MGIBzNBj-wMswtoBSPH9nVmxT-O-PW2WAMkdTqls-yvM4cEpH1tqGB1JusotAp1seLUB8YcMCWfVeukK4=w1200-h900-k-no" alt="Mayhome Tà Xùa - ảnh 3" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9T-QJMh-tpxf27zrbT0iSXVRN_iA8Rh6yDbJh4EVwzAwk296Z8od2KhO7kjfHxaL4AD0SWlpwgpeus4Eds9gqNWnFeIalfebU4uVP-jDv09pFdyU9Hj_99a-FYvxe2b6pEjGVzitVqxfZo=w1200-h900-k-no" alt="Mayhome Tà Xùa - ảnh 4" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9ScK5juraa33_ulZ_OFmh_dBwZx4m58HJgDsQM6dp-bSCjP8loEt8b62kq7IJJntBvsJT7jKeZqruxeX-ndPnl0jcUDyzXuwjbOVETXHmMkXjlN6-v3pjBhfeBCrFz90wZCFtcxxA=w1200-h900-k-no" alt="Mayhome Tà Xùa - ảnh 5" loading="lazy">
+</div>
+<h4>Mayhome Restaurant</h4>
           <p class="sig">Lẩu gà đen · cá Pa Pỉnh Rộp · cá lăng hấp</p>
           <p class="note">Top 2 taxua.vn — nhà hàng kết hợp homestay.view săn mây tại bàn. Lẩu gà đen ấm bụng giữa ngày 12°C.</p>
           <p class="meta">📍 Trung tâm xã · quán + homestay</p>
         </article>
         <article class="opt">
-          <h4>Cơm nhà Namiya — Đỉnh Gió</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QCectnHwNdWv6x7v2lcnbJRUfdKzQPHy_1_rYha27PqfBUm58xUPtDvxE3Yi8rt7TReHAnL5OoSFbEHQMUaAawE7NFFjxmt5_vTKexnrRNRZDGBwQ1y5e9LYhznbtGWVVA7JDpq7qbSCWe=w1200-h900-k-no" alt="Ảnh 1 - Namiya" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9T5GQFAeobIBT1TDpPlA7yCJ8OxaOfdvofndCTf92QsOzt1FOGDCCVL3TkkW_FnXPNZw63n5D-bBQ97JAthqBUgX2pVnKMAAfV-j9hhwwwSEbw4w3brdItnraHBxKp4qpB1U8heUp138M91=w1200-h900-k-no" alt="Ảnh 2 - Namiya" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QI_lkLK82bsrKCF4hpOXZ9KyV_1sa78zU2-th-ltAAs_AwU2YVP6FYylQakqGcqdtnT__qz_YMGg6E5gTSl-CwMC8j0SvGfwxqwZkLUVKgyqE6vevRnu19Nf1mt_beHGhZ_Zjys-brs-HX=w1200-h900-k-no" alt="Ảnh 3 - Namiya" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9T6OiEM-vEapcAAFjLac8HkgQCdVIkQ-isEw1EHioGK9K4fFAW9RLBjrFQUxNyXlzsRTK5SZiSxoEB-xX_tUNqMeQzyfeFsFX-W_cMGTRxaFf9PblbENFlngwGtIge5-FK0f9z9Wr-hnj4o=w1200-h900-k-no" alt="Ảnh 4 - Namiya" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RQW40Gz-divfJp--oiJAqqlmsfnplcp71W-0gjQ5Z2y4ftP-OT17YKdnjUJwrGg7dYALAR_6tbP4BFfonLbpOLUUboJ6NW5lQHlx0VQjsRzC_nAJ9XSwrT3o7AunyRqxsDQyPt3shwpyiP=w1200-h900-k-no" alt="Ảnh 5 - Namiya" loading="lazy">
+</div>
+<h4>Cơm nhà Namiya — Đỉnh Gió</h4>
           <p class="sig">Cơm nhà mộc mạc, món đậm đà bản sắc</p>
           <p class="note">Không gian ấm cúng kiểu "chữa lành". Ghé ăn luôn tiện rẽ ngắm Đỉnh Gió trước giờ chiều.</p>
           <p class="meta">📍 Khu Đỉnh Gió · review từ homestaytaxua.com</p>
         </article>
         <article class="opt">
-          <h4>Đồi Mây Tà Xùa</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SQ5tpUsukJ__NEG8FFRI1bkBMHoBUg-FyeNZ_feO-nHXCrgRV_OIm55GC-Y6OeOVPowYRBrS_43scPCK90yYqsvZov-zlemTeshnk1U2rcyrLk9594wkKmmryfXgKp3tBrYhU=w1200-h900-k-no" alt="Ảnh 1 - Đồi Mây" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S59X2rGK_JTexbzgj-J9FsrrHCOI6_vge3pV9wk6pOrM3gE1C44VVjCNt2SX81UFnIgVq42If5KU0RDSTLflThErXgDZzQR5L6fsAfry6nyOQ09jVCWCw-NhfX_q__ZAvhSsOALF-h5HI=w1200-h900-k-no" alt="Ảnh 2 - Đồi Mây" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RZIO2iz_uqCWumOB74FuyxNw_xC-sax3rdqre0dhZpgLfiMX8Zieo1dZkhD4FA-e9N2cEOocHfD2yHS_oRv9gFNsCDefWa5eoqIPji1dG8DXMom6I9s1lpgUpN542qDD85gWH2=w1200-h900-k-no" alt="Ảnh 3 - Đồi Mây" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Rew0L-Z2pigP0AGgADD6wBex9OakK1QXRynyHnstOI3OkwwvqMKgpJDKCEQD_yj-1e4HmjTim50nGX8Wr8XJptKJH6Fgju6y3vdA6ZeXPFmtC8u7ZVVXspt03zhZvJEYFg_z2F9HuGMrwF=w1200-h900-k-no" alt="Ảnh 4 - Đồi Mây" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Qb74urgisThMnG0aNYU1ISjV4rZdhqF3FKOndXE5I_SFhb2-aFcM5GC3ZsOT_I02l8eoluyYbsxx0wI5uZ6t1dmmHeV1Qrsn93CotHg2vx2wgczMxCmFnZAMgsx-91sgZl8-1HKQ=w1200-h900-k-no" alt="Ảnh 5 - Đồi Mây" loading="lazy">
+</div>
+<h4>Đồi Mây Tà Xùa</h4>
           <p class="sig">Cơm món hàng ngày + cà phê</p>
           <p class="note">Tổ hợp lẩu–nướng–cơm–cafe cách cổng chào ~50m, khuôn viên rộng, view cao. Trưa thường ngày ăn cơm món là hợp lý nhất.</p>
           <p class="meta">📍 Cách cổng chào 50m · lẩu + nướng + cafe</p>
@@ -479,25 +583,53 @@ footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:upper
       </div>
       <div class="options">
         <article class="opt">
-          <h4>Đồi Mây — Mẹt nướng Tây Bắc</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SQ5tpUsukJ__NEG8FFRI1bkBMHoBUg-FyeNZ_feO-nHXCrgRV_OIm55GC-Y6OeOVPowYRBrS_43scPCK90yYqsvZov-zlemTeshnk1U2rcyrLk9594wkKmmryfXgKp3tBrYhU=w1200-h900-k-no" alt="Ảnh 1 - Đồi Mây" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S59X2rGK_JTexbzgj-J9FsrrHCOI6_vge3pV9wk6pOrM3gE1C44VVjCNt2SX81UFnIgVq42If5KU0RDSTLflThErXgDZzQR5L6fsAfry6nyOQ09jVCWCw-NhfX_q__ZAvhSsOALF-h5HI=w1200-h900-k-no" alt="Ảnh 2 - Đồi Mây" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RZIO2iz_uqCWumOB74FuyxNw_xC-sax3rdqre0dhZpgLfiMX8Zieo1dZkhD4FA-e9N2cEOocHfD2yHS_oRv9gFNsCDefWa5eoqIPji1dG8DXMom6I9s1lpgUpN542qDD85gWH2=w1200-h900-k-no" alt="Ảnh 3 - Đồi Mây" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Rew0L-Z2pigP0AGgADD6wBex9OakK1QXRynyHnstOI3OkwwvqMKgpJDKCEQD_yj-1e4HmjTim50nGX8Wr8XJptKJH6Fgju6y3vdA6ZeXPFmtC8u7ZVVXspt03zhZvJEYFg_z2F9HuGMrwF=w1200-h900-k-no" alt="Ảnh 4 - Đồi Mây" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Qb74urgisThMnG0aNYU1ISjV4rZdhqF3FKOndXE5I_SFhb2-aFcM5GC3ZsOT_I02l8eoluyYbsxx0wI5uZ6t1dmmHeV1Qrsn93CotHg2vx2wgczMxCmFnZAMgsx-91sgZl8-1HKQ=w1200-h900-k-no" alt="Ảnh 5 - Đồi Mây" loading="lazy">
+</div>
+<h4>Đồi Mây — Mẹt nướng Tây Bắc</h4>
           <p class="sig">Mẹt nướng best-seller: gà nướng · cơm lam · cá nướng · xôi · rau</p>
           <p class="note">Món bán chạy nhất quán theo review luhanhvietnam. Cả mẹt bày giữa bàn, 4 người gắp tưng tưng rất vui.</p>
           <p class="meta">📍 Cách cổng chào ~50m · 💰 gọi theo mẹt</p>
         </article>
         <article class="opt">
-          <h4>Tiệm nướng Cánh Cam</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SqRkNvPeMdGm9Zu5IJhSoA4TGZWD_IoyeSDJCSp0nHya11tzGwfbiuDCTmE1Bn9H3vzt4gv7K4_j_npoRk8NaccMfehTNhYj97pP5nxe6QHr41RRNdfLuf2ZagZFa0y-O2MnDsoYSdutfB=w1200-h900-k-no" alt="Ảnh 1 - Cánh Cam" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SccnodHKNpDMDMCMfJv-JPekRBAP1h0rIWN93hdnY_U4WnyohStt_QMyKbplfRWNz_tDWXbIxfM91GmIY3PJKbBPkGz2KIbqqf5TObln0kF7psckY9hheA4_52GC-dL9fYc3JSqVh9hckX=w1200-h900-k-no" alt="Ảnh 2 - Cánh Cam" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TVBsNKVXHUkU2n19t9oObXIB5yVCpxRPByU0j0N6_eIyCriU7zSAGfjS9VEvQOvpc1oCm_KGp03ZHJIG9MEKzznmP2nBDZOeCXHnwlgfV9s7NuLKO2yik1Kbjlazs8fveIOOYsa06JCozU=w1200-h900-k-no" alt="Ảnh 3 - Cánh Cam" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SmXkiWqkBtAMy05QJd4eNCe_foeLxTMOCNyzr2ghfpivbzsm4dvSB0-sNAcUtnFHSZIAgD9Kj9j04OOtPoWW5XQnejTlRP5AHemNOfQd_OUMtRndtXZh8JkidagIBCCFwSbWCLSAMZbzA=w1200-h900-k-no" alt="Ảnh 4 - Cánh Cam" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SZwbv14Lc_neev6tA0oQhkEvx3T_Jw4D3cG2p_p7Kya_LPFQDJyySj2pdKJ-WI9QFve82jE3W-hXgoIs9a4GeoQEj2eUpxTHlzW3AkkPM8ionc2eHbJ34Puq3qlujZHXaAjSFqdwAdN190=w1200-h900-k-no" alt="Ảnh 5 - Cánh Cam" loading="lazy">
+</div>
+<h4>Tiệm nướng Cánh Cam</h4>
           <p class="sig">Nướng ngoài trời — không gian lãng mạn</p>
           <p class="note">Đối diện trường mầm non xã, đi lên 200m. Bàn ghế gỗ mộc, tọa độ cao ngắm hoàng hôn + đêm mây — đúng vibe 2 cặp đôi. Lưu ý từ TikTok: quán siêu đông — nên đặt bàn trước; giá tham khảo ~250k/người.</p>
           <p class="meta">📍 Gần trung tâm · review luhanhvietnam</p>
         </article>
         <article class="opt">
-          <h4>Nhà hàng A Phủ</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RNM0nr89DfTjLHBjGw4Heq1-fpDpL9XLlxR4rlFMpCod-k7DFRuHnks5cdTIm6oM0krqdPmT5RjPxiDu278uguiuLFdDDeg-2jYgx9g-TFMSTcy65bjbu5S-WzCBSS64H53krWhzwTEk_H=w1200-h900-k-no" alt="Cổng nhà hàng A Phủ - Tà Xùa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R6CYPLGsd_8geZCxoouEYnCylz1Lqt5z8z3yvQjuBz88LtXqDAtI4oZuCLeOg2YDyNKgI4Oty38qJsnhIZDgj9zVOh6Qad21NoSKQ6RTJTPFczgJdI2dPfYYWaQD84n9Bm8wqroypZgHe8=w1200-h900-k-no" alt="Bữa ăn Tây Bắc tại A Phủ" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R6mgxxwNHBxv2tsol6RunI8nV0x6dK2MmCFmcYiMpCpnh0gl-8YMUWCyH89rXJOl_VQYXSWYFykFrz4BmayKg_8VmBj9wK172IfKUQlIrHXoq0cZGVLbI5IH7dnp_fOwnVgMPs2Q=w1200-h900-k-no" alt="View núi và biển mây từ A Phủ" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QOAjp2Yv1zplKgqzCR31AFLdKw1jSvNDJ8AvZi3JW9ECC23DyduhSx1h8dcD_qyW-ktdGU3JXF4GJXrFNiUCSELXo_rAaeAfHPK8W56YYa147rSWr8EQUCcOvMnDtESOmoxU815rn6kaLn=w1200-h900-k-no" alt="Vịt quay A Phủ" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TuW4POdQrdl-HRPVcIuHFWQCKj6nPDaDDKSdajpLP0DZMLiJicZRwLVYwO-yrgs93C9uJ6cl0b-wfcgzLZU6K8Gaa-BAVZX2DIBJjRlvjGLAqIW8r9Bf97gd3BUA48LEedOWqiYruKd6VR=w1200-h900-k-no" alt="Lẩu tại A Phủ" loading="lazy">
+</div>
+<h4>Nhà hàng A Phủ</h4>
           <p class="sig">Vịt quay Tây Bắc · gà nướng mắc khén · lẩu</p>
           <p class="note">Nếu sáng 6/11 chưa ăn A Phủ thì tối vào đây — view 300 chỗ, món chế biến kỳ công, ăn tối ấm cúng.</p>
           <p class="meta">📍 Trung tâm xã · 💰 150–250k/người</p>
         </article>
         <article class="opt">
-          <h4>Bếp ăn Xuân thì — 4,9★ cao nhất Tà Xùa</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RAXjELfE--h2KJXL4LhC1hy1MewHDThwVtDr43Rm4XK5V_J3pDVE-h9d3MaA-k0YggEOr8W5286Rkv8SW4_uAbBKXSt5AyUZxonF7xto4v1X70SXmh5vANz9pEsMFyQXFfV9-A2z_cKKgp=w1200-h900-k-no" alt="Ảnh 1 - Xuân thì" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QfaXcW5GVLNl-SSabJjob3zMTpkh_8E_Xziar5Y575Q8D6FYKPZSflAaBiU4GiELCnJjYi4mLUh2qrI_uUUdeKHfvLpkhtV_fYUAcl_piw-nwsXRnDDgQF_-hZ0cKh1qMm0lwDtFN6Albx=w1200-h900-k-no" alt="Ảnh 2 - Xuân thì" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QQdEgNl_hqySGqBozA4uqmqk6Ba409dGsooBJfU0hSmeq6vqv5vHr8YFmFgr6h02d2FbFoMpsWjUN2cm0iQ_Mm8wDptlr2Qcki0Q-db_pA-8X9EAOJpGt-rkqRF_4wmIyk_yHy-8PFUUBW=w1200-h900-k-no" alt="Ảnh 3 - Xuân thì" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TKJwic4XXJsEZPjL-NuvkPxogmksZrr73VYr66wJfoI0toD7I9p5_6ByZWWqhnln4Fp88EvCGluLwr_5tDSs0ZxXFr00-gTTt5gapfKoVH_CK9SE05ky-F18b6QYqZ6uxi1YcEyfDbxIjm=w1200-h900-k-no" alt="Ảnh 4 - Xuân thì" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TnfaW6Bf8m3-a6TqtFsLxLbfifXylO2ComMZsYziGT0G1Fp6h3Xz-r-ZTHbPEUA8slhGzwh0PBMm0FSRIknNEE0viJnLYNPGS3Ljjc9nFaii8eZ7jMIiUgkJthmv4EfqXUiLQh0hyzQH69=w1200-h900-k-no" alt="Ảnh 5 - Xuân thì" loading="lazy">
+</div>
+<h4>Bếp ăn Xuân thì — 4,9★ cao nhất Tà Xùa</h4>
           <p class="sig">Ẩm thực truyền thống · không gian ấm cúng</p>
           <p class="note">Quán được chấm điểm cao nhất Tà Xùa (Tastemaker 10/2026) — món Việt truyền thống, ấm cúng kiểu gia đình, hợp bữa tối ngày đầu sau chuyến xe đêm.</p>
           <p class="meta">📍 Trung tâm xã (cách Omely ~200m) · 💰 100–200k/người</p>
@@ -550,37 +682,79 @@ footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:upper
       </div>
       <div class="options">
         <article class="opt">
-          <h4>Tiệm cafe Mị Ơi (Đỉnh Gió)</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QiJEX2EenrAZV9zC4UcrEN7aUBoqjS6tMBwFk-szcN-QjgRPO1DCsC7iRY6u00WlNRDvJyFZIiZz1yTUrH-kKmFFTxv_8ANmfLpH2ZwF_P6XEY1VCrZIKRhWV9qx_AlwsBD1Q=w1200-h900-k-no" alt="Mị Ơi Tà Xùa - ảnh 1" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R0m-1qoUcqqODsLlMEIOwbAouuvVHf2H7uKPEdjVbquM7YXzXH4kz9mpqbL5aZ9KBo-joSfb3R-S91sOUlU0XGa3uRdfRSkMYVpanJogezmiM_28qw1gE-fq-H9UCYRnKYTz8Jr-n83yJF=w1200-h900-k-no" alt="Mị Ơi Tà Xùa - ảnh 2" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QjWiXiYmf6xypcuF0dN2GlH_vOVcLwovcIDnh21S9cIxUGu4biDX77wgQgnlwpM8GNghyyxGLyF3pL-BTRBv9MHBvTC3ob9AA2YMcac9rnc8tzVNBQtXwS3eE9cLUXx7D-0H5doA=w1200-h900-k-no" alt="Mị Ơi Tà Xùa - ảnh 3" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SrDHfe0GdIfuxz2sC0IbUrnzsBj81jZyMd9WJgHdpH06US8GT4nqIfJxDAh_J6LouHs73Ng_NVgdhxUE1YWTw2ox5XbAcSngyNosBRcMZ3t9hXv_aE25MdmttAvnwF6EyhN8eLm4VcTWCr=w1200-h900-k-no" alt="Mị Ơi Tà Xùa - ảnh 4" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R0m-1qoUcqqODsLlMEIOwbAouuvVHf2H7uKPEdjVbquM7YXzXH4kz9mpqbL5aZ9KBo-joSfb3R-S91sOUlU0XGa3uRdfRSkMYVpanJogezmiM_28qw1gE-fq-H9UCYRnKYTz8Jr-n83yJF=w1200-h900-k-no" alt="Mị Ơi Tà Xùa - ảnh 5" loading="lazy">
+</div>
+<h4>Tiệm cafe Mị Ơi (Đỉnh Gió)</h4>
           <p class="sig">Mì nóng + cafe view "triệu đô"</p>
           <p class="note">Quan cafe hot nhất Tà Xùa, mở từ 5:30 — dân săn mây ghé sau buổi bình minh. Gỗ tre nứa mộc mạc, 30–100k/ly.</p>
           <p class="meta">📍 Trên Đỉnh Gió · 🕠 05:30–23:00</p>
         </article>
         <article class="opt">
-          <h4>Về Omely Home ăn sáng</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S6uiM6JCGAdA4TdRoYlYQ5Hp_ejYRzvmCx7L5_3Kd7e6hOhRAsOm17QizxnFpWfNpFBoRuV7DteYIieXmZyT3wV7B5rbU71bo11n2UsocLwVWOozRuX6Oa54cANjGq6Lov4ChhzmqAO-BL=w1200-h900-k-no" alt="Phong cảnh sân khuôn viên Omely Home Tà Xùa với bàn ghế và núi xa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SGMbe2pB9FfIsG4sX6OLZFtcE5_-OhcKzuIIkuZ2alxmCIRLeiILTfvap_XLZcLcdVCxixb9WlStSw9xS3k62n0EBQz36ilOEVCgOmI5Y6gg2iswYnwXJn-qrkKpbmDHJAZBhMeaJgp88=w1200-h900-k-no" alt="Phòng tắm bình tắm hoa hồng cùng view núi Tà Xùa tại Omely Home" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QWkVGNpLP6hO8rodK9H_X0kqFpvdrM4sGE3QnmmqoaTpSQUcj6LCHzdZ3nREmbFP0noe_VzHXfJOFZxdZ9rzhHOS8dPyZXmTwUObljffBVAgi5-gGmSCLwHFzXUp4patr11A7YzFLHwLkZ=w1200-h900-k-no" alt="Phòng ngủ trông điểm nghỉ Omely Home" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SNUPrXmLeMxlkpMPYCFjlAKF_MUUjuP2R-_e38TB5KWEhMfA82KV3nTPVpb3QWZ9qquGVHIKjpdAF4J2G4IgLawqKu4UeEsZqPkrfWRUvPsXCSqitujEftIlypPsmnk0xBdLw34oA80isP=w1200-h900-k-no" alt="Phòng máy đơn giản tại Omely Home Tà Xùa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RjBWPzYqe2BVF7gNB9uj9xNSaGxnb8vbu1DdkO3qn7Z0DgSxV0vQQHtjlnMQSd0xgvtcKmOrNZ_jgj41ivAfChkh0lfRsT5jDyxTankHRi65fF6WG8yXz8C0GUbvkXLTTQuWplWY4Zaw0=w1200-h900-k-no" alt="Phong cảnh khuôn viên homestay Omely Home" loading="lazy">
+</div>
+<h4>Về Omely Home ăn sáng</h4>
           <p class="sig">Phở/bún nóng tại homestay</p>
           <p class="note">Báo chủ nhà tối 6/11 — ăn được ngay khi về tới, cởi áo ấm nằm dài luôn là hợp lý.</p>
           <p class="meta">📍 Tại homestay</p>
         </article>
         <article class="opt">
-          <h4>Ăn nhẹ tại chỗ + cafe nóng</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Rx9YZMe8EZgGg93NwxGnpbG3otXvbQRJ-I4WgBurhE3IZJn63INfVwzfkLQwTJ3xlqrZj7QSA-tr-aiAdhdkYBIEXpC13uhXgaOqJX96tSiIdd7gsXUq5cwAoBDrp4E8Sppxdd=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 1" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9THRsJY4DlWPwnKopkbNBAgtWWilCMb_OfT3gEiZaIW87ErDMv5GL6egoI7jgVKHNe0nf7IFh49b3-OnE_JEAkwZTNMaSj6RqXcm4AKXFXTkMTsS_HGRfCa4VuwMpglGNP21600=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 2" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Q7PvIJiG5uO1BesX50zKgujxD61u4EHA214NQU6OPWemZEj02tdrBdqXR9-3nxmNGnyARkIRTLUhZntYZrDsgML6FedfsPvGMBOhujvF5_2sGYQ_101HC5FuNA0tuMvIhjXmd0Dh4rGW0F=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 3" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TRNi4YuG-PdiFxTPwGip-HivZ8VHPDdoqp6tMG5SlxemJOWkS2QpqEtqhjdJFvulvnfDJw8lP4D3FlVLmhWlY5VcEtpHgt4CHFUGoe97YIWhr6US0DEVhojUN4J_PwBExsQpR10w=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 4" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TCY8nOOEmGHVpxQLQNW2EGK2MHZa0ZP75ZrQBNbSVdbqVwx48ucRSWXgJuCIt1edNwLG4kCELw-0fGho8nY1JBsW1on9XSe3YlirSjbekdXFuWsADjIUSU-X1NXTTcnVR7oqg=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 5" loading="lazy">
+</div>
+<h4>Ăn nhẹ tại chỗ + cafe nóng</h4>
           <p class="sig">Bánh mì/chocolate từ HN + ly cafe nóng</p>
           <p class="note">Cực đoan một chút: ăn nhẹ trên sống lưng ngay khi mây chưa tan — mỗi miếng kèm view 2.000m. Rẻ nhất, đáng nhớ nhất.</p>
           <p class="meta">🎒 Đồ mang theo + cafe 30–50k</p>
         </article>
         <article class="opt">
-          <h4>Cafe Khên — Đỉnh Gió</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QbDigZx3SkSme7VVhZc1rggyZ3MYr82zdqChaxvzJ-jnyeOcGFcW4opHkHcKkqcS0FIdiuN8z4Tx2uf8rcBvROlKQWZXuTpN0E30BqWX8su_3I2PcTf2jy_Tz58RGhq7jfbQSjN4OAY5R3=w1200-h900-k-no" alt="Ảnh 1 - Khên" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TEodU_Y_N8iyW1xbYuEC6g0VgDtJSdlkkNTru5oqEE-rZzCoar_yhv_dXpNKNladMlT1yK_0g6yTWE_JPMI3CcbTq5lsy_VMAU8_PeUshhBa-CIQs2cmkJnQ3mAruWM2_liw-FOI8yB5Sm=w1200-h900-k-no" alt="Ảnh 2 - Khên" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TI41w1MvtdA8F7jCHcoJdS0jhCCKA-Q_KYwYKuAQJhyRPwI7JNyRdPYbEQeWm2zLAoPEQgniQ4oD3aehCr1i2a2PobRxIOuD7nM6e1Aj_k-a91FQZG3G1bP_sL5YmzUWDY1c-NAQ=w1200-h900-k-no" alt="Ảnh 3 - Khên" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RpQvso4DGQOhX785K9cXgbjjaAPBCJqUK6wL9rCKK7_H12e5crOlwYYMTJyXxa6xOQx0IzIF3hDlys7qusLOmzYatiuUFLwhSOE4L1IQIdhRcyG59vmN-iQDOH_jLtVzrcFViyJmPo2jpZ=w1200-h900-k-no" alt="Ảnh 4 - Khên" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Tr05L_oLhnbYAY6RqC6zax2e7T8wzpTswG_7I5GVIJZv1CUzRIQHA2yepODqndKwPZd9cvychlbOFik_9LKNm4nlmxdvTPjBEhkO4zd0C42QApcllFxIfZdDK0ZfMAb-p26u38rjAVl07X=w1200-h900-k-no" alt="Ảnh 5 - Khên" loading="lazy">
+</div>
+<h4>Cafe Khên — Đỉnh Gió</h4>
           <p class="sig">Nước 40–60k · ngay cột mốc Đỉnh Gió</p>
           <p class="note">Gương mặt mới nổi trong list TikTok Tà Xùa: quán nhỏ ngay khu Đỉnh Gió, cạnh cột mốc check-in — thêm một góc "triệu đô" nữa.</p>
           <p class="meta">📍 Khu Đỉnh Gió · 💰 40–60k/ly</p>
         </article>
         <article class="opt">
-          <h4>Thào Coffee — phương án B (trung tâm)</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QExof5R18noL7RAzvKKz5JVIDWLl_vyJnbnFR-7aBBXrcCAK5lItMAQrwFgsfUZdJKG9hVQ1CzN2zvYJ1FXtByUkfLkYcsN2InR6n6nt-HWYUI6e_DAywbhs-4J6YpYx-PKxuo7P5Dg5E=w1200-h900-k-no" alt="Ảnh 1 - Thào" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9T_5ap2_mq-d2I7TdMDMCC_7X72yoIODYmrJxrVUcsk4dpoaHJejKahhch1OgzjcTOJYgj5bzOmM7tbPOpVtCQ1WWYtiugxjNOMHNgP9BK5Y2OPYD7f4jvY7a_SBU06jj_fHj7g95vzEEpJ=w1200-h900-k-no" alt="Ảnh 2 - Thào" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QawHTGrVOmq93HXk9WrXkc6mV95sMn7qsmppK7HaFj1nVIbnLR_hxlH0pSfrWqAR0RtVirbmM0V_3-IIpqUKxEk41ifaWlJg-vnW34iu4IFzMmt22Y5svjpV8hNgrbdSAK_6quvjqFPLI=w1200-h900-k-no" alt="Ảnh 3 - Thào" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R5kEHbTQrrCJI1UFHtQ9vXMJpsdixD5_nh_l3pHkUtlZaEo5hCaXpdSqm0C7KJ50dN1c9I58f-SxqrwPtBfhDSCRGo6Og6eZA-ncq2JCHq4jivx7mMNQaVavcAq6XChQtrDo0h9OC10gcj=w1200-h900-k-no" alt="Ảnh 4 - Thào" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Q4S2Wt1BH-44Ie8lcZEHTg6TAu_bJNb1iyLQ17pTb5Oc-gOLseL6HjQzccI9BlvxBV5zz7K9ZLZTBtuQVY92GHVn1j7k0kUqWaZEpBhI3tVQDV6zJlEa4QPDwdgPrHysa8seu7zFMpEBJ8=w1200-h900-k-no" alt="Ảnh 5 - Thào" loading="lazy">
+</div>
+<h4>Thào Coffee — phương án B (trung tâm)</h4>
           <p class="sig">Sân gỗ nhìn thẳng thung lũng mây · 20–55k</p>
           <p class="note">Quán cà phê lâu đời bậc nhất Tà Xùa, mở từ 5:30 — phương án B nếu khu Đỉnh Gió quá đông hoặc mây tan sớm. Ngay trung tâm xã, cách Omely ~0,9km; signature trà sơn tra (táo mèo) mật ong.</p>
           <p class="meta">📍 Trung tâm xã · 🕠 05:30–23:00 · 💰 20–55k</p>
         </article>
         <article class="opt">
-          <h4>Cà phê Tháng 10 — 5,0★ tuyệt đối</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RV7A5nvurpqys5gaa9p1ihk_Rj5PQhvV3vr8M7XM29Aaj2BsEUOMkNPTn8dDWyq9wRjCMF2XoXywJbHg7JjJqlnbAkG4F9qJwNyPUyts7DBqoqPujerRPfKaCQxwVTVk4uNUPPgxqBLGlo=w1200-h900-k-no" alt="Ảnh 1 - Tháng 10" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SMm3llqN_8EPk0fvVwJczZYY33POhjA1YlsPaHDgKPJz7Ny1xj7IaGSorLhthXfABive6v7X_CnSJxYbMue7N_-RxjU0UiInsAeqZJqcEmI8UTaM9vEpYTookF-oT4cZDfnLs9q173voJE=w1200-h900-k-no" alt="Ảnh 2 - Tháng 10" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TaN5A_2bns0Ny80EMa88QXVCgmIs2GZXyYM2JhlsIKgx389vdbGhdD5zGu-HbXGNb22Wm7r4-6lG6Aap0dbg7mojenOq9kK-COTCfiHt4GVAg9_GPkvjZUk44nMqpmeQMgAPEp-Engx3gj=w1200-h900-k-no" alt="Ảnh 3 - Tháng 10" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Qr1TqrYSdp5q3Xr8oaP_3lczQov1tLGPlemyfAV2CRCkqc6ggwBNlcjrTQqr4APN6C1UlRdJ-XBsCs9DXHu5yPYn76pkbC6oLSUZKeL_-fJGKtHoQgtyUSKMnoi05gBRuIOSMP9oOnkcU=w1200-h900-k-no" alt="Ảnh 4 - Tháng 10" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QOxWNo4H7vPPJUNEI7SF8SvCNCSmK8_ZaP81idDBnKwrTIUabDiT_9tfIxwsGBGF8Uy0J85azhkeyiyrvSQ3r9QKSsf0IkkamEZ-_2fC3vD-WPyuxSKePdT1EW3VMFlfEmxh5Oo20ea629=w1200-h900-k-no" alt="Ảnh 5 - Tháng 10" loading="lazy">
+</div>
+<h4>Cà phê Tháng 10 — 5,0★ tuyệt đối</h4>
           <p class="sig">Quán mới ngay trung tâm · ngồi lâu thoải mái</p>
           <p class="note">Điểm 5,0★ hiếm có trên Tastemaker 2026 — quán mới ở trung tâm (đối diện Cloud), tiện ghé trước khi về nghỉ bù.</p>
           <p class="meta">📍 Trung tâm xã</p>
@@ -601,25 +775,53 @@ footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:upper
       </div>
       <div class="options">
         <article class="opt">
-          <h4>Nhà hàng A Phủ — view mây</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RNM0nr89DfTjLHBjGw4Heq1-fpDpL9XLlxR4rlFMpCod-k7DFRuHnks5cdTIm6oM0krqdPmT5RjPxiDu278uguiuLFdDDeg-2jYgx9g-TFMSTcy65bjbu5S-WzCBSS64H53krWhzwTEk_H=w1200-h900-k-no" alt="Cổng nhà hàng A Phủ - Tà Xùa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R6CYPLGsd_8geZCxoouEYnCylz1Lqt5z8z3yvQjuBz88LtXqDAtI4oZuCLeOg2YDyNKgI4Oty38qJsnhIZDgj9zVOh6Qad21NoSKQ6RTJTPFczgJdI2dPfYYWaQD84n9Bm8wqroypZgHe8=w1200-h900-k-no" alt="Bữa ăn Tây Bắc tại A Phủ" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R6mgxxwNHBxv2tsol6RunI8nV0x6dK2MmCFmcYiMpCpnh0gl-8YMUWCyH89rXJOl_VQYXSWYFykFrz4BmayKg_8VmBj9wK172IfKUQlIrHXoq0cZGVLbI5IH7dnp_fOwnVgMPs2Q=w1200-h900-k-no" alt="View núi và biển mây từ A Phủ" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QOAjp2Yv1zplKgqzCR31AFLdKw1jSvNDJ8AvZi3JW9ECC23DyduhSx1h8dcD_qyW-ktdGU3JXF4GJXrFNiUCSELXo_rAaeAfHPK8W56YYa147rSWr8EQUCcOvMnDtESOmoxU815rn6kaLn=w1200-h900-k-no" alt="Vịt quay A Phủ" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TuW4POdQrdl-HRPVcIuHFWQCKj6nPDaDDKSdajpLP0DZMLiJicZRwLVYwO-yrgs93C9uJ6cl0b-wfcgzLZU6K8Gaa-BAVZX2DIBJjRlvjGLAqIW8r9Bf97gd3BUA48LEedOWqiYruKd6VR=w1200-h900-k-no" alt="Lẩu tại A Phủ" loading="lazy">
+</div>
+<h4>Nhà hàng A Phủ — view mây</h4>
           <p class="sig">Thịt trâu gác bếp · lợn đen xôi · rau rừng</p>
           <p class="note">Ăn trưa thịnh soạn sau buổi sáng dậy sớm — tầm nhìn mây từ bàn ăn, phục vụ chăm review tốt — nhớ thử lẩu gà đen đặc sản (tips TikTok).</p>
           <p class="meta">📍 Trung tâm xã · 💰 150–250k/người</p>
         </article>
         <article class="opt">
-          <h4>Vua Lẩu — Nướng</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Sy2e_2oHbcnZHv6Nsp02kTKK4vdPlBIQAUTvg5AuosSIN2RbC3rS9AtonNRHSIOzCVjCkJAsv1GfdSqHj4j0qHMrzJpuAsdIdm6_QK1773Q0Zmun0A_z7Rj9N2JwrA5ew_xJkX=w1200-h900-k-no" alt="Ảnh 1 - Vua Lẩu" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QWyiyYt0_8PjbJBiPsxuFTZ8_DA8XyTCxbWvUF1PonOD0-jhPawmrOE1YDe1e3KPIiEAHegCzjzVGVgF_fDgLRvLX-VJR_NfOoBWl8_Un3c12XPSz4Z-qUZ8XqV5jA2mtuOdSiAkFl6pzZ=w1200-h900-k-no" alt="Ảnh 2 - Vua Lẩu" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R_cxzgUzzdfd5xNojIE2D1NBllxcl3Z9rQsXBrEl9ltepM34-gZTLKtFAM-703wnXMQjmZ4XZothEHWIgZLz5SmYFQ8rVL7j9P8fK8AMai44EcNBJLoT02cTWJASD6V_viKn-8LxVItHnO=w1200-h900-k-no" alt="Ảnh 3 - Vua Lẩu" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QBBOgExCk7Zwt9wA1UMGeDjczRFcdnB1EWiMtgXf8bdHCGN2ppgbaXWhrewmtUqxsg_MCx__RdArRPQ0njEEhBY1q40Ob7U1fslL4ayO8K0cg3M-Dor05X_jrxmXpFYVsgSa3C=w1200-h900-k-no" alt="Ảnh 4 - Vua Lẩu" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S6EqwG4Xj9ohqhWg2u5f20AKOSBm7cqAOyr7ooA7QE3iB0ALqQStigROGGtONZWdlTKni5ByZWatD5z6fQA4bn1ZS_-oGu1jt2ORKn4fFymM3SWsKF4Mmw_y2XBQGotBCVV5A=w1200-h900-k-no" alt="Ảnh 5 - Vua Lẩu" loading="lazy">
+</div>
+<h4>Vua Lẩu — Nướng</h4>
           <p class="sig">Lẩu nóng giữa 12°C</p>
           <p class="note">Quan lẩu nướng tại trung tâm — dành cho nhóm muốn nồi lẩu sôi sùng sục sau 3 tiếng trên núi.</p>
           <p class="meta">📍 Trung tâm xã</p>
         </article>
         <article class="opt">
-          <h4>Mayhome Restaurant</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QobnoGUeSV_rAJYiMLLdSk3kFugbuOWgVIYGeTqJsa9W6AoLzwJIDh_u1CrHuG_YrqbeppGHfbAPUJ14oBP0s0P3sQzrKet1pL1lhxaASD0-iRbJdN23Igeog9et4eI5U97amHcQ=w1200-h900-k-no" alt="Mayhome Tà Xùa - ảnh 1" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SxYxxpJ8TQroeWE7IMKgp3tziNvVJtz3mz2bsRgcyKUJLnO0Ajr1U_0urbg_zJ2EdHTfd3eql2_075k04Po17fdjkHupgMkybJvBCcexwyNHvz25dkMsXC7satWsWjJ3D9jPVC0IVvC9wk=w1200-h900-k-no" alt="Mayhome Tà Xùa - ảnh 2" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QzDwEffhrey9y0wUnSZvLy4yYscKobS7t_9jaHeDDLqwufe23xqcgrqmOAC19MGIBzNBj-wMswtoBSPH9nVmxT-O-PW2WAMkdTqls-yvM4cEpH1tqGB1JusotAp1seLUB8YcMCWfVeukK4=w1200-h900-k-no" alt="Mayhome Tà Xùa - ảnh 3" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9T-QJMh-tpxf27zrbT0iSXVRN_iA8Rh6yDbJh4EVwzAwk296Z8od2KhO7kjfHxaL4AD0SWlpwgpeus4Eds9gqNWnFeIalfebU4uVP-jDv09pFdyU9Hj_99a-FYvxe2b6pEjGVzitVqxfZo=w1200-h900-k-no" alt="Mayhome Tà Xùa - ảnh 4" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9ScK5juraa33_ulZ_OFmh_dBwZx4m58HJgDsQM6dp-bSCjP8loEt8b62kq7IJJntBvsJT7jKeZqruxeX-ndPnl0jcUDyzXuwjbOVETXHmMkXjlN6-v3pjBhfeBCrFz90wZCFtcxxA=w1200-h900-k-no" alt="Mayhome Tà Xùa - ảnh 5" loading="lazy">
+</div>
+<h4>Mayhome Restaurant</h4>
           <p class="sig">Cá Pa Pỉnh Rộp (nếu 6/11 chưa ăn)</p>
           <p class="note">Cá hấp/ghép nướng kiểu Thái đặc trưng Tây Bắc — món review khen nhiều nhất menu Mayhome.</p>
           <p class="meta">📍 Trung tâm xã</p>
         </article>
         <article class="opt">
-          <h4>Nhà hàng Bếp Củi — cơm nhà 70k</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QHRdCXUTIhjZB7uvj97UJycuj2uZ3beHsKmyGJ-5LoLb86xfCwN--7KkQAR0U7PCjpe1VU_KOtCoWvTTiKNEQKXs6oNky3W2WhOJT7wAhCKrOFWwlelVLLipuJnHV11Js-5iFjw_qN97kY=w1200-h900-k-no" alt="Ảnh 1 - Bếp Củi" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RtkQcnS2Y6FMzv9Jva1k3Qcr6_uA8vt3k-M-o2ckitBJfnMd4WOlB9H7wmDA5rK-8TmsI3wJWaESNRpRbyRAxslmyPvg7F3fUz-b3dB0tbO3aoZsQ6QLywf0zFuyl7KITpuo36gOiBTIWn=w1200-h900-k-no" alt="Ảnh 2 - Bếp Củi" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SLbGqwPINGWeAdVJq1zzeA6XRtpepLtm2gQTBXHxcj76gJm8hjesPoySjsnF093-a0FUZyMKpaZ6jibufjKuWFGFO4F6UEHkHG7NDfuYB63ZeyT1wF53EYsoXRfEiUmTYamDjmN6kkcLb6=w1200-h900-k-no" alt="Ảnh 3 - Bếp Củi" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RlOiDJwnNPOSoIKw52CSZO71CVfBQdBK5D88rTS7H2ocexOVjltf7EaFPwiRl3OQYnRZueBrC3B2BfnfAnHsjNhjss2-ASJcVMIJlcwABV32C8gTSvxpW2X1PoCVcngszkqCgBwFAvLzY=w1200-h900-k-no" alt="Ảnh 4 - Bếp Củi" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QF1m4HKMDhk0TTzrsRJKxMcliJf_UEQ2ol3PyN93Ddp_Xi0RU4N78fHFMg3b5VhQFe4dGz6V_0DxmgUEOFlBwPiYbXaWQBtVa6MY4ucXrzXWALFgCNzhK-qhCnRIJ5t_8_B_mxMPuTHzrT=w1200-h900-k-no" alt="Ảnh 5 - Bếp Củi" loading="lazy">
+</div>
+<h4>Nhà hàng Bếp Củi — cơm nhà 70k</h4>
           <p class="sig">Cơm nhà 70k/người · nướng ~200k/người</p>
           <p class="note">Quán trung tâm rộng rãi, sạch sẽ, chủ thân thiện — combo cơm nhà 70k nhẹ bụng mà ấm, vừa vặn buổi trưa sau sáng dậy sớm.</p>
           <p class="meta">📍 Trung tâm xã · 💰 70–200k/người</p>
@@ -650,19 +852,40 @@ footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:upper
       </div>
       <div class="options">
         <article class="opt">
-          <h4>Trạm Mây Tà Xùa</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RXdn_CEejoUkBllFLtLXrUfSqSRSZW9AFPM1IgQdbAMcvTvjznhc5ildlWkwFk_7zE3OzHAKXIQqVXU4-z403DJnDzWIRhwr8ZL6aKdnbL2nN3bUnXgQ07SnjA4zYFO_-OFn4vL_mZUJNG=w1200-h900-k-no" alt="Phong cảnh quán Trạm Mây Tà Xùa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QFwPJgWlhuFin85numepWk45UNZ3KxuZOSjIFLTQMLD0Py6kYrETlq49Tk076qhY1UKPSH4jFHxeysvzBuUa3MDaGeLqn_w6Rfzl9UNN72OwoRE4k2emjtnysdjDy8y1Ekf9RHNPdZgDic=w1200-h900-k-no" alt="Nội thất quán Trạm Mây Tà Xùa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Txu9FLlAYZ8PblKZnHJDMMiueyucZkFkVFFplgbOUPH6nrF32qMBxJddVnzLCbJeijnXGPt9IxkKbCemz1sNOV1qzZJ8S04C0u0OlJUUu6UfxCIUx0942ZVS_sXkV3IyiaMgJx00QjpIF9=w1200-h900-k-no" alt="Món ăn tại Trạm Mây Tà Xùa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TWEC_vZ-r3lZfuHdMhuzV58I8QbS9ZNyPilDL4bpFsyyXP_Rz8_vHyjCkI8Inh_UQPXzVjUxtmbX4ICrSw1fCMSWiSnoQ68G7cKSH5zLUrlQUTt7qqz52jPP0dSM6gsBB8Ugg2BwMvsoKO=w1200-h900-k-no" alt="Đồ uống tại Trạm Mây Tà Xùa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R2zu-oU8xf8Wamr7h4fMzOJVkLlaoTdfjq3J0KH3r_kFuBKlFBrzTea26oDRIfA_1zZWH8T_eRBiSmzpNLEzVeGGRISAxwzkKLa1zxZ432003VRIfs5ZoI6-SEpdu-sW1XqMLDaNZKWjO9=w1200-h900-k-no" alt="Phong cảnh núi mây tại Trạm Mây Tà Xùa" loading="lazy">
+</div>
+<h4>Trạm Mây Tà Xùa</h4>
           <p class="sig">BBQ camping ngoài trời bên than hồng</p>
           <p class="note">Set nướng bò · lợn bản · gà đồi tẩm mắc khén hạt dổi, không gian quây quần kiểu dã ngoại giữa mây ngàn — bữa tối "đắt giá nhất về" cảm xúc. Ghép mũi hoàng hôn: ghé Hoàng Hôn Coffee + Ameii Hill ngay cạnh trước khi vào bàn (cùng bản Khe Cải).</p>
           <p class="meta">📍 Khu Khe Cải — ngắm trọn thung lũng mây + hoàng hôn · TikTok + homestaytaxua.com</p>
         </article>
         <article class="opt">
-          <h4>Tiệm nướng Cánh Cam</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SqRkNvPeMdGm9Zu5IJhSoA4TGZWD_IoyeSDJCSp0nHya11tzGwfbiuDCTmE1Bn9H3vzt4gv7K4_j_npoRk8NaccMfehTNhYj97pP5nxe6QHr41RRNdfLuf2ZagZFa0y-O2MnDsoYSdutfB=w1200-h900-k-no" alt="Ảnh 1 - Cánh Cam" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SccnodHKNpDMDMCMfJv-JPekRBAP1h0rIWN93hdnY_U4WnyohStt_QMyKbplfRWNz_tDWXbIxfM91GmIY3PJKbBPkGz2KIbqqf5TObln0kF7psckY9hheA4_52GC-dL9fYc3JSqVh9hckX=w1200-h900-k-no" alt="Ảnh 2 - Cánh Cam" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TVBsNKVXHUkU2n19t9oObXIB5yVCpxRPByU0j0N6_eIyCriU7zSAGfjS9VEvQOvpc1oCm_KGp03ZHJIG9MEKzznmP2nBDZOeCXHnwlgfV9s7NuLKO2yik1Kbjlazs8fveIOOYsa06JCozU=w1200-h900-k-no" alt="Ảnh 3 - Cánh Cam" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SmXkiWqkBtAMy05QJd4eNCe_foeLxTMOCNyzr2ghfpivbzsm4dvSB0-sNAcUtnFHSZIAgD9Kj9j04OOtPoWW5XQnejTlRP5AHemNOfQd_OUMtRndtXZh8JkidagIBCCFwSbWCLSAMZbzA=w1200-h900-k-no" alt="Ảnh 4 - Cánh Cam" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SZwbv14Lc_neev6tA0oQhkEvx3T_Jw4D3cG2p_p7Kya_LPFQDJyySj2pdKJ-WI9QFve82jE3W-hXgoIs9a4GeoQEj2eUpxTHlzW3AkkPM8ionc2eHbJ34Puq3qlujZHXaAjSFqdwAdN190=w1200-h900-k-no" alt="Ảnh 5 - Cánh Cam" loading="lazy">
+</div>
+<h4>Tiệm nướng Cánh Cam</h4>
           <p class="sig">Nướng đêm lãng mạn</p>
           <p class="note">Nếu tối 6/11 chưa chọn Cánh Cam thì đêm 7/11 là lúc — trời vắng, sao nhiều, bếp than hồng.</p>
           <p class="meta">📍 Gần trung tâm</p>
         </article>
         <article class="opt">
-          <h4>Set BBQ tại Omely Home + lửa trại</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S6uiM6JCGAdA4TdRoYlYQ5Hp_ejYRzvmCx7L5_3Kd7e6hOhRAsOm17QizxnFpWfNpFBoRuV7DteYIieXmZyT3wV7B5rbU71bo11n2UsocLwVWOozRuX6Oa54cANjGq6Lov4ChhzmqAO-BL=w1200-h900-k-no" alt="Phong cảnh sân khuôn viên Omely Home Tà Xùa với bàn ghế và núi xa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SGMbe2pB9FfIsG4sX6OLZFtcE5_-OhcKzuIIkuZ2alxmCIRLeiILTfvap_XLZcLcdVCxixb9WlStSw9xS3k62n0EBQz36ilOEVCgOmI5Y6gg2iswYnwXJn-qrkKpbmDHJAZBhMeaJgp88=w1200-h900-k-no" alt="Phòng tắm bình tắm hoa hồng cùng view núi Tà Xùa tại Omely Home" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QWkVGNpLP6hO8rodK9H_X0kqFpvdrM4sGE3QnmmqoaTpSQUcj6LCHzdZ3nREmbFP0noe_VzHXfJOFZxdZ9rzhHOS8dPyZXmTwUObljffBVAgi5-gGmSCLwHFzXUp4patr11A7YzFLHwLkZ=w1200-h900-k-no" alt="Phòng ngủ trông điểm nghỉ Omely Home" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SNUPrXmLeMxlkpMPYCFjlAKF_MUUjuP2R-_e38TB5KWEhMfA82KV3nTPVpb3QWZ9qquGVHIKjpdAF4J2G4IgLawqKu4UeEsZqPkrfWRUvPsXCSqitujEftIlypPsmnk0xBdLw34oA80isP=w1200-h900-k-no" alt="Phòng máy đơn giản tại Omely Home Tà Xùa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RjBWPzYqe2BVF7gNB9uj9xNSaGxnb8vbu1DdkO3qn7Z0DgSxV0vQQHtjlnMQSd0xgvtcKmOrNZ_jgj41ivAfChkh0lfRsT5jDyxTankHRi65fF6WG8yXz8C0GUbvkXLTTQuWplWY4Zaw0=w1200-h900-k-no" alt="Phong cảnh khuôn viên homestay Omely Home" loading="lazy">
+</div>
+<h4>Set BBQ tại Omely Home + lửa trại</h4>
           <p class="sig">Nướng tại homestay — khỏi di chuyển</p>
           <p class="note">Nhờ chủ house đặt set nướng, ăn ngay tại sân nhà rồi kéo dài lửa trại tới 22:00. Tiện nhất sau 1 ngày dậy 4:30.</p>
           <p class="meta">📞 Đặt trước trưa 7/11</p>
@@ -699,19 +922,40 @@ footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:upper
       </div>
       <div class="options">
         <article class="opt">
-          <h4>Cơm nhà Namiya — Đỉnh Gió</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QCectnHwNdWv6x7v2lcnbJRUfdKzQPHy_1_rYha27PqfBUm58xUPtDvxE3Yi8rt7TReHAnL5OoSFbEHQMUaAawE7NFFjxmt5_vTKexnrRNRZDGBwQ1y5e9LYhznbtGWVVA7JDpq7qbSCWe=w1200-h900-k-no" alt="Ảnh 1 - Namiya" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9T5GQFAeobIBT1TDpPlA7yCJ8OxaOfdvofndCTf92QsOzt1FOGDCCVL3TkkW_FnXPNZw63n5D-bBQ97JAthqBUgX2pVnKMAAfV-j9hhwwwSEbw4w3brdItnraHBxKp4qpB1U8heUp138M91=w1200-h900-k-no" alt="Ảnh 2 - Namiya" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QI_lkLK82bsrKCF4hpOXZ9KyV_1sa78zU2-th-ltAAs_AwU2YVP6FYylQakqGcqdtnT__qz_YMGg6E5gTSl-CwMC8j0SvGfwxqwZkLUVKgyqE6vevRnu19Nf1mt_beHGhZ_Zjys-brs-HX=w1200-h900-k-no" alt="Ảnh 3 - Namiya" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9T6OiEM-vEapcAAFjLac8HkgQCdVIkQ-isEw1EHioGK9K4fFAW9RLBjrFQUxNyXlzsRTK5SZiSxoEB-xX_tUNqMeQzyfeFsFX-W_cMGTRxaFf9PblbENFlngwGtIge5-FK0f9z9Wr-hnj4o=w1200-h900-k-no" alt="Ảnh 4 - Namiya" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RQW40Gz-divfJp--oiJAqqlmsfnplcp71W-0gjQ5Z2y4ftP-OT17YKdnjUJwrGg7dYALAR_6tbP4BFfonLbpOLUUboJ6NW5lQHlx0VQjsRzC_nAJ9XSwrT3o7AunyRqxsDQyPt3shwpyiP=w1200-h900-k-no" alt="Ảnh 5 - Namiya" loading="lazy">
+</div>
+<h4>Cơm nhà Namiya — Đỉnh Gió</h4>
           <p class="sig">Bữa cơm nhà cuối trước khi về</p>
           <p class="note">Ăn sáng ấm cúng kiểu nhà — hợp tâm trạng ngày cuối. Kết hợp tiện ngắm Đỉnh Gió lần nữa.</p>
           <p class="meta">📍 Khu Đỉnh Gió</p>
         </article>
         <article class="opt">
-          <h4>A Phủ Restaurant</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RNM0nr89DfTjLHBjGw4Heq1-fpDpL9XLlxR4rlFMpCod-k7DFRuHnks5cdTIm6oM0krqdPmT5RjPxiDu278uguiuLFdDDeg-2jYgx9g-TFMSTcy65bjbu5S-WzCBSS64H53krWhzwTEk_H=w1200-h900-k-no" alt="Cổng nhà hàng A Phủ - Tà Xùa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R6CYPLGsd_8geZCxoouEYnCylz1Lqt5z8z3yvQjuBz88LtXqDAtI4oZuCLeOg2YDyNKgI4Oty38qJsnhIZDgj9zVOh6Qad21NoSKQ6RTJTPFczgJdI2dPfYYWaQD84n9Bm8wqroypZgHe8=w1200-h900-k-no" alt="Bữa ăn Tây Bắc tại A Phủ" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R6mgxxwNHBxv2tsol6RunI8nV0x6dK2MmCFmcYiMpCpnh0gl-8YMUWCyH89rXJOl_VQYXSWYFykFrz4BmayKg_8VmBj9wK172IfKUQlIrHXoq0cZGVLbI5IH7dnp_fOwnVgMPs2Q=w1200-h900-k-no" alt="View núi và biển mây từ A Phủ" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QOAjp2Yv1zplKgqzCR31AFLdKw1jSvNDJ8AvZi3JW9ECC23DyduhSx1h8dcD_qyW-ktdGU3JXF4GJXrFNiUCSELXo_rAaeAfHPK8W56YYa147rSWr8EQUCcOvMnDtESOmoxU815rn6kaLn=w1200-h900-k-no" alt="Vịt quay A Phủ" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TuW4POdQrdl-HRPVcIuHFWQCKj6nPDaDDKSdajpLP0DZMLiJicZRwLVYwO-yrgs93C9uJ6cl0b-wfcgzLZU6K8Gaa-BAVZX2DIBJjRlvjGLAqIW8r9Bf97gd3BUA48LEedOWqiYruKd6VR=w1200-h900-k-no" alt="Lẩu tại A Phủ" loading="lazy">
+</div>
+<h4>A Phủ Restaurant</h4>
           <p class="sig">Bữa sáng thịnh soạn</p>
           <p class="note">Món Tây Bắc đủ vị — phù hợp nếu nhóm thích ăn chắc trước chặng 240km về HN.</p>
           <p class="meta">📍 Trung tâm xã · ☎ 0978 426 813</p>
         </article>
         <article class="opt">
-          <h4>Ăn nhanh tại Omely Home</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S6uiM6JCGAdA4TdRoYlYQ5Hp_ejYRzvmCx7L5_3Kd7e6hOhRAsOm17QizxnFpWfNpFBoRuV7DteYIieXmZyT3wV7B5rbU71bo11n2UsocLwVWOozRuX6Oa54cANjGq6Lov4ChhzmqAO-BL=w1200-h900-k-no" alt="Phong cảnh sân khuôn viên Omely Home Tà Xùa với bàn ghế và núi xa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SGMbe2pB9FfIsG4sX6OLZFtcE5_-OhcKzuIIkuZ2alxmCIRLeiILTfvap_XLZcLcdVCxixb9WlStSw9xS3k62n0EBQz36ilOEVCgOmI5Y6gg2iswYnwXJn-qrkKpbmDHJAZBhMeaJgp88=w1200-h900-k-no" alt="Phòng tắm bình tắm hoa hồng cùng view núi Tà Xùa tại Omely Home" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QWkVGNpLP6hO8rodK9H_X0kqFpvdrM4sGE3QnmmqoaTpSQUcj6LCHzdZ3nREmbFP0noe_VzHXfJOFZxdZ9rzhHOS8dPyZXmTwUObljffBVAgi5-gGmSCLwHFzXUp4patr11A7YzFLHwLkZ=w1200-h900-k-no" alt="Phòng ngủ trông điểm nghỉ Omely Home" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SNUPrXmLeMxlkpMPYCFjlAKF_MUUjuP2R-_e38TB5KWEhMfA82KV3nTPVpb3QWZ9qquGVHIKjpdAF4J2G4IgLawqKu4UeEsZqPkrfWRUvPsXCSqitujEftIlypPsmnk0xBdLw34oA80isP=w1200-h900-k-no" alt="Phòng máy đơn giản tại Omely Home Tà Xùa" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RjBWPzYqe2BVF7gNB9uj9xNSaGxnb8vbu1DdkO3qn7Z0DgSxV0vQQHtjlnMQSd0xgvtcKmOrNZ_jgj41ivAfChkh0lfRsT5jDyxTankHRi65fF6WG8yXz8C0GUbvkXLTTQuWplWY4Zaw0=w1200-h900-k-no" alt="Phong cảnh khuôn viên homestay Omely Home" loading="lazy">
+</div>
+<h4>Ăn nhanh tại Omely Home</h4>
           <p class="sig">Xôi/bánh + trà nóng, trả phòng gọn</p>
           <p class="note">Ưu tiên nhóm muốn xuất phát sớm về HN tránh kẹt xe cuối tuần Chủ nhật.</p>
           <p class="meta">📍 Tại homestay</p>
@@ -747,19 +991,39 @@ footer h4{color:#c9d7ea;font-size:13px;letter-spacing:.14em;text-transform:upper
       </div>
       <div class="options">
         <article class="opt">
-          <h4>Ăn tại Bắc Yên trước khi xuống đèo</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Rx9YZMe8EZgGg93NwxGnpbG3otXvbQRJ-I4WgBurhE3IZJn63INfVwzfkLQwTJ3xlqrZj7QSA-tr-aiAdhdkYBIEXpC13uhXgaOqJX96tSiIdd7gsXUq5cwAoBDrp4E8Sppxdd=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 1" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9THRsJY4DlWPwnKopkbNBAgtWWilCMb_OfT3gEiZaIW87ErDMv5GL6egoI7jgVKHNe0nf7IFh49b3-OnE_JEAkwZTNMaSj6RqXcm4AKXFXTkMTsS_HGRfCa4VuwMpglGNP21600=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 2" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Q7PvIJiG5uO1BesX50zKgujxD61u4EHA214NQU6OPWemZEj02tdrBdqXR9-3nxmNGnyARkIRTLUhZntYZrDsgML6FedfsPvGMBOhujvF5_2sGYQ_101HC5FuNA0tuMvIhjXmd0Dh4rGW0F=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 3" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TRNi4YuG-PdiFxTPwGip-HivZ8VHPDdoqp6tMG5SlxemJOWkS2QpqEtqhjdJFvulvnfDJw8lP4D3FlVLmhWlY5VcEtpHgt4CHFUGoe97YIWhr6US0DEVhojUN4J_PwBExsQpR10w=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 4" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TCY8nOOEmGHVpxQLQNW2EGK2MHZa0ZP75ZrQBNbSVdbqVwx48ucRSWXgJuCIt1edNwLG4kCELw-0fGho8nY1JBsW1on9XSe3YlirSjbekdXFuWsADjIUSU-X1NXTTcnVR7oqg=w1200-h900-k-no" alt="Tà Xùa Quán - ảnh 5" loading="lazy">
+</div>
+<h4>Ăn tại Bắc Yên trước khi xuống đèo</h4>
           <p class="sig">Gà nướng · cơm lam thị trấn</p>
           <p class="note">Nạp năng lượng trước 5–6 tiếng ô tô. Thị trấn nhỏ, quán gà nướng + cơm lam vỉa hè đông vui giờ trưa Chủ nhật.</p>
           <p class="meta">📍 Thị trấn Bắc Yên · rẻ, nhanh</p>
         </article>
         <article class="opt">
-          <h4>Nhà hàng Phố Núi</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SRFX2_glIDYfU8vXO6M7dqXovxxlJ7vdJNnlka9kr0wTNyUEMtWQR3JiGcfdmJnr1qlaB3UWhH-QBioVGaXUE4lclAJajkOoWoVlWU532NQaP_gH0n1zfj5R53ao0EYNJ5nKNj=w1200-h900-k-no" alt="Ảnh 1 - Phố Núi" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Szcmq369wSQG9nYCZNYEgJpJs4FpSRPAsQd23xt8PNKzam92ZsXde1Fy7fjyruOrWZaltxhpJnPu2oXF88ZMocxro3Vqb6lmcB8EdotUEed_yBWQN9MdHBb8Y6gejiss0kF7Wl=w1200-h900-k-no" alt="Ảnh 2 - Phố Núi" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SPQ6vyNyi8bzxEakd32RaCs1aXr-jygi6IVKjiaPoGqQ9phdTDJWxxnltSm8gYRP-8EKg035FOBcUc6pAwjh7D-jLdCUZsXFKxiGWlDj16cJXQMwE4aPd4E1nXrhaIqj3BZoA=w1200-h900-k-no" alt="Ảnh 3 - Phố Núi" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RGvdCajYuRwLMY0xbyOQ5tSDg26Tt1bt8JEpx581lceJrHgBN3F9w2X1ecsg07WSBBme8P0i-gi06gNIaTTthQv96AoMC17thTBOeE8hul5XLnYzqAfcFtNEpK7S3XEqG3h0_7=w1200-h900-k-no" alt="Ảnh 4 - Phố Núi" loading="lazy">
+</div>
+<h4>Nhà hàng Phố Núi</h4>
           <p class="sig">Lẩu nướng cuối chuyến</p>
           <p class="note">Nhà hàng nằm tại Tà Xùa — ăn xong mới về. ☎ 0933 669 881, zalo 0898 563 115 (the homestaytaxua.com).</p>
           <p class="meta">📍 Tà Xùa · đặt trước khi qua</p>
         </article>
         <article class="opt">
-          <h4>Đồi Mây — mẹt nướng trưa</h4>
+          <div class="opt-gallery">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SQ5tpUsukJ__NEG8FFRI1bkBMHoBUg-FyeNZ_feO-nHXCrgRV_OIm55GC-Y6OeOVPowYRBrS_43scPCK90yYqsvZov-zlemTeshnk1U2rcyrLk9594wkKmmryfXgKp3tBrYhU=w1200-h900-k-no" alt="Ảnh 1 - Đồi Mây" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S59X2rGK_JTexbzgj-J9FsrrHCOI6_vge3pV9wk6pOrM3gE1C44VVjCNt2SX81UFnIgVq42If5KU0RDSTLflThErXgDZzQR5L6fsAfry6nyOQ09jVCWCw-NhfX_q__ZAvhSsOALF-h5HI=w1200-h900-k-no" alt="Ảnh 2 - Đồi Mây" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RZIO2iz_uqCWumOB74FuyxNw_xC-sax3rdqre0dhZpgLfiMX8Zieo1dZkhD4FA-e9N2cEOocHfD2yHS_oRv9gFNsCDefWa5eoqIPji1dG8DXMom6I9s1lpgUpN542qDD85gWH2=w1200-h900-k-no" alt="Ảnh 3 - Đồi Mây" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Rew0L-Z2pigP0AGgADD6wBex9OakK1QXRynyHnstOI3OkwwvqMKgpJDKCEQD_yj-1e4HmjTim50nGX8Wr8XJptKJH6Fgju6y3vdA6ZeXPFmtC8u7ZVVXspt03zhZvJEYFg_z2F9HuGMrwF=w1200-h900-k-no" alt="Ảnh 4 - Đồi Mây" loading="lazy">
+  <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Qb74urgisThMnG0aNYU1ISjV4rZdhqF3FKOndXE5I_SFhb2-aFcM5GC3ZsOT_I02l8eoluyYbsxx0wI5uZ6t1dmmHeV1Qrsn93CotHg2vx2wgczMxCmFnZAMgsx-91sgZl8-1HKQ=w1200-h900-k-no" alt="Ảnh 5 - Đồi Mây" loading="lazy">
+</div>
+<h4>Đồi Mây — mẹt nướng trưa</h4>
           <p class="sig">Mẹt nướng gần cổng chào (nếu chưa ăn)</p>
           <p class="note">Cách cổng chào 50m, tiện ra về — món best-seller cho bữa cuối vẫn ngon như buổi đầu.</p>
           <p class="meta">📍 Cách cổng chào ~50m</p>
@@ -1072,5 +1336,71 @@ window.addEventListener('scroll', function(){
   });
 })();
 </script>
+
+<div id="lbx" role="dialog" aria-modal="true" aria-label="Xem ảnh địa điểm">
+  <div class="lbx-stage">
+    <button class="lbx-close" id="lbxClose" aria-label="Đóng">&#10005;</button>
+    <img class="lbx-main" id="lbxMain" alt="">
+    <button class="lbx-nav lbx-prev" id="lbxPrev" aria-label="Ảnh trước">&#8249;</button>
+    <button class="lbx-nav lbx-next" id="lbxNext" aria-label="Ảnh sau">&#8250;</button>
+    <div class="lbx-bar"><div id="lbxTitle"></div><div class="lbx-count" id="lbxCount"></div></div>
+    <div class="lbx-thumbs" id="lbxThumbs"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var LBX=document.getElementById('lbx'), mainImg=document.getElementById('lbxMain'),
+      tEl=document.getElementById('lbxTitle'), cEl=document.getElementById('lbxCount'),
+      th=document.getElementById('lbxThumbs');
+  var cur=[], idx=0;
+  function render(){
+    if(!cur.length) return;
+    mainImg.src=cur[idx]; mainImg.alt=tEl.textContent||'';
+    cEl.textContent=(idx+1)+' / '+cur.length;
+    for(var i=0;i<th.children.length;i++) th.children[i].classList.toggle('act', i===idx);
+    var t=th.children[idx]; if(t&&t.scrollIntoView) t.scrollIntoView({block:'nearest',inline:'center'});
+  }
+  function open(imgs,start,title){
+    cur=imgs.map(function(im){return im.currentSrc||im.src||im.getAttribute('data-src');}).filter(Boolean);
+    if(!cur.length) return;
+    idx=Math.max(0,Math.min(start||0,cur.length-1));
+    tEl.textContent=title||'';
+    th.innerHTML='';
+    cur.forEach(function(u,i){
+      var t=document.createElement('img'); t.src=u; t.loading='lazy'; t.alt='';
+      t.addEventListener('click',function(ev){ev.stopPropagation();idx=i;render();});
+      th.appendChild(t);
+    });
+    LBX.classList.add('on'); document.body.style.overflow='hidden';
+    render();
+  }
+  function close(){LBX.classList.remove('on');document.body.style.overflow='';}
+  function nav(d){if(!cur.length)return;idx=(idx+d+cur.length)%cur.length;render();}
+  document.getElementById('lbxClose').addEventListener('click',close);
+  document.getElementById('lbxPrev').addEventListener('click',function(e){e.stopPropagation();nav(-1);});
+  document.getElementById('lbxNext').addEventListener('click',function(e){e.stopPropagation();nav(1);});
+  LBX.addEventListener('click',function(e){if(e.target===LBX)close();});
+  document.addEventListener('keydown',function(e){
+    if(!LBX.classList.contains('on'))return;
+    if(e.key==='Escape')close(); else if(e.key==='ArrowLeft')nav(-1); else if(e.key==='ArrowRight')nav(1);
+  });
+  var sx=null;
+  LBX.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+  LBX.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)nav(dx>0?-1:1);sx=null;},{passive:true});
+  document.addEventListener('click',function(e){
+    if(LBX.classList.contains('on'))return;
+    var art=e.target.closest?e.target.closest('article.opt'):null;
+    if(!art)return;
+    if(e.target.closest('a'))return;
+    var g=art.querySelector('.opt-gallery');
+    var imgs=g?Array.prototype.slice.call(g.querySelectorAll('img')):Array.prototype.slice.call(art.querySelectorAll('img.opt-img'));
+    if(!imgs.length)return;
+    var start=e.target.tagName==='IMG'?imgs.indexOf(e.target):0;
+    var h=art.querySelector('h4');
+    open(imgs,start<0?0:start,h?h.textContent.trim():'');
+  });
+})();
+</script>
+
 </body>
 </html>
